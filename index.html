@@ -99,25 +99,24 @@
             --primary-ring: rgba(71, 85, 105, 0.4);
         }
         [data-theme="phuket"] {
-            --primary: #d946ef; /* Bright Fuchsia Representing Phuket's lively spirit */
+            --primary: #d946ef;
             --primary-hover: #c084fc;
             --primary-light: #fae8ff;
             --primary-ring: rgba(217, 70, 239, 0.4);
         }
         [data-theme="phangnga"] {
-            --primary: #0f766e; /* Deep Andaman teal for Phang Nga Bay */
+            --primary: #0f766e;
             --primary-hover: #115e59;
             --primary-light: #ccfbf1;
             --primary-ring: rgba(15, 118, 110, 0.4);
         }
         [data-theme="forest"] {
-            --primary: #15803d; /* Elegant Forest Green */
+            --primary: #15803d;
             --primary-hover: #166534;
             --primary-light: #dcfce7;
             --primary-ring: rgba(21, 128, 61, 0.4);
         }
 
-        /* ใช้งานตัวแปรสีใน Tailwind Utility classes */
         .text-theme-primary { color: var(--primary); }
         .bg-theme-primary { background-color: var(--primary); }
         .bg-theme-primary-hover:hover { background-color: var(--primary-hover); }
@@ -125,7 +124,6 @@
         .border-theme-primary { border-color: var(--primary); }
         .ring-theme-primary:focus { --tw-ring-color: var(--primary-ring); }
         
-        /* สไตล์เสริมสำหรับการแก้ไขข้อมูล */
         .editable-active {
             outline: 2px dashed #f59e0b;
             outline-offset: 4px;
@@ -151,33 +149,29 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
 
-    <!-- แถบแจ้งเตือนสถานะโหมดแก้ไข (Sticky top-0) -->
     <div id="edit-banner" class="hidden bg-amber-500 text-white text-center py-2 px-4 sticky top-0 z-50 shadow-md flex justify-between items-center transition-all duration-300">
         <div class="flex items-center gap-2 mx-auto">
             <i data-lucide="edit-3" class="w-5 h-5 animate-pulse"></i>
-            <span class="font-medium text-xs md:text-sm">กำลังอยู่ใน "โหมดแก้ไขขั้นสูง" สามารถคลิกข้อความใดเพื่อพิมพ์ หรืออัปโหลดรูปภาพ/วิดีโอ/แนบลิงก์ทุกส่วนได้อิสระ</span>
+            <span class="font-medium text-xs md:text-sm">กำลังอยู่ใน "โหมดแก้ไขขั้นสูง" สามารถคลิกข้อความเพื่อพิมพ์ หรืออัปโหลดรูปภาพ/วิดีโอ/ไฟล์แนบทุกประเภทได้อย่างอิสระ</span>
         </div>
         <button onclick="deactivateEditMode()" class="bg-amber-700 hover:bg-amber-800 text-white text-xs px-3 py-1.5 rounded-md font-semibold transition flex-shrink-0">
             เสร็จสิ้นและบันทึก
         </button>
     </div>
 
-    <!-- ส่วนหัวเว็บไซต์ (Navbar) -->
-    <nav class="sticky top-[40px] md:top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
+    <nav class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <!-- โลโก้แบรนด์ -->
                 <div class="flex-shrink-0 flex items-center gap-2">
                     <div class="w-10 h-10 rounded-lg bg-theme-primary flex items-center justify-center text-white font-bold text-xl shadow-md transition-all duration-300" id="logo-icon">
                         อ
                     </div>
                     <div>
-                        <span class="font-bold text-lg text-slate-900 dark:text-white block leading-tight tracking-tight" id="nav-title">อัสนี สงวนปุญญศิริ</span>
-                        <span class="text-xs text-slate-500 dark:text-slate-400">พอร์ตโฟลิโอเก็บข้อมูล & สื่อผสม</span>
+                        <span class="font-bold text-lg text-slate-900 dark:text-white block leading-tight tracking-tight animate-fade-in" id="nav-title">อัสนี สงวนปุญญศิริ</span>
+                        <span class="text-xs text-slate-500 dark:text-slate-400">พอร์ตโฟลิโอเก็บข้อมูล & เอกสารสื่อผสม</span>
                     </div>
                 </div>
 
-                <!-- เมนูเดสก์ท็อป -->
                 <div class="hidden md:flex items-center space-x-6">
                     <a href="#hero" class="text-slate-600 hover:text-theme-primary dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">หน้าแรก</a>
                     <a href="#about" class="text-slate-600 hover:text-theme-primary dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">ประวัติทั่วไป</a>
@@ -187,74 +181,68 @@
                     <a href="#contact" class="text-slate-600 hover:text-theme-primary dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">ติดต่อ</a>
                 </div>
 
-                <!-- ปุ่มตั้งค่า ธีม แสงเงา และแก้ไข -->
                 <div class="flex items-center gap-2">
-                    <!-- ปุ่มเปิดรหัสผ่านโหมดแก้ไข -->
                     <button id="btn-lock" onclick="togglePasswordModal()" class="p-2 text-slate-500 dark:text-slate-400 hover:text-amber-500 dark:hover:text-amber-400 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="เข้าสู่โหมดแก้ไข (Bank4481)">
                         <i data-lucide="lock" class="w-5 h-5" id="icon-lock"></i>
                     </button>
 
-                    <!-- เมนูเลือกธีมสี -->
                     <div class="relative inline-block text-left" id="theme-dropdown-container">
                         <button onclick="toggleThemeDropdown()" class="p-2 text-slate-500 dark:text-slate-400 hover:text-theme-primary rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="เลือกสีธีม">
                             <i data-lucide="palette" class="w-5 h-5"></i>
                         </button>
-                        <!-- กล่องเมนูธีม -->
                         <div id="theme-dropdown" class="hidden absolute right-0 mt-2 w-56 rounded-xl bg-white dark:bg-slate-800 shadow-xl border border-slate-100 dark:border-slate-700 p-2 z-50">
                             <div class="px-3 py-1.5 text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 dark:border-slate-700 mb-2">
                                 เลือกธีมสีหลัก (12 สี)
                             </div>
                             <div class="grid grid-cols-2 gap-1.5">
                                 <button onclick="setTheme('indigo')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-indigo-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-indigo-600"></span> Indigo (เริ่มแรก)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-indigo-600"></span> Indigo
                                 </button>
                                 <button onclick="setTheme('emerald')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-emerald-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-emerald-500"></span> Emerald (เขียว)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-emerald-500"></span> Emerald
                                 </button>
                                 <button onclick="setTheme('ocean')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-sky-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-sky-500"></span> Ocean (ฟ้าทะเล)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-sky-500"></span> Ocean
                                 </button>
                                 <button onclick="setTheme('sunset')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-orange-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-orange-500"></span> Sunset (ส้ม)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-orange-500"></span> Sunset
                                 </button>
                                 <button onclick="setTheme('rose')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-pink-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-pink-500"></span> Rose (ชมพู)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-pink-500"></span> Rose
                                 </button>
                                 <button onclick="setTheme('teal')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-teal-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-teal-500"></span> Teal (เขียวมิ้นต์)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-teal-500"></span> Teal
                                 </button>
                                 <button onclick="setTheme('violet')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-purple-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-purple-500"></span> Violet (ม่วง)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-purple-500"></span> Violet
                                 </button>
                                 <button onclick="setTheme('amber')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-amber-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-amber-500"></span> Amber (เหลืองทอง)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-amber-500"></span> Amber
                                 </button>
                                 <button onclick="setTheme('crimson')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-red-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-red-600"></span> Crimson (แดง)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-red-600"></span> Crimson
                                 </button>
                                 <button onclick="setTheme('slate')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700/50 rounded-lg transition-colors">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-slate-500"></span> Slate (เทาสุภาพ)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-slate-500"></span> Slate
                                 </button>
                                 <button onclick="setTheme('phuket')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-fuchsia-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors" title="สีตัวแทน มรภ.ภูเก็ต">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-fuchsia-500"></span> Phuket (มรภ.ภูเก็ต)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-fuchsia-500"></span> Phuket
                                 </button>
                                 <button onclick="setTheme('phangnga')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-teal-900/10 dark:hover:bg-slate-700/50 rounded-lg transition-colors" title="สีสัญลักษณ์ทะเลพังงา">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-teal-700"></span> PhangNga (พังงา)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-teal-700"></span> PhangNga
                                 </button>
                                 <button onclick="setTheme('forest')" class="flex items-center gap-2 px-2 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-green-50 dark:hover:bg-slate-700/50 rounded-lg transition-colors col-span-2">
-                                    <span class="w-3.5 h-3.5 rounded-full bg-green-700"></span> Forest (ป่าไม้อุดมสมบูรณ์)
+                                    <span class="w-3.5 h-3.5 rounded-full bg-green-700"></span> Forest
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ปุ่มโหมดกลางวัน/กลางคืน -->
                     <button onclick="toggleDarkMode()" class="p-2 text-slate-500 dark:text-slate-400 hover:text-theme-primary rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="สลับโหมดแสงสี">
                         <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
                         <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
                     </button>
 
-                    <!-- แฮมเบอร์เกอร์เมนูสำหรับมือถือ -->
                     <button onclick="toggleMobileMenu()" class="p-2 md:hidden text-slate-500 dark:text-slate-400 hover:text-theme-primary rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition">
                         <i data-lucide="menu" class="w-5 h-5" id="mobile-menu-icon"></i>
                     </button>
@@ -262,7 +250,6 @@
             </div>
         </div>
 
-        <!-- เมนูมือถือเมื่อกางออก -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-4 space-y-1 transition-all duration-300">
             <a href="#hero" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-theme-primary">หน้าแรก</a>
             <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-theme-primary">ประวัติทั่วไป</a>
@@ -273,12 +260,10 @@
         </div>
     </nav>
 
-    <!-- ส่วนหลักของเว็บไซต์ (Hero Section) -->
     <section id="hero" class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-br from-slate-100 via-white to-slate-100 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 transition-all duration-300">
         <div class="absolute inset-0 bg-grid-pattern opacity-5 dark:opacity-10 pointer-events-none"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <!-- ข้อมูลแนะนำตัว -->
                 <div class="lg:col-span-7 text-center lg:text-left space-y-6">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-theme-light text-theme-primary rounded-full text-xs font-semibold uppercase tracking-wider">
                         <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
@@ -306,25 +291,21 @@
                     </div>
                 </div>
 
-                <!-- รูปโปรไฟล์อัสนี (และใช้เป็นรูปผู้พัฒนา) -->
                 <div class="lg:col-span-5 flex justify-center">
                     <div class="relative group">
-                        <!-- เอฟเฟกต์สีพื้นหลังหมุน -->
                         <div class="absolute -inset-1.5 bg-gradient-to-r from-theme-primary to-emerald-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
                         <div class="relative bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-premium w-72 h-96 sm:w-80 sm:h-[420px] overflow-hidden flex items-center justify-center">
-                            <!-- บล็อกสื่อผสมอัจฉริยะ (รูปภาพ หรือ วิดีโอ) -->
-                            <div id="profile-media-container" class="w-full h-full rounded-xl overflow-hidden shadow-inner border border-slate-100 dark:border-slate-700">
+                            <div id="profile-media-container" class="w-full h-full rounded-xl overflow-hidden shadow-inner border border-slate-100 dark:border-slate-700 bg-slate-100 dark:bg-slate-900">
                                 <!-- โหลดผ่าน JS -->
                             </div>
                             
-                            <!-- ตัวเลือกในการแก้ไขอัปโหลดสื่อ -->
                             <div id="image-edit-overlay" class="hidden absolute inset-0 bg-black/80 rounded-xl flex flex-col items-center justify-center p-4 text-center z-20 space-y-2">
                                 <i data-lucide="image-plus" class="w-8 h-8 text-amber-500 animate-bounce"></i>
                                 <p class="text-white text-xs font-bold">อัปเดตไฟล์สื่อหรือลิงก์ผู้พัฒนา</p>
                                 
                                 <label class="w-full py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded text-[10px] font-bold cursor-pointer transition">
-                                    เลือกไฟล์รูป/วิดีโอจากเครื่อง
-                                    <input type="file" id="input-profile-file" accept="image/*,video/*" onchange="uploadProfileMedia(this)" class="hidden">
+                                    เลือกไฟล์จากเครื่อง (ได้ทุกไฟล์)
+                                    <input type="file" id="input-profile-file" accept="*/*" onchange="uploadProfileMedia(this)" class="hidden">
                                 </label>
                                 
                                 <p class="text-slate-400 text-[10px]">หรือใส่ URL สื่อโดยตรงด้านล่าง</p>
@@ -338,23 +319,20 @@
         </div>
     </section>
 
-    <!-- ส่วนข้อมูลประวัติทั่วไปและการศึกษา (About Section) -->
     <section id="about" class="py-20 bg-white dark:bg-slate-950 transition-colors duration-300 border-t border-slate-100 dark:border-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="text-base font-bold text-theme-primary tracking-wide uppercase">ข้อมูลส่วนบุคคล</h2>
                 <h3 class="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white" id="about-title-ui">ประวัติทั่วไปและการศึกษา</h3>
-                <p class="mt-4 text-sm sm:text-base text-slate-500 dark:text-slate-400">ประวัติการศึกษาปัจจุบันและแหล่งที่อยู่ดั้งเดิมของนายอัสนี ที่สามารถเชื่อมโยงวิดีโอ รูปภาพ หรือเว็บไซต์สถาบันได้โดยตรง</p>
+                <p class="mt-4 text-sm sm:text-base text-slate-500 dark:text-slate-400">ประวัติการศึกษาปัจจุบันและแหล่งที่อยู่ดั้งเดิมของนายอัสนี ที่สามารถแนบไฟล์เอกสาร, วิดีโอ, หรือรูปภาพเพื่อประกอบได้อย่างละเอียด</p>
             </div>
 
-            <!-- กล่องข้อมูลการศึกษาและสถานที่อยู่ -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="about-cards-container">
-                <!-- แทรกข้อมูลแบบไดนามิกผ่าน JavaScript เพื่อรองรับการอัปโหลดวิดีโอ/รูป/ลิงก์แยกรายกล่อง -->
+                <!-- แทรกข้อมูลแบบไดนามิกผ่าน JavaScript -->
             </div>
         </div>
     </section>
 
-    <!-- ส่วนระดับทักษะ (Skills Section) -->
     <section id="skills" class="py-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
@@ -369,14 +347,12 @@
                 </div>
             </div>
 
-            <!-- รายการทักษะแบบ Dynamic -->
             <div id="skills-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- แทรกทักษะด้วย Javascript -->
             </div>
         </div>
     </section>
 
-    <!-- ส่วนแสดงโครงการและผลงาน (Projects Section) -->
     <section id="projects" class="py-20 bg-white dark:bg-slate-950 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
@@ -391,14 +367,12 @@
                 </div>
             </div>
 
-            <!-- กริดโครงการแบบ Dynamic -->
             <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- แทรกด้วย Javascript -->
+                <!-- แทรกโครงการด้วย Javascript -->
             </div>
         </div>
     </section>
 
-    <!-- ส่วนเนื้อหาเพิ่มเติม (Custom Section) -->
     <section id="custom-section" class="py-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-slate-950 rounded-3xl p-8 md:p-12 shadow-premium border border-slate-100 dark:border-slate-800 relative overflow-hidden">
@@ -413,19 +387,17 @@
                         <h2 class="text-base font-bold text-theme-primary tracking-wide uppercase">เนื้อหาเพิ่มเติม</h2>
                         <h3 id="custom-section-title" class="mt-2 text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">เป้าหมายสูงสุดในสายงานของอัสนี</h3>
                         <div id="custom-section-content" class="mt-6 text-slate-600 dark:text-slate-400 space-y-4 text-sm md:text-base leading-relaxed">
-                            <!-- พารากราฟย่อหน้าสร้างโดย JS -->
+                            <!-- ย่อหน้าถูกเขียนโดย JS -->
                         </div>
                         
-                        <!-- ปุ่มลิงก์เชื่อมโยงในย่อหน้าพิเศษ -->
                         <div class="mt-6" id="custom-cta-container">
-                            <!-- เรนเดอร์ลิงก์ผ่าน JS -->
+                            <!-- ปุ่มเชื่อมโยงพิเศษ -->
                         </div>
                     </div>
                     
-                    <!-- พื้นที่อัปเดตรูปภาพ/วิดีโอเสริมส่วนตัว -->
                     <div class="lg:col-span-5 h-64 md:h-80 w-full rounded-2xl overflow-hidden relative border border-slate-100 dark:border-slate-800 bg-slate-100 dark:bg-slate-900">
                         <div id="custom-media-container" class="w-full h-full">
-                            <!-- ใส่รูป/วิดีโอประกอบโดย JS -->
+                            <!-- ประกอบมัลติมีเดียโดย JS -->
                         </div>
                     </div>
                 </div>
@@ -433,7 +405,6 @@
         </div>
     </section>
 
-    <!-- ส่วนข้อมูลติดต่อ (Contact Section) -->
     <section id="contact" class="py-20 bg-white dark:bg-slate-950 transition-colors duration-300 border-t border-slate-100 dark:border-slate-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -443,7 +414,6 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                <!-- บล็อกติดต่อฝั่งซ้าย -->
                 <div class="lg:col-span-5 space-y-6">
                     <a id="contact-email-link" href="#" class="bg-slate-50 dark:bg-slate-900 rounded-2xl p-6 border border-slate-100 dark:border-slate-800 flex items-start gap-4 hover:shadow-md transition block group">
                         <div class="w-10 h-10 rounded-xl bg-theme-light text-theme-primary flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition">
@@ -479,7 +449,6 @@
                     </div>
                 </div>
 
-                <!-- ฟอร์มส่งข้อความพรีเซนต์จำลอง -->
                 <div class="lg:col-span-7 bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 border border-slate-100 dark:border-slate-800">
                     <h4 class="text-lg font-semibold text-slate-900 dark:text-white mb-6">ส่งข้อความหาอัสนีโดยตรง</h4>
                     <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
@@ -511,11 +480,9 @@
         </div>
     </section>
 
-    <!-- ส่วนท้ายเว็บไซต์ (Footer) -->
     <footer class="bg-slate-100 dark:bg-slate-950 text-slate-600 dark:text-slate-400 py-12 transition-colors duration-300 border-t border-slate-200 dark:border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <!-- รายละเอียดผู้เขียน -->
                 <div class="flex items-center gap-4">
                     <div class="relative w-12 h-12 rounded-full overflow-hidden border border-slate-300 dark:border-slate-700 bg-slate-200 dark:bg-slate-800">
                         <img id="dev-img" 
@@ -530,7 +497,6 @@
                     </div>
                 </div>
 
-                <!-- ข้อความลิขสิทธิ์ -->
                 <div class="text-center md:text-right">
                     <p class="text-xs">© 2026 อัสนี สงวนปุญญศิริ. พัฒนาขึ้นมาเพื่อใช้งานเป็นแฟ้มผลงานมัลติมีเดียแบบพรีเมียม</p>
                     <p class="text-[10px] text-slate-400 mt-1">ขับเคลื่อนด้วย HTML, Tailwind CSS และ Vanilla Javascript</p>
@@ -539,14 +505,12 @@
         </div>
     </footer>
 
-    <!-- ส่วนแจ้งเตือนข้อความ (Toast) -->
     <div id="custom-toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300">
         <span id="toast-message" class="text-sm font-medium">บันทึกสำเร็จ!</span>
     </div>
 
-    <!-- ส่วนป๊อปอัปตรวจสอบรหัสผ่าน (Bank4481) -->
     <div id="password-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-slate-100 dark:border-slate-700 text-center space-y-4">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-slate-100 dark:border-slate-700 text-center space-y-4 animate-fade-in">
             <div class="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-500 dark:text-amber-400 flex items-center justify-center mx-auto">
                 <i data-lucide="key-round" class="w-6 h-6"></i>
             </div>
@@ -569,7 +533,6 @@
         </div>
     </div>
 
-    <!-- ป๊อปอัปแก้ไขกล่องข้อมูลประวัติสถาบัน/ที่อยู่ (About Box Modal) -->
     <div id="about-card-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
             <h4 class="text-base font-bold text-slate-900 dark:text-white">แก้ไขข้อมูลการศึกษา/ภูมิลำเนา</h4>
@@ -587,17 +550,17 @@
                     <input type="text" id="about-card-input-link" placeholder="เช่น https://www.pkru.ac.th" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-500 mb-1">สื่อประกอบ (อัปโหลดรูปภาพ/วิดีโอมาแทนไอคอน)</label>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1">อัปโหลดไฟล์แนบประกอบ (ทุกประเภทไฟล์)</label>
                     <div class="flex items-center gap-2">
                         <label class="px-3 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg text-xs font-semibold cursor-pointer transition">
-                            เลือกไฟล์รูป/วิดีโอ
-                            <input type="file" id="about-card-input-file" accept="image/*,video/*" onchange="processCardFile(this)" class="hidden">
+                            เลือกไฟล์แนบ
+                            <input type="file" id="about-card-input-file" accept="*/*" onchange="processCardFile(this)" class="hidden">
                         </label>
                         <span id="about-card-file-status" class="text-slate-400 text-[10px] truncate max-w-[200px]">ไม่ได้อัปโหลดไฟล์สื่อใหม่</span>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-500 mb-1">หรือ วางลิงก์รูป/วิดีโอออนไลน์</label>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1">หรือ วางลิงก์รูป/วิดีโอ/ไฟล์แนบออนไลน์</label>
                     <input type="text" id="about-card-input-media-url" placeholder="ลิงก์ไฟล์ภายนอก..." class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm">
                 </div>
             </div>
@@ -612,7 +575,6 @@
         </div>
     </div>
 
-    <!-- ส่วนป๊อปอัปแก้ไขกล่องความสามารถ (Skills Modal) -->
     <div id="skill-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
             <h4 class="text-base font-bold text-slate-900 dark:text-white" id="skill-modal-title">แก้ไขทักษะ</h4>
@@ -624,6 +586,16 @@
                 <div>
                     <label class="block text-xs font-semibold text-slate-500 mb-1">ลิงก์ใบรับรอง/รายละเอียดของทักษะ (ถ้ามี)</label>
                     <input type="text" id="skill-input-link" placeholder="https://example.com/certificate" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1">อัปโหลดเกียรติบัตร/ไฟล์แนบทักษะ (ทุกประเภทไฟล์)</label>
+                    <div class="flex items-center gap-2">
+                        <label class="px-3 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg text-xs font-semibold cursor-pointer transition">
+                            เลือกไฟล์แนบ
+                            <input type="file" id="skill-input-file" accept="*/*" onchange="processSkillFile(this)" class="hidden">
+                        </label>
+                        <span id="skill-file-status" class="text-slate-400 text-[10px] truncate max-w-[200px]">ไม่ได้อัปโหลดไฟล์</span>
+                    </div>
                 </div>
                 <div>
                     <label class="block text-xs font-semibold text-slate-500 mb-1">ระดับความเชี่ยวชาญ (0 - 100%)</label>
@@ -644,7 +616,6 @@
         </div>
     </div>
 
-    <!-- ส่วนป๊อปอัปแก้ไขโครงการ (Projects Modal) -->
     <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
             <h4 class="text-base font-bold text-slate-900 dark:text-white" id="project-modal-title">แก้ไขโครงการ</h4>
@@ -666,18 +637,18 @@
                     <input type="text" id="project-input-tags" placeholder="เช่น HTML, CSS, JavaScript" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm">
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-500 mb-1">สื่อประกอบ (รูปภาพหรือคลิปวิดีโอพรีเซนต์สั้น)</label>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1">อัปโหลดไฟล์ประกอบโครงการ (รูปภาพ, เอกสาร, ZIP โค้ด ได้ทั้งหมด)</label>
                     <div class="flex items-center gap-2">
                         <label class="px-3 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg text-xs font-semibold cursor-pointer transition">
-                            เลือกไฟล์รูป/วิดีโอ
-                            <input type="file" id="project-input-file" accept="image/*,video/*" onchange="processProjectFile(this)" class="hidden">
+                            เลือกไฟล์
+                            <input type="file" id="project-input-file" accept="*/*" onchange="processProjectFile(this)" class="hidden">
                         </label>
                         <span id="project-file-status" class="text-slate-400 text-[10px] truncate max-w-[200px]">ไม่ได้อัปโหลดไฟล์สื่อใหม่</span>
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-500 mb-1">หรือ วางลิงก์รูป/วิดีโอออนไลน์</label>
-                    <input type="text" id="project-input-media-url" placeholder="ลิงก์ไฟล์รูปหรือวิดีโอโดยตรง..." class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm">
+                    <label class="block text-xs font-semibold text-slate-500 mb-1">หรือ วางลิงก์รูป/วิดีโอ/ไฟล์แนบออนไลน์</label>
+                    <input type="text" id="project-input-media-url" placeholder="ลิงก์ไฟล์ประกอบโดยตรง..." class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm">
                 </div>
             </div>
             <div class="flex gap-2 pt-2">
@@ -691,7 +662,6 @@
         </div>
     </div>
 
-    <!-- ส่วนป๊อปอัปแก้ไขหัวข้อเนื้อหาเพิ่มเติม และวิดีโอข้างย่อหน้า (Custom Section Modal) -->
     <div id="custom-section-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-lg w-full shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
             <h4 class="text-base font-bold text-slate-900 dark:text-white">แก้ไขเนื้อหาเพิ่มเติมและลิงก์ปุ่ม</h4>
@@ -715,11 +685,11 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-500 mb-1">อัปโหลดสื่อด้านข้าง (รูปภาพหรือวิดีโอเสริม)</label>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1">อัปโหลดเอกสาร/สื่อด้านข้าง (ทุกประเภทไฟล์)</label>
                     <div class="flex items-center gap-2">
                         <label class="px-3 py-2 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 rounded-lg text-xs font-semibold cursor-pointer transition">
-                            เลือกไฟล์รูป/วิดีโอ
-                            <input type="file" id="custom-input-file" accept="image/*,video/*" onchange="processCustomFile(this)" class="hidden">
+                            เลือกไฟล์
+                            <input type="file" id="custom-input-file" accept="*/*" onchange="processCustomFile(this)" class="hidden">
                         </label>
                         <span id="custom-file-status" class="text-slate-400 text-[10px] truncate max-w-[200px]">ไม่ได้อัปโหลดไฟล์สื่อใหม่</span>
                     </div>
@@ -740,46 +710,48 @@
         </div>
     </div>
 
-    <!-- สคริปต์ทำงานระบบทั้งหมด -->
     <script>
-        // ข้อมูลเริ่มต้นของ นายอัสนี สงวนปุญญศิริ
         const defaultPortfolioData = {
             profile: {
                 fullName: "นายอัสนี สงวนปุญญศิริ",
                 role: "นักศึกษา มหาวิทยาลัยราชภัฏภูเก็ต",
                 bio: "กำลังศึกษาอยู่ที่มหาวิทยาลัยราชภัฏภูเก็ต เคยศึกษาที่โรงเรียนเทศบาลบ้านย่านยาว ภูมิลำเนาตั้งอยู่ที่ตำบลบางม่วง อำเภอตะกั่วป่า จังหวัดพังงา มีความกระตือรือร้นในการศึกษาหาความรู้ด้านไอทีและเว็บเทคโนโลยีอย่างสร้างสรรค์",
                 image: "https://lh3.googleusercontent.com/d/1ZBZ5HGKv55aZeAZHi8EPz-1IgGwlndGD",
-                imageType: "image" // image หรือ video
+                imageType: "image",
+                imageName: "profile_picture"
             },
             education: {
                 uniTitle: "มหาวิทยาลัยราชภัฏภูเก็ต",
                 uniDesc: "กำลังศึกษาอยู่ ปริญญาตรี คณะวิทยาศาสตร์และเทคโนโลยี พัฒนาทักษะที่เกี่ยวข้องกับเทคโนโลยีคอมพิวเตอร์และสื่อดิจิทัลเพื่อนำไปประยุกต์ใช้งาน",
                 uniLink: "https://www.pkru.ac.th",
                 uniMedia: "",
-                uniMediaType: "icon", // icon, image, video
+                uniMediaType: "icon",
+                uniMediaName: "",
 
                 schTitle: "โรงเรียนเทศบาลบ้านย่านยาว",
                 schDesc: "เคยศึกษาเล่าเรียนระดับการศึกษาขั้นพื้นฐานที่โรงเรียนเทศบาลบ้านย่านยาว เสริมสร้างทักษะระเบียบวินัยและความรู้พื้นฐานอย่างแน่นแฟ้น",
                 schLink: "https://yanyaw.ac.th",
                 schMedia: "",
                 schMediaType: "icon",
+                schMediaName: "",
 
                 addrTitle: "ตำบลบางม่วง อำเภอตะกั่วป่า จังหวัดพังงา",
                 addrDesc: "ที่อยู่บ้านภูมิลำเนาเดิม สถานที่สงบงามรายล้อมไปด้วยภูเขาและวัฒนธรรมพื้นบ้านโบราณอันเป็นเอกลักษณ์ของจังหวัดพังงา",
                 addrLink: "https://maps.google.com/?q=ตำบลบางม่วง+อำเภอตะกั่วป่า+จังหวัดพังงา",
                 addrMedia: "",
-                addrMediaType: "icon"
+                addrMediaType: "icon",
+                addrMediaName: ""
             },
             skills: [
-                { id: "s1", name: "HTML5 & Tailwind CSS", level: 95, link: "" },
-                { id: "s2", name: "Javascript ES6+", level: 85, link: "" },
-                { id: "s3", name: "Responsive Web Development", level: 90, link: "" },
-                { id: "s4", name: "UX & UI Design Systems", level: 80, link: "" }
+                { id: "s1", name: "HTML5 & Tailwind CSS", level: 95, link: "", media: "", mediaType: "icon", mediaName: "" },
+                { id: "s2", name: "Javascript ES6+", level: 85, link: "", media: "", mediaType: "icon", mediaName: "" },
+                { id: "s3", name: "Responsive Web Development", level: 90, link: "", media: "", mediaType: "icon", mediaName: "" },
+                { id: "s4", name: "UX & UI Design Systems", level: 80, link: "", media: "", mediaType: "icon", mediaName: "" }
             ],
             projects: [
-                { id: "p1", title: "เว็บไซต์แฟ้มสะสมผลงานอเนกประสงค์", desc: "การออกแบบและพัฒนาเว็บไซต์หน้าเดียวแบบ Responsive ที่มีระบบการบันทึกแก้ไข และเปลี่ยนธีมสีแบบ Dynamic เหมาะสำหรับนำเสนอบุคคลทั่วไป", tags: ["HTML", "TailwindCSS", "JS"], link: "https://github.com", media: "", mediaType: "image" },
-                { id: "p2", title: "ระบบจำลองทดสอบคีย์รหัสผ่าน", desc: "พัฒนาระบบรักษาความปลอดภัยแบบ Client-Side สำหรับเว็บแอปพลิเคชันอย่างปลอดภัย โดยไม่ต้องพึ่งพาระบบ Back-end เพื่อความรวดเร็วและเป็นส่วนตัว", tags: ["Web Crypt", "Local Storage"], link: "", media: "", mediaType: "image" },
-                { id: "p3", title: "โครงการประยุกต์ใช้ซอฟต์แวร์ในท้องถิ่น", desc: "แนวคิดการประยุกต์ไอที เพื่อส่งเสริมอุตสาหกรรมการท่องเที่ยวทางธรรมชาติในตะกั่วป่า พังงา และเมืองเก่าจังหวัดภูเก็ต", tags: ["Idea", "Innovation", "Local"], link: "", media: "", mediaType: "image" }
+                { id: "p1", title: "เว็บไซต์แฟ้มสะสมผลงานอเนกประสงค์", desc: "การออกแบบและพัฒนาเว็บไซต์หน้าเดียวแบบ Responsive ที่มีระบบการบันทึกแก้ไข และเปลี่ยนธีมสีแบบ Dynamic เหมาะสำหรับนำเสนอบุคคลทั่วไป", tags: ["HTML", "TailwindCSS", "JS"], link: "https://github.com", media: "", mediaType: "image", mediaName: "" },
+                { id: "p2", title: "ระบบจำลองทดสอบคีย์รหัสผ่าน", desc: "พัฒนาระบบรักษาความปลอดภัยแบบ Client-Side สำหรับเว็บแอปพลิเคชันอย่างปลอดภัย โดยไม่ต้องพึ่งพาระบบ Back-end เพื่อความรวดเร็วและเป็นส่วนตัว", tags: ["Web Crypt", "Local Storage"], link: "", media: "", mediaType: "image", mediaName: "" },
+                { id: "p3", title: "โครงการประยุกต์ใช้ซอฟต์แวร์ในท้องถิ่น", desc: "แนวคิดการประยุกต์ไอที เพื่อส่งเสริมอุตสาหกรรมการท่องเที่ยวทางธรรมชาติในตะกั่วป่า พังงา และเมืองเก่าจังหวัดภูเก็ต", tags: ["Idea", "Innovation", "Local"], link: "", media: "", mediaType: "image", mediaName: "" }
             ],
             customSection: {
                 title: "เป้าหมายและเจตจำนงในการทำงาน",
@@ -790,7 +762,8 @@
                 btnText: "ดูหน้าเพจของ มรภ.ภูเก็ต",
                 btnUrl: "https://www.pkru.ac.th",
                 media: "",
-                mediaType: "image"
+                mediaType: "image",
+                mediaName: ""
             },
             contact: {
                 email: "atsanee.bank@phuket.uni.th",
@@ -800,27 +773,33 @@
             }
         };
 
-        // ตัวแปรเก็บสถานะการทำงาน
         let portfolioData = JSON.parse(localStorage.getItem('atsanee_portfolio_data')) || defaultPortfolioData;
         let isEditMode = false;
         let activeSkillId = null;
         let activeProjectId = null;
-        let activeAboutCardKey = null; // uni, sch, addr
+        let activeAboutCardKey = null;
 
-        // ตัวแปรเก็บไฟล์ชั่วคราวก่อนกดเซฟ
+        // ตัวแปรเก็บไฟล์ชั่วคราว
         let tempCardMedia = "";
         let tempCardMediaType = "icon";
+        let tempCardMediaName = "";
+
+        let tempSkillMedia = "";
+        let tempSkillMediaType = "icon";
+        let tempSkillMediaName = "";
+
         let tempProjectMedia = "";
         let tempProjectMediaType = "image";
+        let tempProjectMediaName = "";
+
         let tempCustomMedia = "";
         let tempCustomMediaType = "image";
+        let tempCustomMediaName = "";
 
-        // ฟังก์ชันล้างภาพกรณีลิงก์เสียหรือติดบล็อกโหลด
         function handleImageLoadError(img) {
             img.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='420' viewBox='0 0 320 420'><rect width='320' height='420' fill='%23cbd5e1'/><circle cx='160' cy='160' r='60' fill='%2394a3b8'/><path d='M60,320 C60,260 110,240 160,240 C210,240 260,260 260,320 C260,350 240,360 160,360 C80,360 60,350 60,320 Z' fill='%2394a3b8'/><text x='50%' y='92%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='14' fill='%23475569' font-weight='bold'>นายอัสนี สงวนปุญญศิริ</text></svg>";
         }
 
-        // โหลดข้อมูลขึ้นแสดงผลเมื่อเปิดหน้าเว็บ
         window.onload = function() {
             initPortfolio();
             const savedTheme = localStorage.getItem('atsanee_theme') || 'indigo';
@@ -835,39 +814,74 @@
             lucide.createIcons();
         }
 
-        // ฟังก์ชันช่วยเรนเดอร์ สื่อมัลติมีเดีย (รูปภาพ หรือ วิดีโอ)
-        function renderMediaHTML(src, type, fallbackAlt = "Media File", className = "w-full h-full object-cover") {
+        function getFileTypeFromDataURL(src, fallbackType) {
+            if (!src) return 'none';
+            if (src.startsWith('data:')) {
+                const mime = src.split(';')[0].split(':')[1];
+                if (mime.startsWith('image/')) return 'image';
+                if (mime.startsWith('video/')) return 'video';
+                return 'file';
+            }
+            const ext = src.split('?')[0].split('.').pop().toLowerCase();
+            if (['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'bmp'].includes(ext)) return 'image';
+            if (['mp4', 'webm', 'ogg', 'mov', 'avi'].includes(ext)) return 'video';
+            if (fallbackType && fallbackType !== 'icon') return fallbackType;
+            return 'file';
+        }
+
+        function renderMediaHTML(src, type, fallbackAlt = "Media File", className = "w-full h-full object-cover", fileName = "เอกสารอ้างอิง") {
             if (!src) {
                 return `<div class="w-full h-full flex items-center justify-center bg-slate-200 dark:bg-slate-800 text-slate-400">
                             <i data-lucide="image" class="w-8 h-8"></i>
                         </div>`;
             }
             
-            // ตรวจหาว่าเป็นไฟล์วิดีโอหรือไม่
-            const isVideo = type === 'video' || src.startsWith('data:video/') || src.endsWith('.mp4') || src.endsWith('.webm') || src.endsWith('.ogg');
+            const detectedType = getFileTypeFromDataURL(src, type);
             
-            if (isVideo) {
+            if (detectedType === 'image') {
+                return `<img src="${src}" alt="${fallbackAlt}" class="${className}" onerror="handleImageLoadError(this)">`;
+            } else if (detectedType === 'video') {
                 return `<video src="${src}" class="${className}" autoplay muted loop playsinline></video>`;
             } else {
-                return `<img src="${src}" alt="${fallbackAlt}" class="${className}" onerror="handleImageLoadError(this)">`;
+                // สำหรับไฟล์อัปโหลดอื่นๆ (PDF, DOCX, ZIP, ฯลฯ)
+                let iconName = 'file-text';
+                if (src.includes('pdf')) iconName = 'file-text';
+                else if (src.includes('zip') || src.includes('rar')) iconName = 'archive';
+                else if (src.includes('sheet') || src.includes('excel') || src.includes('xls')) iconName = 'file-spreadsheet';
+                
+                return `
+                    <div class="w-full h-full p-4 flex flex-col justify-between bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl relative group/file">
+                        <div class="flex items-start gap-3">
+                            <div class="p-3 bg-theme-light text-theme-primary rounded-xl">
+                                <i data-lucide="${iconName}" class="w-8 h-8"></i>
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <p class="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">ไฟล์แนบสะสมผลงาน</p>
+                                <p class="text-xs font-bold text-slate-800 dark:text-slate-100 truncate">${fileName || 'document_file'}</p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <a href="${src}" download="${fileName || 'download'}" class="w-full py-2 bg-theme-primary hover:bg-theme-primary-hover text-white text-xs font-bold rounded-lg transition-all flex items-center justify-center gap-1.5 shadow-sm">
+                                <i data-lucide="download" class="w-4 h-4"></i>
+                                <span>ดาวน์โหลดไฟล์แนบ</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
             }
         }
 
-        // ฟังก์ชันเรนเดอร์และเตรียมความพร้อมข้อมูลทั้งหมด
         function initPortfolio() {
-            // Hero Texts
             document.getElementById('hero-name').innerText = portfolioData.profile.fullName;
             document.getElementById('hero-role').innerText = portfolioData.profile.role;
             document.getElementById('hero-bio').innerText = portfolioData.profile.bio;
             
-            // Hero Media Render (Image or Video)
             const profileContainer = document.getElementById('profile-media-container');
-            profileContainer.innerHTML = renderMediaHTML(portfolioData.profile.image, portfolioData.profile.imageType, portfolioData.profile.fullName);
+            profileContainer.innerHTML = renderMediaHTML(portfolioData.profile.image, portfolioData.profile.imageType, portfolioData.profile.fullName, "w-full h-full object-cover", portfolioData.profile.imageName);
 
             const devImg = document.getElementById('dev-img');
-            devImg.src = portfolioData.profile.image;
+            devImg.src = portfolioData.profile.imageType === 'image' ? portfolioData.profile.image : "https://lh3.googleusercontent.com/d/1ZBZ5HGKv55aZeAZHi8EPz-1IgGwlndGD";
 
-            // Contact Elements & Action Links
             document.getElementById('contact-email').innerText = portfolioData.contact.email;
             document.getElementById('contact-email-link').href = `mailto:${portfolioData.contact.email}`;
             document.getElementById('contact-phone').innerText = portfolioData.contact.phone;
@@ -875,7 +889,6 @@
             document.getElementById('contact-loc').innerText = portfolioData.contact.location;
             document.getElementById('contact-map-link').href = portfolioData.contact.mapLink || '#';
 
-            // Custom Section
             document.getElementById('custom-section-title').innerText = portfolioData.customSection.title;
             const customContentDiv = document.getElementById('custom-section-content');
             customContentDiv.innerHTML = '';
@@ -885,7 +898,6 @@
                 customContentDiv.appendChild(para);
             });
 
-            // Custom Section Button (CTA Link)
             const ctaContainer = document.getElementById('custom-cta-container');
             if (portfolioData.customSection.btnText) {
                 ctaContainer.innerHTML = `
@@ -898,37 +910,33 @@
                 ctaContainer.innerHTML = '';
             }
 
-            // Custom Section Media
             const customMediaContainer = document.getElementById('custom-media-container');
-            customMediaContainer.innerHTML = renderMediaHTML(portfolioData.customSection.media, portfolioData.customSection.mediaType, "Custom Feature");
+            customMediaContainer.innerHTML = renderMediaHTML(portfolioData.customSection.media, portfolioData.customSection.mediaType, "Custom Feature", "w-full h-full object-cover", portfolioData.customSection.mediaName);
 
-            // Dynamic Sub-Sections
             renderAboutCards();
             renderSkills();
             renderProjects();
             lucide.createIcons();
         }
 
-        // เรนเดอร์ส่วนข้อมูลประวัติในรูปแบบการอัปโหลดไฟล์สื่อผสมได้
         function renderAboutCards() {
             const container = document.getElementById('about-cards-container');
             container.innerHTML = '';
 
             const cards = [
-                { key: 'uni', title: portfolioData.education.uniTitle, desc: portfolioData.education.uniDesc, link: portfolioData.education.uniLink, media: portfolioData.education.uniMedia, mediaType: portfolioData.education.uniMediaType, defaultIcon: 'graduation-cap', label: 'ระดับอุดมศึกษา' },
-                { key: 'sch', title: portfolioData.education.schTitle, desc: portfolioData.education.schDesc, link: portfolioData.education.schLink, media: portfolioData.education.schMedia, mediaType: portfolioData.education.schMediaType, defaultIcon: 'book-open', label: 'ระดับโรงเรียน' },
-                { key: 'addr', title: portfolioData.education.addrTitle, desc: portfolioData.education.addrDesc, link: portfolioData.education.addrLink, media: portfolioData.education.addrMedia, mediaType: portfolioData.education.addrMediaType, defaultIcon: 'map-pin', label: 'ภูมิลำเนาดั้งเดิม' }
+                { key: 'uni', title: portfolioData.education.uniTitle, desc: portfolioData.education.uniDesc, link: portfolioData.education.uniLink, media: portfolioData.education.uniMedia, mediaType: portfolioData.education.uniMediaType, mediaName: portfolioData.education.uniMediaName, defaultIcon: 'graduation-cap', label: 'ระดับอุดมศึกษา' },
+                { key: 'sch', title: portfolioData.education.schTitle, desc: portfolioData.education.schDesc, link: portfolioData.education.schLink, media: portfolioData.education.schMedia, mediaType: portfolioData.education.schMediaType, mediaName: portfolioData.education.schMediaName, defaultIcon: 'book-open', label: 'ระดับโรงเรียน' },
+                { key: 'addr', title: portfolioData.education.addrTitle, desc: portfolioData.education.addrDesc, link: portfolioData.education.addrLink, media: portfolioData.education.addrMedia, mediaType: portfolioData.education.addrMediaType, mediaName: portfolioData.education.addrMediaName, defaultIcon: 'map-pin', label: 'ภูมิลำเนาดั้งเดิม' }
             ];
 
             cards.forEach(c => {
                 const cardEl = document.createElement('div');
                 cardEl.className = "bg-slate-50 dark:bg-slate-900 rounded-2xl p-8 border border-slate-100 dark:border-slate-800 hover:shadow-premium hover:-translate-y-1 transition-all duration-300 relative flex flex-col justify-between";
                 
-                // ตรวจเช็คว่ามีไฟล์อัปโหลดเข้ามาแทนไอคอนดั้งเดิมหรือไม่
                 let mediaBlock = '';
                 if (c.mediaType !== 'icon' && c.media) {
                     mediaBlock = `<div class="w-full h-32 rounded-xl overflow-hidden mb-6 bg-slate-200 dark:bg-slate-800">
-                                    ${renderMediaHTML(c.media, c.mediaType, c.title, "w-full h-full object-cover")}
+                                    ${renderMediaHTML(c.media, c.mediaType, c.title, "w-full h-full object-cover", c.mediaName)}
                                   </div>`;
                 } else {
                     mediaBlock = `<div class="w-12 h-12 rounded-xl bg-theme-light text-theme-primary flex items-center justify-center mb-6">
@@ -963,7 +971,6 @@
             lucide.createIcons();
         }
 
-        // เรนเดอร์ส่วนความสามารถ (Skills)
         function renderSkills() {
             const listContainer = document.getElementById('skills-list');
             listContainer.innerHTML = '';
@@ -983,10 +990,18 @@
                     </div>
                 ` : '';
 
-                // ลิงก์แนบเกียรติบัตรทักษะ
+                let certBlock = '';
+                if (skill.mediaType !== 'icon' && skill.media) {
+                    certBlock = `
+                        <div class="mt-3 w-full h-24 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                            ${renderMediaHTML(skill.media, skill.mediaType, skill.name, "w-full h-full object-cover", skill.mediaName)}
+                        </div>
+                    `;
+                }
+
                 let certificateLink = skill.link ? `
                     <a href="${skill.link}" target="_blank" class="text-xs font-semibold text-theme-primary hover:underline mt-2 inline-flex items-center gap-1">
-                        <i data-lucide="award" class="w-3.5 h-3.5"></i> ดูหลักฐานอ้างอิง/ใบรับรอง
+                        <i data-lucide="award" class="w-3.5 h-3.5"></i> ดูหลักฐานอ้างอิงออนไลน์
                     </a>
                 ` : '';
 
@@ -999,6 +1014,7 @@
                     <div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3 overflow-hidden">
                         <div class="bg-theme-primary h-full rounded-full transition-all duration-1000" style="width: ${skill.level}%"></div>
                     </div>
+                    ${certBlock}
                     ${certificateLink}
                 `;
                 listContainer.appendChild(card);
@@ -1006,7 +1022,6 @@
             lucide.createIcons();
         }
 
-        // เรนเดอร์โครงการ (Projects)
         function renderProjects() {
             const gridContainer = document.getElementById('projects-grid');
             gridContainer.innerHTML = '';
@@ -1026,12 +1041,11 @@
                     </div>
                 ` : '';
 
-                // สื่อประกอบโครงการ (รูปหรือวิดีโอ)
                 let projectMediaHTML = '';
                 if (proj.media) {
                     projectMediaHTML = `
                         <div class="w-full h-44 rounded-xl overflow-hidden mb-4 bg-slate-200 dark:bg-slate-800">
-                            ${renderMediaHTML(proj.media, proj.mediaType, proj.title, "w-full h-full object-cover")}
+                            ${renderMediaHTML(proj.media, proj.mediaType, proj.title, "w-full h-full object-cover", proj.mediaName)}
                         </div>
                     `;
                 }
@@ -1065,7 +1079,6 @@
             lucide.createIcons();
         }
 
-        // ระบบควบคุมและล็อก/เข้าสู่โหมดแก้ไขด้วยรหัสผ่าน Bank4481
         function togglePasswordModal() {
             const modal = document.getElementById('password-modal');
             const passInput = document.getElementById('input-password');
@@ -1103,7 +1116,6 @@
             }
         }
 
-        // เปิดใช้งานโหมดแก้ไขสดบนเว็บ
         function activateEditMode() {
             isEditMode = true;
             document.getElementById('edit-banner').classList.remove('hidden');
@@ -1129,7 +1141,6 @@
             lucide.createIcons();
         }
 
-        // ปิดโหมดแก้ไข
         function deactivateEditMode() {
             isEditMode = false;
             document.getElementById('edit-banner').classList.add('hidden');
@@ -1175,20 +1186,17 @@
             el.onblur = null;
         }
 
-        // อัปโหลดรูปภาพ / วิดีโอโปรไฟล์ผู้พัฒนา
         function uploadProfileMedia(input) {
             const file = input.files[0];
             if (file) {
-                if (file.size > 2 * 1024 * 1024) {
-                    showToast("เตือน: ไฟล์ใหญ่เกิน 2MB อาจไม่บันทึกลงเบราว์เซอร์");
-                }
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     portfolioData.profile.image = e.target.result;
-                    portfolioData.profile.imageType = file.type.startsWith('video/') ? 'video' : 'image';
+                    portfolioData.profile.imageType = file.type.startsWith('video/') ? 'video' : (file.type.startsWith('image/') ? 'image' : 'file');
+                    portfolioData.profile.imageName = file.name;
                     localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
                     initPortfolio();
-                    showToast("อัปโหลดไฟล์สื่อหลักเรียบร้อย");
+                    showToast("อัปโหลดสื่อโปรไฟล์เรียบร้อย");
                 }
                 reader.readAsDataURL(file);
             }
@@ -1197,98 +1205,38 @@
         function updateProfileImageUrl(url) {
             if (url.trim() !== '') {
                 portfolioData.profile.image = url.trim();
-                // ตรวจหาประเภทสื่อเบื้องต้นจากนามสกุล
                 portfolioData.profile.imageType = (url.endsWith('.mp4') || url.endsWith('.webm')) ? 'video' : 'image';
+                portfolioData.profile.imageName = url.split('/').pop() || "profile_media";
                 localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
                 initPortfolio();
-                showToast("บันทึกลิงก์รูปภาพโปรไฟล์เรียบร้อย");
+                showToast("บันทึกลิงก์เรียบร้อย");
             }
         }
 
         function resetToDefaultImage() {
             portfolioData.profile.image = defaultPortfolioData.profile.image;
             portfolioData.profile.imageType = "image";
+            portfolioData.profile.imageName = "profile_picture";
             localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
             initPortfolio();
             showToast("รีเซ็ตเป็นรูปภาพเริ่มต้นแล้ว");
         }
 
-        // จัดการ CRUD ทักษะ (Skills)
-        function addNewSkill() {
-            activeSkillId = null;
-            document.getElementById('skill-modal-title').innerText = "เพิ่มทักษะความสามารถใหม่";
-            document.getElementById('skill-input-name').value = "ทักษะใหม่";
-            document.getElementById('skill-input-link').value = "";
-            document.getElementById('skill-input-level').value = 80;
-            document.getElementById('skill-input-level-range').value = 80;
-            document.getElementById('skill-modal').classList.remove('hidden');
-        }
-
-        function openSkillEdit(id) {
-            activeSkillId = id;
-            const skill = portfolioData.skills.find(s => s.id === id);
-            if (!skill) return;
-            document.getElementById('skill-modal-title').innerText = "แก้ไขข้อมูลทักษะ";
-            document.getElementById('skill-input-name').value = skill.name;
-            document.getElementById('skill-input-link').value = skill.link || "";
-            document.getElementById('skill-input-level').value = skill.level;
-            document.getElementById('skill-input-level-range').value = skill.level;
-            document.getElementById('skill-modal').classList.remove('hidden');
-        }
-
-        function closeSkillModal() {
-            document.getElementById('skill-modal').classList.add('hidden');
-        }
-
-        function saveSkillModal() {
-            const name = document.getElementById('skill-input-name').value.trim();
-            const link = document.getElementById('skill-input-link').value.trim();
-            const level = parseInt(document.getElementById('skill-input-level').value) || 0;
-
-            if (activeSkillId) {
-                const skillIndex = portfolioData.skills.findIndex(s => s.id === activeSkillId);
-                if (skillIndex > -1) {
-                    portfolioData.skills[skillIndex].name = name;
-                    portfolioData.skills[skillIndex].link = link;
-                    portfolioData.skills[skillIndex].level = level;
-                }
-            } else {
-                const newSkill = {
-                    id: 's-' + Date.now(),
-                    name: name,
-                    link: link,
-                    level: level
-                };
-                portfolioData.skills.push(newSkill);
-            }
-            localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
-            closeSkillModal();
-            renderSkills();
-            showToast("บันทึกทักษะเรียบร้อย");
-        }
-
-        function deleteSkill(id) {
-            portfolioData.skills = portfolioData.skills.filter(s => s.id !== id);
-            localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
-            renderSkills();
-            showToast("ลบทักษะแล้ว");
-        }
-
-        // จัดการข้อมูลสถาบันการศึกษา / ภูมิลำเนา (About Cards Modals)
         function openAboutCardEdit(key) {
             activeAboutCardKey = key;
-            const cardInfo = (key === 'uni') ? { title: portfolioData.education.uniTitle, desc: portfolioData.education.uniDesc, link: portfolioData.education.uniLink, media: portfolioData.education.uniMedia, mediaType: portfolioData.education.uniMediaType } :
-                             (key === 'sch') ? { title: portfolioData.education.schTitle, desc: portfolioData.education.schDesc, link: portfolioData.education.schLink, media: portfolioData.education.schMedia, mediaType: portfolioData.education.schMediaType } :
-                             { title: portfolioData.education.addrTitle, desc: portfolioData.education.addrDesc, link: portfolioData.education.addrLink, media: portfolioData.education.addrMedia, mediaType: portfolioData.education.addrMediaType };
+            const cardInfo = (key === 'uni') ? { title: portfolioData.education.uniTitle, desc: portfolioData.education.uniDesc, link: portfolioData.education.uniLink, media: portfolioData.education.uniMedia, mediaType: portfolioData.education.uniMediaType, mediaName: portfolioData.education.uniMediaName } :
+                             (key === 'sch') ? { title: portfolioData.education.schTitle, desc: portfolioData.education.schDesc, link: portfolioData.education.schLink, media: portfolioData.education.schMedia, mediaType: portfolioData.education.schMediaType, mediaName: portfolioData.education.schMediaName } :
+                             { title: portfolioData.education.addrTitle, desc: portfolioData.education.addrDesc, link: portfolioData.education.addrLink, media: portfolioData.education.addrMedia, mediaType: portfolioData.education.addrMediaType, mediaName: portfolioData.education.addrMediaName };
 
             document.getElementById('about-card-input-title').value = cardInfo.title;
             document.getElementById('about-card-input-desc').value = cardInfo.desc;
             document.getElementById('about-card-input-link').value = cardInfo.link || "";
             document.getElementById('about-card-input-media-url').value = (cardInfo.mediaType !== 'icon') ? cardInfo.media : "";
-            document.getElementById('about-card-file-status').innerText = "ไม่ได้อัปโหลดไฟล์สื่อใหม่";
+            document.getElementById('about-card-file-status').innerText = cardInfo.mediaName ? `ไฟล์เดิม: ${cardInfo.mediaName}` : "ไม่ได้อัปโหลดไฟล์สื่อใหม่";
             
             tempCardMedia = cardInfo.media;
             tempCardMediaType = cardInfo.mediaType;
+            tempCardMediaName = cardInfo.mediaName;
 
             document.getElementById('about-card-modal').classList.remove('hidden');
         }
@@ -1299,7 +1247,8 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     tempCardMedia = e.target.result;
-                    tempCardMediaType = file.type.startsWith('video/') ? 'video' : 'image';
+                    tempCardMediaType = file.type.startsWith('video/') ? 'video' : (file.type.startsWith('image/') ? 'image' : 'file');
+                    tempCardMediaName = file.name;
                     document.getElementById('about-card-file-status').innerText = `อัปโหลด: ${file.name}`;
                 }
                 reader.readAsDataURL(file);
@@ -1319,8 +1268,8 @@
             if (rawMediaUrl) {
                 tempCardMedia = rawMediaUrl;
                 tempCardMediaType = (rawMediaUrl.endsWith('.mp4') || rawMediaUrl.endsWith('.webm')) ? 'video' : 'image';
+                tempCardMediaName = rawMediaUrl.split('/').pop() || 'external_link';
             } else if (tempCardMedia === portfolioData.education[`${activeAboutCardKey}Media`] && portfolioData.education[`${activeAboutCardKey}MediaType`] === 'icon') {
-                // หากไม่มีลิงก์ปลายทางและไม่เลือกไฟล์ใหม่ ให้ตั้งกลับเป็นสัญรูปภาพเดิม
                 tempCardMediaType = 'icon';
             }
 
@@ -1329,14 +1278,104 @@
             portfolioData.education[`${activeAboutCardKey}Link`] = link;
             portfolioData.education[`${activeAboutCardKey}Media`] = tempCardMedia;
             portfolioData.education[`${activeAboutCardKey}MediaType`] = tempCardMediaType;
+            portfolioData.education[`${activeAboutCardKey}MediaName`] = tempCardMediaName;
 
             localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
             closeAboutCardModal();
             renderAboutCards();
-            showToast("ปรับปรุงข้อมูลการศึกษาแล้ว");
+            showToast("ปรับปรุงข้อมูลการศึกษาเรียบร้อย");
         }
 
-        // การจัดการโครงการ (Projects CRUD & Media Upload)
+        function addNewSkill() {
+            activeSkillId = null;
+            document.getElementById('skill-modal-title').innerText = "เพิ่มทักษะความสามารถใหม่";
+            document.getElementById('skill-input-name').value = "ทักษะใหม่";
+            document.getElementById('skill-input-link').value = "";
+            document.getElementById('skill-input-level').value = 80;
+            document.getElementById('skill-input-level-range').value = 80;
+            document.getElementById('skill-file-status').innerText = "ไม่ได้อัปโหลดไฟล์";
+            tempSkillMedia = "";
+            tempSkillMediaType = "icon";
+            tempSkillMediaName = "";
+            document.getElementById('skill-modal').classList.remove('hidden');
+        }
+
+        function openSkillEdit(id) {
+            activeSkillId = id;
+            const skill = portfolioData.skills.find(s => s.id === id);
+            if (!skill) return;
+            document.getElementById('skill-modal-title').innerText = "แก้ไขข้อมูลทักษะ";
+            document.getElementById('skill-input-name').value = skill.name;
+            document.getElementById('skill-input-link').value = skill.link || "";
+            document.getElementById('skill-input-level').value = skill.level;
+            document.getElementById('skill-input-level-range').value = skill.level;
+            document.getElementById('skill-file-status').innerText = skill.mediaName ? `ไฟล์เดิม: ${skill.mediaName}` : "ไม่ได้อัปโหลดไฟล์";
+            
+            tempSkillMedia = skill.media;
+            tempSkillMediaType = skill.mediaType || "icon";
+            tempSkillMediaName = skill.mediaName || "";
+
+            document.getElementById('skill-modal').classList.remove('hidden');
+        }
+
+        function processSkillFile(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    tempSkillMedia = e.target.result;
+                    tempSkillMediaType = file.type.startsWith('video/') ? 'video' : (file.type.startsWith('image/') ? 'image' : 'file');
+                    tempSkillMediaName = file.name;
+                    document.getElementById('skill-file-status').innerText = `แนบ: ${file.name}`;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function closeSkillModal() {
+            document.getElementById('skill-modal').classList.add('hidden');
+        }
+
+        function saveSkillModal() {
+            const name = document.getElementById('skill-input-name').value.trim();
+            const link = document.getElementById('skill-input-link').value.trim();
+            const level = parseInt(document.getElementById('skill-input-level').value) || 0;
+
+            if (activeSkillId) {
+                const skillIndex = portfolioData.skills.findIndex(s => s.id === activeSkillId);
+                if (skillIndex > -1) {
+                    portfolioData.skills[skillIndex].name = name;
+                    portfolioData.skills[skillIndex].link = link;
+                    portfolioData.skills[skillIndex].level = level;
+                    portfolioData.skills[skillIndex].media = tempSkillMedia;
+                    portfolioData.skills[skillIndex].mediaType = tempSkillMediaType;
+                    portfolioData.skills[skillIndex].mediaName = tempSkillMediaName;
+                }
+            } else {
+                const newSkill = {
+                    id: 's-' + Date.now(),
+                    name: name,
+                    link: link,
+                    level: level,
+                    media: tempSkillMedia,
+                    mediaType: tempSkillMediaType,
+                    mediaName: tempSkillMediaName
+                };
+                portfolioData.skills.push(newSkill);
+            }
+            localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
+            closeSkillModal();
+            renderSkills();
+            showToast("บันทึกข้อมูลทักษะเรียบร้อย");
+        }
+
+        function deleteSkill(id) {
+            portfolioData.skills = portfolioData.skills.filter(s => s.id !== id);
+            localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
+            renderSkills();
+            showToast("ลบทักษะเรียบร้อย");
+        }
+
         function addNewProject() {
             activeProjectId = null;
             document.getElementById('project-modal-title').innerText = "เพิ่มโครงการใหม่";
@@ -1349,15 +1388,9 @@
             
             tempProjectMedia = "";
             tempProjectMediaType = "image";
+            tempProjectMediaName = "";
             
             document.getElementById('project-modal').classList.remove('hidden');
-        }
-
-        function deleteProject(id) {
-            portfolioData.projects = portfolioData.projects.filter(p => p.id !== id);
-            localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
-            renderProjects();
-            showToast("ลบโครงการเรียบร้อยแล้ว");
         }
 
         function openProjectEdit(id) {
@@ -1370,11 +1403,12 @@
             document.getElementById('project-input-desc').value = proj.desc;
             document.getElementById('project-input-link').value = proj.link || "";
             document.getElementById('project-input-tags').value = proj.tags.join(', ');
-            document.getElementById('project-input-media-url').value = proj.media;
-            document.getElementById('project-file-status').innerText = "ไม่ได้อัปโหลดไฟล์สื่อใหม่";
+            document.getElementById('project-input-media-url').value = (proj.mediaType !== 'file' && !proj.media.startsWith('data:application/')) ? proj.media : "";
+            document.getElementById('project-file-status').innerText = proj.mediaName ? `ไฟล์แนบเดิม: ${proj.mediaName}` : "ไม่ได้อัปโหลดไฟล์สื่อใหม่";
 
             tempProjectMedia = proj.media;
             tempProjectMediaType = proj.mediaType || "image";
+            tempProjectMediaName = proj.mediaName || "";
 
             document.getElementById('project-modal').classList.remove('hidden');
         }
@@ -1385,8 +1419,9 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     tempProjectMedia = e.target.result;
-                    tempProjectMediaType = file.type.startsWith('video/') ? 'video' : 'image';
-                    document.getElementById('project-file-status').innerText = `พร้อมอัปโหลด: ${file.name}`;
+                    tempProjectMediaType = file.type.startsWith('video/') ? 'video' : (file.type.startsWith('image/') ? 'image' : 'file');
+                    tempProjectMediaName = file.name;
+                    document.getElementById('project-file-status').innerText = `แนบสำเร็จ: ${file.name}`;
                 }
                 reader.readAsDataURL(file);
             }
@@ -1406,6 +1441,7 @@
             if (rawMediaUrl) {
                 tempProjectMedia = rawMediaUrl;
                 tempProjectMediaType = (rawMediaUrl.endsWith('.mp4') || rawMediaUrl.endsWith('.webm')) ? 'video' : 'image';
+                tempProjectMediaName = rawMediaUrl.split('/').pop() || 'external_link';
             }
 
             if (activeProjectId) {
@@ -1417,6 +1453,7 @@
                     portfolioData.projects[projIndex].tags = tags;
                     portfolioData.projects[projIndex].media = tempProjectMedia;
                     portfolioData.projects[projIndex].mediaType = tempProjectMediaType;
+                    portfolioData.projects[projIndex].mediaName = tempProjectMediaName;
                 }
             } else {
                 const newProj = {
@@ -1426,7 +1463,8 @@
                     link: link,
                     tags: tags,
                     media: tempProjectMedia,
-                    mediaType: tempProjectMediaType
+                    mediaType: tempProjectMediaType,
+                    mediaName: tempProjectMediaName
                 };
                 portfolioData.projects.push(newProj);
             }
@@ -1436,17 +1474,24 @@
             showToast("บันทึกข้อมูลโครงการสำเร็จ");
         }
 
-        // จัดการแก้ไขย่อหน้าข้อมูลเพิ่มเติมและวิดีโอมัลติมีเดียเสริม (Custom Section)
+        function deleteProject(id) {
+            portfolioData.projects = portfolioData.projects.filter(p => p.id !== id);
+            localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
+            renderProjects();
+            showToast("ลบโครงการเรียบร้อยแล้ว");
+        }
+
         function editCustomSectionHeader() {
             document.getElementById('custom-input-title').value = portfolioData.customSection.title;
             document.getElementById('custom-input-content').value = portfolioData.customSection.paragraphs.join('\n\n');
             document.getElementById('custom-input-btn-text').value = portfolioData.customSection.btnText || "";
             document.getElementById('custom-input-btn-url').value = portfolioData.customSection.btnUrl || "";
-            document.getElementById('custom-input-media-url').value = portfolioData.customSection.media;
-            document.getElementById('custom-file-status').innerText = "ไม่ได้อัปโหลดไฟล์สื่อใหม่";
+            document.getElementById('custom-input-media-url').value = (portfolioData.customSection.mediaType !== 'file') ? portfolioData.customSection.media : "";
+            document.getElementById('custom-file-status').innerText = portfolioData.customSection.mediaName ? `ไฟล์เดิม: ${portfolioData.customSection.mediaName}` : "ไม่ได้อัปโหลดไฟล์สื่อใหม่";
 
             tempCustomMedia = portfolioData.customSection.media;
             tempCustomMediaType = portfolioData.customSection.mediaType || "image";
+            tempCustomMediaName = portfolioData.customSection.mediaName || "";
 
             document.getElementById('custom-section-modal').classList.remove('hidden');
         }
@@ -1457,8 +1502,9 @@
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     tempCustomMedia = e.target.result;
-                    tempCustomMediaType = file.type.startsWith('video/') ? 'video' : 'image';
-                    document.getElementById('custom-file-status').innerText = `พร้อมอัปโหลด: ${file.name}`;
+                    tempCustomMediaType = file.type.startsWith('video/') ? 'video' : (file.type.startsWith('image/') ? 'image' : 'file');
+                    tempCustomMediaName = file.name;
+                    document.getElementById('custom-file-status').innerText = `แนบไฟล์สำเร็จ: ${file.name}`;
                 }
                 reader.readAsDataURL(file);
             }
@@ -1480,6 +1526,7 @@
             if (rawMediaUrl) {
                 tempCustomMedia = rawMediaUrl;
                 tempCustomMediaType = (rawMediaUrl.endsWith('.mp4') || rawMediaUrl.endsWith('.webm')) ? 'video' : 'image';
+                tempCustomMediaName = rawMediaUrl.split('/').pop() || 'external_link';
             }
 
             portfolioData.customSection.title = title;
@@ -1488,14 +1535,14 @@
             portfolioData.customSection.btnUrl = btnUrl;
             portfolioData.customSection.media = tempCustomMedia;
             portfolioData.customSection.mediaType = tempCustomMediaType;
+            portfolioData.customSection.mediaName = tempCustomMediaName;
 
             localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
             initPortfolio();
             closeCustomSectionModal();
-            showToast("ปรับปรุงย่อหน้าพร้อมสื่อประกอบเสริมสำเร็จ");
+            showToast("ปรับปรุงย่อหน้าข้อมูลเรียบร้อย");
         }
 
-        // ระบบสลับสว่าง-มืด (Light/Dark Mode)
         function toggleDarkMode() {
             const doc = document.documentElement;
             if (doc.classList.contains('dark')) {
@@ -1507,7 +1554,6 @@
             }
         }
 
-        // ระบบเปลี่ยนธีมสี (Theme Controller)
         function setTheme(themeName) {
             document.body.removeAttribute('data-theme');
             if (themeName !== 'indigo') {
@@ -1533,7 +1579,6 @@
             }
         });
 
-        // ฟังก์ชันเมนูนำทางบนมือถือ
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             const icon = document.getElementById('mobile-menu-icon');
@@ -1547,7 +1592,6 @@
             lucide.createIcons();
         }
 
-        // บล็อกข้อความแจ้งเตือน (Toast Notification)
         function showToast(message) {
             const toast = document.getElementById('custom-toast');
             const toastMsg = document.getElementById('toast-message');
@@ -1562,10 +1606,9 @@
             }, 3000);
         }
 
-        // ฟอร์มส่งข้อความจำลอง
         function handleContactSubmit(event) {
             event.preventDefault();
-            showToast("จำลอง: ส่งสารร่วมงานเสร็จสิ้น!");
+            showToast("จำลอง: ส่งข้อความติดต่อเสร็จสิ้น!");
             event.target.reset();
         }
     </script>
