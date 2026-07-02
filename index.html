@@ -176,7 +176,7 @@
                     <a href="#hero" class="text-slate-600 hover:text-theme-primary dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">หน้าแรก</a>
                     <a href="#about" class="text-slate-600 hover:text-theme-primary dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">ประวัติทั่วไป</a>
                     <a href="#skills" class="text-slate-600 hover:text-theme-primary dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">ทักษะ</a>
-                    <a href="#projects" class="text-slate-600 hover:text-theme-primary dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">ผลงาน</a>
+                    <a href="#projects" class="text-slate-600 hover:text-theme-primary dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">ผลงานรายงาน</a>
                     <a href="#custom-section" class="text-slate-600 hover:text-theme-primary dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">เนื้อหาเพิ่มเติม</a>
                     <a href="#contact" class="text-slate-600 hover:text-theme-primary dark:text-slate-300 dark:hover:text-white font-medium text-sm transition-colors">ติดต่อ</a>
                 </div>
@@ -254,7 +254,7 @@
             <a href="#hero" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-theme-primary">หน้าแรก</a>
             <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-theme-primary">ประวัติทั่วไป</a>
             <a href="#skills" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-theme-primary">ทักษะ</a>
-            <a href="#projects" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-theme-primary">ผลงาน</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-theme-primary">ผลงานรายงาน</a>
             <a href="#custom-section" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-theme-primary">เนื้อหาเพิ่มเติม</a>
             <a href="#contact" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-theme-primary">ติดต่อ</a>
         </div>
@@ -284,7 +284,7 @@
                             <span>เรียนรู้ประวัติทั่วไป</span>
                             <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </a>
-                        <a href="#contact" class="px-6 py-3 border border-slate-300 dark:border-slate-700 hover:border-theme-primary dark:hover:border-theme-primary text-slate-700 dark:text-slate-300 hover:text-theme-primary dark:hover:text-white font-medium rounded-xl hover:-translate-y-0.5 transition-all flex items-center gap-2">
+                        <a href="#contact" class="px-6 py-3 border border-slate-300 dark:border-slate-700 hover:border-theme-primary dark:hover:border-theme-primary text-slate-700 dark:text-slate-300 hover:text-theme-primary dark:hover:white font-medium rounded-xl hover:-translate-y-0.5 transition-all flex items-center gap-2">
                             <i data-lucide="message-square" class="w-4 h-4"></i>
                             <span>ข้อมูลติดต่อ</span>
                         </a>
@@ -358,7 +358,7 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
                 <div>
                     <h2 class="text-base font-bold text-theme-primary tracking-wide uppercase">ผลงานของฉัน</h2>
-                    <h3 class="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">โครงการที่เคยทำหรือพัฒนา</h3>
+                    <h3 class="mt-2 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">โครงการและรายงานวิชาชีพครู</h3>
                 </div>
                 <div id="projects-control" class="hidden mt-4 md:mt-0">
                     <button onclick="addNewProject()" class="px-4 py-2 bg-theme-primary hover:bg-theme-primary-hover text-white text-xs font-semibold rounded-lg shadow flex items-center gap-1.5 transition">
@@ -505,10 +505,48 @@
         </div>
     </footer>
 
+    <!-- ส่วนระบบ Toast -->
     <div id="custom-toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300">
         <span id="toast-message" class="text-sm font-medium">บันทึกสำเร็จ!</span>
     </div>
 
+    <div id="report-reader-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-2 sm:p-4">
+        <div class="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-4xl h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-800">
+            <!-- ส่วนหัวหน้าต่างเครื่องมืออ่าน -->
+            <div class="px-6 py-4 bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center">
+                <div class="flex items-center gap-2 text-theme-primary">
+                    <i data-lucide="book-open" class="w-5 h-5"></i>
+                    <div>
+                        <h4 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-tight">โปรแกรมอ่านรายงานปฏิบัติงานวิชาชีพครู 1</h4>
+                        <p class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">ฉบับดิจิทัล พอร์ตโฟลิโอ - อัสนี สงวนปุญญศิริ</p>
+                    </div>
+                </div>
+                <button onclick="closeReportReader()" class="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition text-slate-500 dark:text-slate-400">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- ส่วนควบคุมการเปลี่ยนหน้าและกระดาษรายงาน -->
+            <div class="flex-1 overflow-y-auto p-4 sm:p-8 bg-slate-50 dark:bg-slate-950 flex justify-center items-start">
+                <div class="bg-white dark:bg-slate-900 w-full max-w-2xl min-h-[600px] rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800 p-6 sm:p-10 relative overflow-hidden transition-all duration-300" id="report-page-container">
+                    <!-- หน้าหนังสือถูกประกอบขึ้นผ่าน JS -->
+                </div>
+            </div>
+
+            <!-- ส่วนท้ายควบคุมการเปลี่ยนหน้า -->
+            <div class="px-6 py-4 bg-slate-100 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 flex justify-between items-center text-xs sm:text-sm">
+                <button onclick="prevReportPage()" class="px-4 py-2 bg-white dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-xl shadow-sm border border-slate-200 dark:border-slate-600 font-semibold flex items-center gap-1 transition">
+                    <i data-lucide="chevron-left" class="w-4 h-4"></i> ย้อนกลับ
+                </button>
+                <span class="font-bold text-slate-700 dark:text-slate-300" id="report-page-indicator">หน้า 1 / 15</span>
+                <button onclick="nextReportPage()" class="px-4 py-2 bg-theme-primary hover:bg-theme-primary-hover text-white rounded-xl shadow-md font-semibold flex items-center gap-1 transition">
+                    ถัดไป <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ส่วนป๊อปอัปตรวจสอบรหัสผ่าน (Bank4481) -->
     <div id="password-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-slate-100 dark:border-slate-700 text-center space-y-4 animate-fade-in">
             <div class="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-500 dark:text-amber-400 flex items-center justify-center mx-auto">
@@ -533,6 +571,7 @@
         </div>
     </div>
 
+    <!-- ป๊อปอัปแก้ไขกล่องข้อมูลประวัติสถาบัน/ที่อยู่ (About Box Modal) -->
     <div id="about-card-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
             <h4 class="text-base font-bold text-slate-900 dark:text-white">แก้ไขข้อมูลการศึกษา/ภูมิลำเนา</h4>
@@ -575,6 +614,7 @@
         </div>
     </div>
 
+    <!-- ส่วนป๊อปอัปแก้ไขกล่องความสามารถ (Skills Modal) -->
     <div id="skill-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
             <h4 class="text-base font-bold text-slate-900 dark:text-white" id="skill-modal-title">แก้ไขทักษะ</h4>
@@ -616,12 +656,13 @@
         </div>
     </div>
 
+    <!-- ส่วนป๊อปอัปแก้ไขโครงการ (Projects Modal) -->
     <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
             <h4 class="text-base font-bold text-slate-900 dark:text-white" id="project-modal-title">แก้ไขโครงการ</h4>
             <div class="space-y-3">
                 <div>
-                    <label class="block text-xs font-semibold text-slate-500 mb-1">ชื่อโครงการ</label>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1">ชื่อโครงการ/รายงาน</label>
                     <input type="text" id="project-input-title" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm">
                 </div>
                 <div>
@@ -629,7 +670,7 @@
                     <textarea id="project-input-desc" rows="3" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm"></textarea>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-500 mb-1">ลิงก์โครงการ/เว็บสาธิตตัวอย่าง</label>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1">ลิงก์โครงการ/เว็บสาธิตตัวอย่าง (ถ้าปล่อยว่าง จะเปิดเครื่องมืออ่านรายงานจำลองเล่มนี้)</label>
                     <input type="text" id="project-input-link" placeholder="เช่น https://my-project-demo.com" class="w-full px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-sm">
                 </div>
                 <div>
@@ -662,6 +703,7 @@
         </div>
     </div>
 
+    <!-- ส่วนป๊อปอัปแก้ไขหัวข้อเนื้อหาเพิ่มเติม และวิดีโอมัลติมีเดียเสริม (Custom Section Modal) -->
     <div id="custom-section-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-lg w-full shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
             <h4 class="text-base font-bold text-slate-900 dark:text-white">แก้ไขเนื้อหาเพิ่มเติมและลิงก์ปุ่ม</h4>
@@ -715,14 +757,14 @@
             profile: {
                 fullName: "นายอัสนี สงวนปุญญศิริ",
                 role: "นักศึกษา มหาวิทยาลัยราชภัฏภูเก็ต",
-                bio: "กำลังศึกษาอยู่ที่มหาวิทยาลัยราชภัฏภูเก็ต เคยศึกษาที่โรงเรียนเทศบาลบ้านย่านยาว ภูมิลำเนาตั้งอยู่ที่ตำบลบางม่วง อำเภอตะกั่วป่า จังหวัดพังงา มีความกระตือรือร้นในการศึกษาหาความรู้ด้านไอทีและเว็บเทคโนโลยีอย่างสร้างสรรค์",
+                bio: "กำลังศึกษาหลักสูตรครุศาสตรบัณฑิต สาขาวิชาคอมพิวเตอร์ศึกษา คณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต เคยศึกษาที่โรงเรียนเทศบาลบ้านย่านยาว ภูมิลำเนาตั้งอยู่ที่ตำบลบางม่วง อำเภอตะกั่วป่า จังหวัดพังงา มีความกระตือรือร้นในการศึกษาและการสังเกตการณ์จัดการเรียนรู้วิชา Coding & Creatif ในสถานศึกษา",
                 image: "https://lh3.googleusercontent.com/d/1ZBZ5HGKv55aZeAZHi8EPz-1IgGwlndGD",
                 imageType: "image",
                 imageName: "profile_picture"
             },
             education: {
                 uniTitle: "มหาวิทยาลัยราชภัฏภูเก็ต",
-                uniDesc: "กำลังศึกษาอยู่ ปริญญาตรี คณะวิทยาศาสตร์และเทคโนโลยี พัฒนาทักษะที่เกี่ยวข้องกับเทคโนโลยีคอมพิวเตอร์และสื่อดิจิทัลเพื่อนำไปประยุกต์ใช้งาน",
+                uniDesc: "กำลังศึกษาอยู่ ปริญญาตรี หลักสูตรครุศาสตรบัณฑิต คณะครุศาสตร์ สาขาวิชาเอกคอมพิวเตอร์ศึกษา รหัสนักศึกษา ๖๗๑๐๓๘๐๑๒๔",
                 uniLink: "https://www.pkru.ac.th",
                 uniMedia: "",
                 uniMediaType: "icon",
@@ -736,43 +778,438 @@
                 schMediaName: "",
 
                 addrTitle: "ตำบลบางม่วง อำเภอตะกั่วป่า จังหวัดพังงา",
-                addrDesc: "ที่อยู่บ้านภูมิลำเนาเดิม สถานที่สงบงามรายล้อมไปด้วยภูเขาและวัฒนธรรมพื้นบ้านโบราณอันเป็นเอกลักษณ์ของจังหวัดพังงา",
+                addrDesc: "ที่อยู่บ้านภูมิลำเนาเดิม สถานที่สงบงามรายล้อมไปด้วยธรรมชาติ วัฒนธรรมพื้นบ้านโบราณอันเป็นเอกลักษณ์ของพังงา",
                 addrLink: "https://maps.google.com/?q=ตำบลบางม่วง+อำเภอตะกั่วป่า+จังหวัดพังงา",
                 addrMedia: "",
                 addrMediaType: "icon",
                 addrMediaName: ""
             },
             skills: [
-                { id: "s1", name: "HTML5 & Tailwind CSS", level: 95, link: "", media: "", mediaType: "icon", mediaName: "" },
-                { id: "s2", name: "Javascript ES6+", level: 85, link: "", media: "", mediaType: "icon", mediaName: "" },
-                { id: "s3", name: "Responsive Web Development", level: 90, link: "", media: "", mediaType: "icon", mediaName: "" },
-                { id: "s4", name: "UX & UI Design Systems", level: 80, link: "", media: "", mediaType: "icon", mediaName: "" }
+                { id: "s1", name: "สังเกตการจัดการสอน Coding", level: 95, link: "", media: "", mediaType: "icon", mediaName: "" },
+                { id: "s2", name: "วิเคราะห์พฤติกรรมผู้เรียนประถม", level: 90, link: "", media: "", mediaType: "icon", mediaName: "" },
+                { id: "s3", name: "จัดกิจกรรมพัฒนาสิ่งแวดล้อม Re-Color", level: 95, link: "", media: "", mediaType: "icon", mediaName: "" },
+                { id: "s4", name: "กระบวนการแลกเปลี่ยนเรียนรู้ (PLC)", level: 85, link: "", media: "", mediaType: "icon", mediaName: "" }
             ],
             projects: [
-                { id: "p1", title: "เว็บไซต์แฟ้มสะสมผลงานอเนกประสงค์", desc: "การออกแบบและพัฒนาเว็บไซต์หน้าเดียวแบบ Responsive ที่มีระบบการบันทึกแก้ไข และเปลี่ยนธีมสีแบบ Dynamic เหมาะสำหรับนำเสนอบุคคลทั่วไป", tags: ["HTML", "TailwindCSS", "JS"], link: "https://github.com", media: "", mediaType: "image", mediaName: "" },
-                { id: "p2", title: "ระบบจำลองทดสอบคีย์รหัสผ่าน", desc: "พัฒนาระบบรักษาความปลอดภัยแบบ Client-Side สำหรับเว็บแอปพลิเคชันอย่างปลอดภัย โดยไม่ต้องพึ่งพาระบบ Back-end เพื่อความรวดเร็วและเป็นส่วนตัว", tags: ["Web Crypt", "Local Storage"], link: "", media: "", mediaType: "image", mediaName: "" },
-                { id: "p3", title: "โครงการประยุกต์ใช้ซอฟต์แวร์ในท้องถิ่น", desc: "แนวคิดการประยุกต์ไอที เพื่อส่งเสริมอุตสาหกรรมการท่องเที่ยวทางธรรมชาติในตะกั่วป่า พังงา และเมืองเก่าจังหวัดภูเก็ต", tags: ["Idea", "Innovation", "Local"], link: "", media: "", mediaType: "image", mediaName: "" }
+                { 
+                    id: "practicum-report-1", 
+                    title: "รายงานการศึกษาในหน้าที่ครู 1", 
+                    desc: "รายงานสรุปผลการฝึกปฏิบัติวิชาชีพครูระหว่างเรียน ๑ (Professional Practicum I) บันทึกประสบการณ์สังเกตการณ์จัดกิจกรรม Coding & Creatif ณ โรงเรียนตาริกพิทยพัฒน์ จังหวัดภูเก็ต พร้อมบันทึก PLC และโครงการพัฒนาภูมิทัศน์ Re-Color", 
+                    tags: ["ปฏิบัติวิชาชีพครู 1", "คอมพิวเตอร์ศึกษา", "โรงเรียนตาริกพิทยพัฒน์", "PLC", "โครงการ Re-Color"], 
+                    link: "", // ปล่อยว่างเพื่อแสดงเครื่องมือเปิดอ่านจำลองแบบอินเตอร์แอคทีฟ
+                    media: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%230f766e'/><circle cx='200' cy='110' r='45' fill='%23115e59'/><path d='M150,210 C150,170 170,160 200,160 C230,160 250,170 250,210 C250,230 230,240 200,240 C170,240 150,230 150,210 Z' fill='%2314b8a6'/><text x='50%25' y='85%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='16' fill='white' font-weight='bold'>รายงานการปฏิบัติวิชาชีพครูระหว่างเรียน ๑</text></svg>", 
+                    mediaType: "image", 
+                    mediaName: "หน้าปกรายงาน_ครู1" 
+                }
             ],
             customSection: {
-                title: "เป้าหมายและเจตจำนงในการทำงาน",
+                title: "เป้าหมายและเจตจำนงในการสังเกตการณ์สอน",
                 paragraphs: [
-                    "ผมมุ่งหวังที่จะนำวิชาชีพการพัฒนาเทคโนโลยีมาพัฒนาท้องถิ่นอันดามัน ไม่ว่าจะเป็นบ้านเกิด ณ อำเภอตะกั่วป่า จังหวัดพังงา หรือศูนย์กลางเศรษฐกิจการศึกษา ณ จังหวัดภูเก็ต",
-                    "ทุกส่วนของหน้าจอนี้ถูกจัดทำเพื่อความคล่องตัว มีระเบียบ สามารถเสนอสถาบัน หรือหน่วยงานราชการ ตลอดจนองค์กรเอกชนได้อย่างมืออาชีพ"
+                    "ในฐานะนักศึกษาครูคอมพิวเตอร์ การปฏิบัติหน้าที่ ณ โรงเรียนตาริกพิทยพัฒน์ ตลอด ๓ สัปดาห์ ได้หล่อหลอมความเข้าใจอันลึกซึ้งเกี่ยวกับการสอนวิชาเทคโนโลยีสมัยใหม่ การปรับพฤติกรรมเด็ก และบทบาทที่แท้จริงของครูประจำชั้น",
+                    "โครงการพัฒนาสิ่งแวดล้อม 'Re-Color เติมสีสันบนเส้นทางแห่งการเรียนรู้' ด้วยงบประมาณ 6,500 บาท ร่วมกับคณะนักศึกษาครู เป็นบทพิสูจน์แห่งเจตจำนงในการพัฒนาชุมชนและภูมิทัศน์ทางกายภาพเพื่อกระตุ้นจิตวิทยาด้านการเรียนรู้ในระดับท้องถิ่น"
                 ],
-                btnText: "ดูหน้าเพจของ มรภ.ภูเก็ต",
+                btnText: "ดูหน้าเว็บบอร์ด มรภ.ภูเก็ต",
                 btnUrl: "https://www.pkru.ac.th",
-                media: "",
+                media: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%231e3a8a'/><text x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='18' fill='white' font-weight='bold'>โครงการพัฒนาทัศนียภาพ Re-Color</text></svg>",
                 mediaType: "image",
-                mediaName: ""
+                mediaName: "ภาพจำลองโครงการ"
             },
             contact: {
                 email: "atsanee.bank@phuket.uni.th",
                 phone: "081-234-5678",
-                location: "ต.บางม่วง อ.ตะกั่วป่า จ.พังงา",
-                mapLink: "https://maps.google.com/?q=ตำบลบางม่วง+อำเภอตะกั่วป่า+จังหวัดพังงา"
+                location: "โรงเรียนตาริกพิทยพัฒน์ อำเภอถลาง จังหวัดภูเก็ต",
+                mapLink: "https://maps.google.com/?q=โรงเรียนตาริกพิทยพัฒน์+อำเภอถลาง+จังหวัดภูเก็ต"
             }
         };
 
+        const reportPages = [
+            // หน้า 1: ปกนอก
+            `<div class="text-center flex flex-col justify-between h-full py-6">
+                <div>
+                    <h5 class="text-theme-primary font-bold text-xs tracking-widest uppercase mb-1">Phuket Rajabhat University</h5>
+                    <h3 class="text-base font-bold text-slate-800 dark:text-white">คณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต</h3>
+                </div>
+                <div class="my-6">
+                    <div class="w-24 h-24 bg-theme-light rounded-full mx-auto flex items-center justify-center text-theme-primary mb-4">
+                        <i data-lucide="award" class="w-12 h-12"></i>
+                    </div>
+                    <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white leading-snug">การฝึกปฏิบัติวิชาชีพครู<br>ระหว่างเรียน ๑</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 font-mono">(Professional Practicum I)</p>
+                </div>
+                <div class="space-y-3 text-xs border-t border-slate-100 dark:border-slate-800 pt-4">
+                    <p class="text-slate-700 dark:text-slate-300"><strong>โรงเรียนที่ปฏิบัติงาน:</strong> โรงเรียนตาริกพิทยพัฒน์ อ.ถลาง จ.ภูเก็ต</p>
+                    <p class="text-slate-700 dark:text-slate-300"><strong>ผู้จัดทำ:</strong> นายอัสนี สงวนปุญญศิริ</p>
+                    <p class="text-slate-700 dark:text-slate-300"><strong>รหัสนักศึกษา:</strong> ๖๗๑๐๓๘๐๑๒๔</p>
+                    <p class="text-slate-700 dark:text-slate-300"><strong>สาขาวิชา:</strong> คอมพิวเตอร์ศึกษา</p>
+                </div>
+            </div>`,
+
+            // หน้า 2: ปกใน
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div class="text-center border-b border-slate-100 dark:border-slate-800 pb-4">
+                    <h2 class="text-sm font-bold text-slate-900 dark:text-white">รายงานปฏิบัติวิชาชีพครูระหว่างเรียน ๑</h2>
+                    <p class="text-[10px] text-slate-400">หลักสูตรครุศาสตรบัณฑิต มหาวิทยาลัยราชภัฏภูเก็ต</p>
+                </div>
+                <div class="space-y-4 my-4">
+                    <div class="flex justify-center mb-2">
+                        <div class="w-16 h-16 rounded-xl bg-theme-light text-theme-primary flex items-center justify-center">
+                            <i data-lucide="book-open" class="w-8 h-8"></i>
+                        </div>
+                    </div>
+                    <p class="leading-relaxed"><strong>ชื่องาน:</strong> รายงานการศึกษาในหน้าที่ครู 1</p>
+                    <p class="leading-relaxed"><strong>สถานที่สังเกตการณ์:</strong> โรงเรียนตาริกพิทยพัฒน์ ตำบลศรีสุนทร อำเภอถลาง จังหวัดภูเก็ต</p>
+                    <p class="leading-relaxed"><strong>ผู้จัดทำ:</strong> นายอัสนี สงวนปุญญศิริ</p>
+                    <p class="leading-relaxed"><strong>หน่วยงาน:</strong> สาขาวิชาคอมพิวเตอร์ศึกษา คณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต</p>
+                </div>
+                <div class="text-[10px] text-slate-400 text-center border-t border-slate-100 dark:border-slate-800 pt-2">
+                    เอกสารนี้รวบรวมขึ้นเพื่อบันทึกงานสังเกตการณ์สอนและโครงการพัฒนาทัศนียภาพ
+                </div>
+            </div>`,
+
+            // หน้า 3: คำนำ
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-4 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="feather" class="w-4 h-4"></i> คำนำ
+                    </h3>
+                    <p class="indent-8 leading-relaxed mb-4 text-slate-700 dark:text-slate-300 text-justify">
+                        รายงานเล่มนี้จัดทำขึ้นเพื่อเป็นส่วนหนึ่งของรายวิชาการฝึกปฏิบัติวิชาชีพครูระหว่างเรียน ๑ (Professional Practicum 1) รหัสหลักสูตรครุศาสตรบัณฑิต สาขาวิชาคอมพิวเตอร์ศึกษา คณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต มีวัตถุประสงค์เพื่อบันทึกและประมวลผลประสบการณ์จากการเข้าไปศึกษา สังเกต และเรียนรู้งานในหน้าที่ครู ตลอดจนสภาพแวดล้อมและบริบทโดยรวมของสถานศึกษา ณ โรงเรียนตาริกพิทยพัฒน์ อำเภอถลาง จังหวัดภูเก็ต เป็นระยะเวลา ๓ สัปดาห์ (ระหว่างวันที่ ๔ มิถุนายน พ.ศ. ๒๕๖๙ ถึง วันที่ ๒๔ มิถุนายน พ.ศ. ๒๕๖๙)
+                    </p>
+                    <p class="indent-8 leading-relaxed text-slate-700 dark:text-slate-300 text-justify">
+                        เนื้อหาภายในรายงานฉบับนี้ ประกอบด้วย บันทึกการปฏิบัติงานประจำวันในรอบ ๓ สัปดาห์ การศึกษางานในหน้าที่ครูประจำชั้น การสังเกตพฤติกรรมการจัดการเรียนรู้ของครูผู้สอนและการแสดงออกของผู้เรียนในชั้นเรียน การศึกษาความสัมพันธ์ระหว่างโรงเรียนกับชุมชน ตลอดจนบันทึกกิจกรรมการแลกเปลี่ยนเรียนรู้ในชุมชนวิชาชีพครู (PLC) และการดำเนินโครงการพัฒนาภูมิทัศน์ Re-Color
+                    </p>
+                </div>
+                <div class="text-right pt-4 border-t border-slate-100 dark:border-slate-800">
+                    <p class="font-bold text-slate-900 dark:text-white">นายอัสนี สงวนปุญญศิริ</p>
+                    <p class="text-[10px] text-slate-500">ผู้จัดทำรายงาน</p>
+                </div>
+            </div>`,
+
+            // หน้า 4: สารบัญ
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-4 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="list" class="w-4 h-4"></i> สารบัญ
+                    </h3>
+                    <div class="space-y-3 font-medium">
+                        <div class="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-800 pb-1">
+                            <span>คำนำ / สารบัญ</span>
+                            <span>หน้า 3 - 4</span>
+                        </div>
+                        <div class="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-800 pb-1">
+                            <span>ประวัติส่วนตัว (นักศึกษา)</span>
+                            <span>หน้า 5</span>
+                        </div>
+                        <div class="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-800 pb-1">
+                            <span>บันทึกการปฏิบัติงานในแต่ละวัน (สัปดาห์ที่ 1 - 3)</span>
+                            <span>หน้า 6 - 9</span>
+                        </div>
+                        <div class="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-800 pb-1">
+                            <span>การศึกษางานในหน้าที่ครูประจำชั้น</span>
+                            <span>หน้า 10</span>
+                        </div>
+                        <div class="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-800 pb-1">
+                            <span>การศึกษา สังเกต การสอนและพฤติกรรมในชั้นเรียน</span>
+                            <span>หน้า 11</span>
+                        </div>
+                        <div class="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-800 pb-1">
+                            <span>แบบบันทึกการแลกเปลี่ยนเรียนรู้ (PLC ครั้งที่ 1 - 3)</span>
+                            <span>หน้า 12 - 14</span>
+                        </div>
+                        <div class="flex justify-between border-b border-dashed border-slate-200 dark:border-slate-800 pb-1">
+                            <span>ภาคผนวก / ภาพประกอบกิจกรรม</span>
+                            <span>หน้า 15</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-[10px] text-slate-400">
+                    รายงานการศึกษาในหน้าที่ครู 1
+                </div>
+            </div>`,
+
+            // หน้า 5: ประวัติส่วนตัว (นักศึกษา)
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-4 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="user" class="w-4 h-4"></i> ประวัติส่วนตัว (นักศึกษา)
+                    </h3>
+                    <div class="grid grid-cols-3 gap-2 py-2 border-b border-slate-100 dark:border-slate-800">
+                        <span class="font-bold text-slate-500">ชื่อ-นามสกุล:</span>
+                        <span class="col-span-2 text-slate-900 dark:text-white">นายอัสนี สงวนปุญญศิริ</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-2 border-b border-slate-100 dark:border-slate-800">
+                        <span class="font-bold text-slate-500">การศึกษา:</span>
+                        <span class="col-span-2 text-slate-900 dark:text-white">ระดับปริญญาตรี คณะครุศาสตร์ สาขาวิชาคอมพิวเตอร์ศึกษา มหาวิทยาลัยราชภัฏภูเก็ต</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-2 border-b border-slate-100 dark:border-slate-800">
+                        <span class="font-bold text-slate-500">ตำแหน่งงานฝึก:</span>
+                        <span class="col-span-2 text-slate-900 dark:text-white">นักศึกษาฝึกปฏิบัติวิชาชีพครูระหว่างเรียน ๑</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-2 border-b border-slate-100 dark:border-slate-800">
+                        <span class="font-bold text-slate-500">หน้าที่รับผิดชอบ:</span>
+                        <span class="col-span-2 text-slate-900 dark:text-white">นักศึกษาสังเกตการสอนวิชา Coding & Creatif ของชั้นประถมศึกษาปีที่ ๑-๖</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 py-2 border-b border-slate-100 dark:border-slate-800">
+                        <span class="font-bold text-slate-500">สถานที่ปฏิบัติงาน:</span>
+                        <span class="col-span-2 text-slate-900 dark:text-white">โรงเรียนตาริกพิทยพัฒน์</span>
+                    </div>
+                </div>
+                <div class="text-center text-[10px] text-slate-400">
+                    หน้า 5
+                </div>
+            </div>`,
+
+            // หน้า 6: บันทึกปฏิบัติงาน วันที่ 4-8 มิถุนายน 2569
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-2 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> บันทึกปฏิบัติงาน (สัปดาห์ที่ 1)
+                    </h3>
+                    <div class="space-y-3 max-h-[380px] overflow-y-auto pr-1">
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๔ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> เข้าพบ ผอ. และผู้ช่วย ผอ. ชี้แจงระเบียบ ภาระงาน สังเกตกิจกรรมวันสำคัญอีดิ้ลอัฎฮา ฮ.ศ. 1447 และฟังการนำเสนอเมนูของนักเรียน</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> ช่วยงานวันอีดิ้ลอัฎฮา ช่วยฉีกเนื้อ ดูแลนักเรียน ป.1/1 ทำอาหารเนื้อฝอย</p>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๕ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> รับนักเรียนหน้าประตูแถวเคารพธงชาติ, สังเกตการสอน Coding ป.2/2</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> สังเกตการณ์สอนวิชา Creatif ป.6/1 และ ป.6/2, วิชา Coding ป.1/1</p>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๘ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> ดูแลเด็กเข้าแถวเคารพธงชาติ</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> สังเกตการสอน Coding ป.3/2 และวิชา Creatif ป.4/1</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-[10px] text-slate-400">
+                    หน้า 6
+                </div>
+            </div>`,
+
+            // หน้า 7: บันทึกปฏิบัติงาน วันที่ 9-11 มิถุนายน 2569
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-2 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> บันทึกปฏิบัติงาน (สัปดาห์ที่ 1 - 2)
+                    </h3>
+                    <div class="space-y-3 max-h-[380px] overflow-y-auto pr-1">
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๙ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> รายงานตัวครูพี่เลี้ยง, ดูแลเด็กเคารพธงชาติ, สังเกตการสอน Coding ป.3/1 เรื่อง เทคโนโลยีในชีวิตประจำวัน</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> สังเกตการสอน Creatif ป.4/2 เรื่อง หาวิธีแก้ปัญหาด้วยเทคโนโลยี, ส่งนักเรียนกลับบ้าน</p>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๑๐ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> ยืนรับเด็ก, ควบคุมแถวเช้า, เข้าร่วมสังเกตกิจกรรมเลือกพรรคสภานักเรียน</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> เข้าร่วมนับคะแนนการเลือกตั้งสภานักเรียน และช่วยดูแลส่งเด็กกลับบ้าน</p>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๑๑ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> ช่วยแม่ครัวเตรียมวัตถุดิบมื้อเที่ยง, ควบคุมเคารพธงชาติ, กิจกรรมโฮมรูม</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> สังเกตการสอน Creatif ป.5/2 เรื่องประเภท AI, สังเกต Coding ป.2/1 เรื่องอุปกรณ์คอมพิวเตอร์</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-[10px] text-slate-400">
+                    หน้า 7
+                </div>
+            </div>`,
+
+            // หน้า 8: บันทึกปฏิบัติงาน วันที่ 12-17 มิถุนายน 2569
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-2 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> บันทึกปฏิบัติงาน (สัปดาห์ที่ 2)
+                    </h3>
+                    <div class="space-y-3 max-h-[380px] overflow-y-auto pr-1">
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๑๒ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> คุมแถว, โฮมรูม, สังเกต Coding ป.2/2 เรื่องข้อมูลส่วนตัว</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> สังเกต Creatif ป.6/1 และ ป.6/2 เรื่องปัญหาและการใช้ AI, สังเกต Coding ป.1/1</p>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๑๕ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> ยืนรอรับเด็ก, คุมแถว, โฮมรูม</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> สังเกต Coding ป.3/2 เรื่องอันตรายจากการเติมเกม, สังเกต Creatif ป.4/1 การป้อนคำสั่งให้ AI</p>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๑๖ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> คุมแถวเช้า, สังเกต Coding ป.3/1 เรื่องตั้งรหัสผ่านปลอดภัย</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> สังเกต Creatif ป.4/2 เรื่องการแก้ปัญหาด้วยวิธีจำลองขั้นตอน</p>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๑๗ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> คุมเคารพธงชาติและเข้าห้องเวร</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> สังเกต Creatif ป.5/2 เรื่องประเภทและการนำ AI ไปใช้ประโยชน์เชิงบวก</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-[10px] text-slate-400">
+                    หน้า 8
+                </div>
+            </div>`,
+
+            // หน้า 9: บันทึกปฏิบัติงาน วันที่ 18-24 มิถุนายน 2569
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-2 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="calendar" class="w-4 h-4"></i> บันทึกปฏิบัติงาน (สัปดาห์ที่ 3)
+                    </h3>
+                    <div class="space-y-3 max-h-[380px] overflow-y-auto pr-1">
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๑๘ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> ยืนรับเด็ก, คุมแถว, สังเกต Creatif ป.5/2 เรื่องการป้อนคำสั่งและ Prompt Engineering</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> สังเกต Coding ป.1/2 เรื่องประเภทของปัญญาประดิษฐ์ในธรรมชาติและรอบตัว</p>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๑๙ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>เช้า:</strong> สังเกตการสอนวิชา Coding ป.2/2</p>
+                            <p class="mt-1"><strong>บ่าย:</strong> สังเกตการสอนวิชา Creatif ป.6</p>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-theme-primary">๒๒ - ๒๔ มิ.ย. ๒๕๖๙</p>
+                            <p class="mt-1"><strong>๒๒ มิ.ย.:</strong> ยืนประตูรับเด็ก, คุมแถว, โฮมรูม, สังเกต Coding ป.3/2, สังเกต Creatif ป.4/1</p>
+                            <p class="mt-1"><strong>๒๓ มิ.ย.:</strong> คุมแถว, สังเกต Coding ป.3/1, สังเกต Creatif ป.4/2</p>
+                            <p class="mt-1"><strong>๒๔ มิ.ย.:</strong> คุมแถว, สังเกต Creatif ป.5/2, ประชุม PLC ครั้งที่ ๓ และส่งรายงานปฏิบัติการ</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-[10px] text-slate-400">
+                    หน้า 9
+                </div>
+            </div>`,
+
+            // หน้า 10: การศึกษางานในหน้าที่ครูประจำชั้น ป.6/1 (ครูดา)
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-3 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="award" class="w-4 h-4"></i> การศึกษางานในหน้าที่ครูประจำชั้น
+                    </h3>
+                    <p class="font-semibold text-slate-800 dark:text-white mb-2">คุณครูประจำชั้นป.๖/๑ นางสาวนันทินี บุตรเติม (ครูดา) - นักเรียน ๑๒ คน</p>
+                    <div class="space-y-2 text-slate-700 dark:text-slate-300 max-h-[300px] overflow-y-auto pr-1">
+                        <p><strong>ก่อนแถวเคารพธงชาติ:</strong> คอยสังเกตดูแลการแต่งกาย ทรงผม บัตรประจำตัวนักเรียน ความเป็นระเบียบเรียบร้อยบริเวณหน้าเสาธง</p>
+                        <p><strong>หลังเคารพธงชาติ:</strong> อบรมคุณธรรมประจำวัน ตรวจเช็คชื่อและสุขวิทยาห้องเรียน ให้เวรทำความสะอาด ละหมาด และกินนมโรงเรียน</p>
+                        <p><strong>ช่วงการสอน:</strong> ทบทวนความรู้เดิมก่อนเข้าบทเรียนใหม่ สร้างการมีส่วนร่วมและคอยปรับพฤติกรรมเด็กที่เล่นคุยด้วยระบบตัดแต้มอย่างสร้างสรรค์</p>
+                        <p><strong>ช่วงเที่ยงและเลิกเรียน:</strong> สังเกตมารยาทการทานอาหาร ดูแลการอาบน้ำละหมาดก่อนเข้าเรียนคาบบ่าย หลังเลิกเรียนนั่งดูแลนักเรียนจนถึงมือผู้ปกครองทุกคน ตรวจสวิตช์ไฟและพัดลมก่อนปิดห้อง</p>
+                    </div>
+                </div>
+                <div class="text-center text-[10px] text-slate-400">
+                    หน้า 10
+                </div>
+            </div>`,
+
+            // หน้า 11: การสังเกตพฤติกรรมการเรียนการสอนและชุมชน
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-2 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="eye" class="w-4 h-4"></i> สังเกตพฤติกรรมการเรียนการสอนและชุมชน
+                    </h3>
+                    <div class="space-y-3 max-h-[350px] overflow-y-auto pr-1">
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-slate-900 dark:text-white">การนำเข้าสู่บทเรียนและการจัดชั้นเรียน</p>
+                            <p class="mt-1">ครูผู้สอนใช้คำถามทบทวน ใช้สื่อกระตุ้นความตื่นตัวของเด็ก ส่งเสริมการซักถามและทำกิจกรรม สรุปเนื้อหาท้ายคาบอย่างสม่ำเสมอ</p>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-slate-900 dark:text-white">พฤติกรรมของนักเรียน</p>
+                            <p class="mt-1">กล้าแสดงออก มีสัมมาคารวะ แต่อาจมีช่วงสมาธิสั้น ครูจะดึงดูดกลับมาด้วยกิจกรรมที่หลากหลาย นักเรียนมีความรับผิดชอบดูแลเวรทำความสะอาดดีมาก</p>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 dark:bg-slate-800 rounded-xl">
+                            <p class="font-bold text-slate-900 dark:text-white">ความสัมพันธ์โรงเรียนและชุมชน</p>
+                            <p class="mt-1">มีการสื่อสารกับผู้ปกครองอย่างใกล้ชิด ชุมชนร่วมมือจัดอาสาสมัครสอดส่องความปลอดภัยบริเวณหน้าโรงเรียน</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center text-[10px] text-slate-400">
+                    หน้า 11
+                </div>
+            </div>`,
+
+            // หน้า 12: PLC ครั้งที่ 1
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-2 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="users" class="w-4 h-4"></i> ชุมชนวิชาชีพครู (PLC ครั้งที่ ๑)
+                    </h3>
+                    <p class="font-bold">วันที่ ๕ มิถุนายน ๒๕๖๙ เวลา ๑๖.๐๐ น. ณ โรงเรียนตาริกพิทยพัฒน์</p>
+                    <div class="mt-3 space-y-2 max-h-[300px] overflow-y-auto pr-1">
+                        <p><strong>ผู้ร่วมประชุม:</strong> มาติน (อังกฤษ), อัสนี (คอมพิวเตอร์), วรรณรดา (ไทย), รอฟีอะห์ (ปฐมวัย), ภัคจิรา (สังคม), วาสินี (ประถม), สิรินยา (คณิต), อัยลดา (วิทย์)</p>
+                        <p class="border-t border-slate-100 dark:border-slate-800 pt-2"><strong>ประเด็นแลกเปลี่ยน:</strong></p>
+                        <p>๑. การปฏิบัติตนขณะที่มาสังเกตการสอน (การเข้า-ออกงานตรงเวลา จิตอาสา วางตนเหมาะสมในฐานะครูกับนักเรียน ไม่มีเรื่องชู้สาวและประพฤติเสื่อมเสีย)</p>
+                        <p>๒. กฎระเบียบและแนวทางการแต่งกายสุภาพตามมาตรฐานสถาบันในการสังเกตการณ์สอน</p>
+                    </div>
+                </div>
+                <div class="text-center text-[10px] text-slate-400">
+                    หน้า 12
+                </div>
+            </div>`,
+
+            // หน้า 13: PLC ครั้งที่ 2
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-2 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="users" class="w-4 h-4"></i> ชุมชนวิชาชีพครู (PLC ครั้งที่ ๒)
+                    </h3>
+                    <p class="font-bold">วันที่ ๑๒ มิถุนายน ๒๕๖๙ เวลา ๑๖.๐๐ น. ณ โรงเรียนตาริกพิทยพัฒน์</p>
+                    <div class="mt-3 space-y-2 max-h-[300px] overflow-y-auto pr-1">
+                        <p><strong>ประเด็นแลกเปลี่ยนที่ ๑:</strong> การจัดการสภาพกายภาพที่ส่งผลต่อจิตวิทยาการเรียนรู้ ความสะอาดและสีสันช่วยกระตุ้นความสุขและสร้างพลังเชิงบวกให้กับเยาวชน</p>
+                        <p><strong>ประเด็นแลกเปลี่ยนที่ ๒:</strong> กระบวนการวางแผนและจัดสรรงบประมาณโครงการพัฒนาทัศนียภาพ 'Re-Color เติมสีสันบนเส้นทางแห่งการเรียนรู้' ภายใต้งบจำกัด 6,500 บาทและระยะเวลาจำกัด (๑๓ - ๒๔ มิถุนายน ๒๕๖๙)</p>
+                        <p class="border-t border-slate-100 dark:border-slate-800 pt-2"><strong>ผลสรุป:</strong> เสนอและอนุมัติโครงการเพื่อลงพื้นที่ปรับปรุงสถานที่จริงในสัปดาห์ถัดไป</p>
+                    </div>
+                </div>
+                <div class="text-center text-[10px] text-slate-400">
+                    หน้า 13
+                </div>
+            </div>`,
+
+            // หน้า 14: PLC ครั้งที่ 3
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-2 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="users" class="w-4 h-4"></i> ชุมชนวิชาชีพครู (PLC ครั้งที่ ๓)
+                    </h3>
+                    <p class="font-bold">วันที่ ๒๔ มิถุนายน ๒๕๖๙ เวลา ๑๖.๐๐ น. ณ โรงเรียนตาริกพิทยพัฒน์</p>
+                    <div class="mt-3 space-y-2 max-h-[300px] overflow-y-auto pr-1">
+                        <p><strong>ประเด็นแลกเปลี่ยน:</strong> ประเมินสรุปงานฝึกงานตลอด ๓ สัปดาห์ และรายงานความสำเร็จของโครงการพัฒนาทัศนียภาพ 'Re-Color เติมสีสันบนเส้นทางแห่งการเรียนรู้'</p>
+                        <p><strong>ผลสะท้อน:</strong> การทำงานแบบร่วมแรงร่วมใจทำให้เกิดภาพที่สวยงามและสร้างจิตสำนึกให้นักเรียนช่วยกันรักษาความสะอาดสมบัติส่วนรวม</p>
+                        <p class="border-t border-slate-100 dark:border-slate-800 pt-2"><strong>การรับฟังความเห็น:</strong> ผอ. อิมรอน สะมะนิ กล่าวชื่นชมนักศึกษาฝึกงานและรับมอบผลงานพัฒนาอย่างเป็นทางการ</p>
+                    </div>
+                </div>
+                <div class="text-center text-[10px] text-slate-400">
+                    หน้า 14
+                </div>
+            </div>`,
+
+            // หน้า 15: ภาคผนวกและภาพรวมโครงการ Re-Color
+            `<div class="flex flex-col justify-between h-full py-4 text-xs">
+                <div>
+                    <h3 class="text-sm font-bold text-theme-primary mb-4 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center gap-1">
+                        <i data-lucide="image" class="w-4 h-4"></i> ภาคผนวก & ความสำเร็จโครงการ
+                    </h3>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <div class="p-2 bg-slate-50 dark:bg-slate-800 rounded-xl text-center">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-green-500 mx-auto mb-1"></i>
+                            <span class="font-bold block text-[10px]">โครงการ Re-Color</span>
+                            <span class="text-[9px] text-slate-400">พัฒนาภูมิทัศน์สถานศึกษา</span>
+                        </div>
+                        <div class="p-2 bg-slate-50 dark:bg-slate-800 rounded-xl text-center">
+                            <i data-lucide="clipboard-check" class="w-6 h-6 text-indigo-500 mx-auto mb-1"></i>
+                            <span class="font-bold block text-[10px]">สังเกต Coding</span>
+                            <span class="text-[9px] text-slate-400">ครบหลักสูตรประถม ป.1-6</span>
+                        </div>
+                    </div>
+                    <p class="text-slate-700 dark:text-slate-300 leading-relaxed text-center italic">
+                        "ขอขอบพระคุณคณะครู บุคลากรโรงเรียนตาริกพิทยพัฒน์ และอาจารย์คณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต ที่สนับสนุนการปฏิบัติวิชาชีพครั้งนี้อย่างอบอุ่น"
+                    </p>
+                </div>
+                <div class="text-center text-[10px] text-slate-400 border-t border-slate-100 dark:border-slate-800 pt-2">
+                    สิ้นสุดรายงานปฏิบัติงานวิชาชีพครู 1
+                </div>
+            </div>`
+        ];
+
+        let currentReportPageIdx = 0;
         let portfolioData = JSON.parse(localStorage.getItem('atsanee_portfolio_data')) || defaultPortfolioData;
         let isEditMode = false;
         let activeSkillId = null;
@@ -843,7 +1280,6 @@
             } else if (detectedType === 'video') {
                 return `<video src="${src}" class="${className}" autoplay muted loop playsinline></video>`;
             } else {
-                // สำหรับไฟล์อัปโหลดอื่นๆ (PDF, DOCX, ZIP, ฯลฯ)
                 let iconName = 'file-text';
                 if (src.includes('pdf')) iconName = 'file-text';
                 else if (src.includes('zip') || src.includes('rar')) iconName = 'archive';
@@ -917,6 +1353,41 @@
             renderSkills();
             renderProjects();
             lucide.createIcons();
+        }
+
+        function openReportReader() {
+            currentReportPageIdx = 0;
+            document.getElementById('report-reader-modal').classList.remove('hidden');
+            renderReportPage();
+        }
+
+        function closeReportReader() {
+            document.getElementById('report-reader-modal').classList.add('hidden');
+        }
+
+        function renderReportPage() {
+            const pageContainer = document.getElementById('report-page-container');
+            pageContainer.innerHTML = reportPages[currentReportPageIdx];
+            document.getElementById('report-page-indicator').innerText = `หน้า ${currentReportPageIdx + 1} / ${reportPages.length}`;
+            lucide.createIcons();
+        }
+
+        function prevReportPage() {
+            if (currentReportPageIdx > 0) {
+                currentReportPageIdx--;
+                renderReportPage();
+            } else {
+                showToast("นี่คือหน้าแรกแล้วครับ");
+            }
+        }
+
+        function nextReportPage() {
+            if (currentReportPageIdx < reportPages.length - 1) {
+                currentReportPageIdx++;
+                renderReportPage();
+            } else {
+                showToast("นี่คือหน้าสุดท้ายของเล่มรายงานแล้วครับ");
+            }
         }
 
         function renderAboutCards() {
@@ -1052,11 +1523,21 @@
 
                 let tagsHtml = proj.tags.map(t => `<span class="px-2 py-1 bg-white dark:bg-slate-800 text-[10px] font-bold text-slate-500 dark:text-slate-400 rounded-md border border-slate-100 dark:border-slate-700">${t}</span>`).join('');
 
-                let projectLinkBtn = proj.link ? `
-                    <a href="${proj.link}" target="_blank" class="text-xs font-bold text-theme-primary hover:underline flex items-center gap-1 mt-3">
-                        <i data-lucide="link" class="w-3.5 h-3.5"></i> เปิดดูโครงการจริง
-                    </a>
-                ` : '';
+                // หากมีการระบุลิงก์โครงการให้เปิดลิงก์ หากไม่มีให้เปิดเครื่องมืออ่านรายงานจำลองในตัว
+                let projectLinkBtn = '';
+                if (proj.id === "practicum-report-1" || !proj.link) {
+                    projectLinkBtn = `
+                        <button onclick="openReportReader()" class="text-xs font-bold text-theme-primary hover:underline flex items-center gap-1 mt-3">
+                            <i data-lucide="book-open" class="w-3.5 h-3.5"></i> เปิดดูและอ่านรายงานดิจิทัล (๑๕ หน้า)
+                        </button>
+                    `;
+                } else {
+                    projectLinkBtn = `
+                        <a href="${proj.link}" target="_blank" class="text-xs font-bold text-theme-primary hover:underline flex items-center gap-1 mt-3">
+                            <i data-lucide="link" class="w-3.5 h-3.5"></i> เปิดดูโครงการจริง
+                        </a>
+                    `;
+                }
 
                 card.innerHTML = `
                     <div>
