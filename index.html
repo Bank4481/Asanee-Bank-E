@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- html2pdf.js CDN สำหรับระบบดาวน์โหลดไฟล์เอกสารรายงาน PDF ของจริง -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     
     <script>
         tailwind.config = {
@@ -36,7 +38,7 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        /* ธีมสีทั้งหมด 12 ธีม (ปรับแต่งค่าผ่าน CSS Custom Properties) */
+        /* ธีมสีหลักสไตล์พรีเมียมทั้งหมด 12 เฉดสีหลัก */
         :root {
             --primary: #4f46e5;       /* Indigo Default */
             --primary-hover: #4338ca;
@@ -124,6 +126,7 @@
         .border-theme-primary { border-color: var(--primary); }
         .ring-theme-primary:focus { --tw-ring-color: var(--primary-ring); }
         
+        /* สไตล์สำหรับฟิลด์นำเสนอโหมดแก้ไข */
         .editable-active {
             outline: 2px dashed #f59e0b;
             outline-offset: 4px;
@@ -145,6 +148,21 @@
             z-index: 20;
             pointer-events: none;
         }
+
+        /* รูปแบบหน้า A4 สำหรับแปลงไฟล์รายงาน PDF จริง */
+        .pdf-page {
+            width: 210mm;
+            height: 297mm;
+            padding: 20mm;
+            margin: 0 auto;
+            background: white;
+            color: #1e293b;
+            font-size: 14px;
+            line-height: 1.6;
+            box-sizing: border-box;
+            position: relative;
+            page-break-after: always;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-300">
@@ -159,6 +177,7 @@
         </button>
     </div>
 
+    <!-- ส่วนแถบนำทางหลัก (Navbar) -->
     <nav class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
@@ -505,7 +524,7 @@
         </div>
     </footer>
 
-    <!-- ส่วนระบบ Toast -->
+    <!-- ส่วนระบบ Toast แจ้งผลลัพธ์การทำงาน -->
     <div id="custom-toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-6 py-3 rounded-xl shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300">
         <span id="toast-message" class="text-sm font-medium">บันทึกสำเร็จ!</span>
     </div>
@@ -521,9 +540,15 @@
                         <p class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400">ฉบับดิจิทัล พอร์ตโฟลิโอ - อัสนี สงวนปุญญศิริ</p>
                     </div>
                 </div>
-                <button onclick="closeReportReader()" class="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition text-slate-500 dark:text-slate-400">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
+                <div class="flex items-center gap-2">
+                    <button onclick="downloadOfficialReportPDF()" class="px-3 py-1.5 bg-theme-primary hover:bg-theme-primary-hover text-white text-xs font-semibold rounded-lg shadow-sm flex items-center gap-1.5 transition">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span class="hidden sm:inline">ดาวน์โหลดไฟล์ PDF จริง</span>
+                    </button>
+                    <button onclick="closeReportReader()" class="p-2 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full transition text-slate-500 dark:text-slate-400">
+                        <i data-lucide="x" class="w-5 h-5"></i>
+                    </button>
+                </div>
             </div>
 
             <!-- ส่วนควบคุมการเปลี่ยนหน้าและกระดาษรายงาน -->
@@ -548,7 +573,7 @@
 
     <!-- ส่วนป๊อปอัปตรวจสอบรหัสผ่าน (Bank4481) -->
     <div id="password-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-slate-100 dark:border-slate-700 text-center space-y-4 animate-fade-in">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-sm w-full shadow-2xl border border-slate-100 dark:border-slate-700 text-center space-y-4">
             <div class="w-12 h-12 rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-500 dark:text-amber-400 flex items-center justify-center mx-auto">
                 <i data-lucide="key-round" class="w-6 h-6"></i>
             </div>
@@ -571,7 +596,6 @@
         </div>
     </div>
 
-    <!-- ป๊อปอัปแก้ไขกล่องข้อมูลประวัติสถาบัน/ที่อยู่ (About Box Modal) -->
     <div id="about-card-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
             <h4 class="text-base font-bold text-slate-900 dark:text-white">แก้ไขข้อมูลการศึกษา/ภูมิลำเนา</h4>
@@ -656,7 +680,6 @@
         </div>
     </div>
 
-    <!-- ส่วนป๊อปอัปแก้ไขโครงการ (Projects Modal) -->
     <div id="project-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
         <div class="bg-white dark:bg-slate-800 rounded-3xl p-6 max-w-md w-full shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
             <h4 class="text-base font-bold text-slate-900 dark:text-white" id="project-modal-title">แก้ไขโครงการ</h4>
@@ -752,6 +775,114 @@
         </div>
     </div>
 
+    <div id="official-pdf-print-source" class="hidden">
+        <!-- หน้า 1: ปกนอก -->
+        <div class="pdf-page flex flex-col justify-between items-center text-center">
+            <div class="flex flex-col items-center">
+                <img src="https://lh3.googleusercontent.com/d/1ZBZ5HGKv55aZeAZHi8EPz-1IgGwlndGD" alt="ตรามหาวิทยาลัย" class="w-24 h-24 object-contain mb-4" onerror="this.style.display='none'">
+                <h2 class="text-xl font-bold tracking-wide">PHUKET RAJABHAT UNIVERSITY</h2>
+                <p class="text-sm text-slate-500">คณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต</p>
+            </div>
+            <div class="my-auto py-8">
+                <h1 class="text-3xl font-extrabold text-indigo-900 mb-2 leading-tight">การฝึกปฏิบัติวิชาชีพครู<br>ระหว่างเรียน ๑</h1>
+                <p class="text-lg font-semibold text-slate-600">(Professional Practicum I)</p>
+                <div class="w-16 h-1 bg-indigo-600 mx-auto my-6"></div>
+                <p class="text-md font-bold text-slate-800">ณ โรงเรียนตาริกพิทยพัฒน์</p>
+            </div>
+            <div class="border-t border-slate-200 pt-6 w-full text-left space-y-2 text-sm max-w-md mx-auto">
+                <p><strong>ผู้จัดทำ:</strong> นายอัสนี สงวนปุญญศิริ</p>
+                <p><strong>รหัสนักศึกษา:</strong> ๖๗๑๐๓๘๐๑๒๔</p>
+                <p><strong>สาขาวิชา:</strong> คอมพิวเตอร์ศึกษา</p>
+                <p><strong>สถานที่ปฏิบัติการ:</strong> โรงเรียนตาริกพิทยพัฒน์ อ.ถลาง จ.ภูเก็ต</p>
+            </div>
+        </div>
+
+        <!-- หน้า 2: ปกใน -->
+        <div class="pdf-page flex flex-col justify-between items-center text-center">
+            <div class="flex flex-col items-center">
+                <!-- ตราสัญลักษณ์โรงเรียนตาริกพิทยพัฒน์ จำลอง -->
+                <div class="w-20 h-20 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800 font-bold border border-emerald-300 mb-3">T.P.S</div>
+                <h2 class="text-lg font-bold">โรงเรียนตาริกพิทยพัฒน์</h2>
+                <p class="text-xs text-slate-400">อำเภอถลาง จังหวัดภูเก็ต</p>
+            </div>
+            <div class="my-auto">
+                <h2 class="text-2xl font-bold mb-4">รายงานการศึกษาในหน้าที่ครู 1</h2>
+                <p class="text-sm max-w-md mx-auto text-slate-600 text-justify">
+                    เอกสารฉบับนี้จัดทำขึ้นเพื่อบันทึกประมวลผลการฝึกปฏิบัติงานสังเกตการณ์การสอนวิชาคอมพิวเตอร์และ Coding ตลอดจนการแลกเปลี่ยนเรียนรู้พัฒนาสถานศึกษา (Re-Color) ระหว่างเรียนหลักสูตรครุศาสตรบัณฑิต
+                </p>
+            </div>
+            <div class="text-xs text-slate-400">
+                © คณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต
+            </div>
+        </div>
+
+        <!-- หน้า 3: คำนำ -->
+        <div class="pdf-page flex flex-col justify-between">
+            <div>
+                <h2 class="text-xl font-bold border-b pb-2 mb-6">คำนำ</h2>
+                <p class="indent-12 text-justify mb-4">
+                    รายงานเล่มนี้จัดทำขึ้นเพื่อเป็นส่วนหนึ่งของรายวิชาการฝึกปฏิบัติวิชาชีพครูระหว่างเรียน ๑ (Professional Practicum 1) รหัสหลักสูตรครุศาสตรบัณฑิต สาขาวิชาคอมพิวเตอร์ศึกษา คณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต มีวัตถุประสงค์เพื่อบันทึกและประมวลผลประสบการณ์จากการเข้าไปศึกษา สังเกต และเรียนรู้งานในหน้าที่ครู ตลอดจนสภาพแวดล้อมและบริบทโดยรวมของสถานศึกษา ณ โรงเรียนตาริกพิทยพัฒน์ อำเภอถลาง จังหวัดภูเก็ต เป็นระยะเวลา ๓ สัปดาห์ (ระหว่างวันที่ ๔ มิถุนายน พ.ศ. ๒๕๖๙ ถึง วันที่ ๒๔ มิถุนายน พ.ศ. ๒๕๖๙)
+                </p>
+                <p class="indent-12 text-justify mb-4">
+                    เนื้อหาภายในรายงานฉบับนี้ ประกอบด้วย บันทึกการปฏิบัติงานประจำวันในรอบ ๓ สัปดาห์ การศึกษางานในหน้าที่ครูประจำชั้น การสังเกตพฤติกรรมการจัดการเรียนรู้ของครูผู้สอนและการแสดงออกของผู้เรียนในชั้นเรียน การศึกษาความสัมพันธ์ระหว่างโรงเรียนกับชุมชน ตลอดจนบันทึกกิจกรรมการแลกเปลี่ยนเรียนรู้ในชุมชนวิชาชีพครู (PLC) และการดำเนินโครงการพัฒนาภูมิทัศน์ร่วมกับคณะนักศึกษาฝึกปฏิบัติวิชาชีพ ซึ่งข้อมูลทั้งหมดนี้ถือเป็นฐานความรู้และประสบการณ์อันมีค่ายิ่งในการพัฒนาตนเองสู่การเป็นวิชาชีพครูที่มีคุณภาพในอนาคต
+                </p>
+                <p class="indent-12 text-justify">
+                    ผู้จัดทำขอขอบพระคุณ นายอิมรอน สะมะนิ ผู้อำนวยการโรงเรียนตาริกพิทยพัฒน์, นางขวัญใจ สะมะนิ ผู้ช่วยผู้จัดการโรงเรียน, นางสาวชนิตา ทำเผือก หัวหน้าฝ่ายวิชาการ พร้อมด้วยครูพี่เลี้ยง และคณะครูอาจารย์ทุกท่าน ที่ได้ให้ความอนุเคราะห์ ความรู้ คำแนะนำ และโอกาสในการเรียนรู้การปฏิบัติงานจริงอย่างเต็มเปี่ยม รวมถึงขอขอบพระคุณคณาจารย์ประจำคณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต ทุกท่านที่คอยประสานงานและให้คำปรึกษาตลอดการฝึกปฏิบัติวิชาชีพครั้งนี้
+                </p>
+            </div>
+            <div class="text-right">
+                <p class="font-bold">นายอัสนี สงวนปุญญศิริ</p>
+                <p class="text-xs text-slate-500">ผู้จัดทำรายงาน</p>
+            </div>
+        </div>
+
+        <!-- หน้า 4: สารบัญ -->
+        <div class="pdf-page">
+            <h2 class="text-xl font-bold border-b pb-2 mb-6">สารบัญ</h2>
+            <table class="w-full border-collapse text-left">
+                <thead>
+                    <tr class="border-b-2">
+                        <th class="py-2">หัวข้อเรื่อง</th>
+                        <th class="py-2 text-right">หน้า</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y">
+                    <tr><td class="py-3">คำนำ</td><td class="text-right">3</td></tr>
+                    <tr><td class="py-3">สารบัญ</td><td class="text-right">4</td></tr>
+                    <tr><td class="py-3">ประวัติส่วนตัว (นักศึกษา)</td><td class="text-right">5</td></tr>
+                    <tr><td class="py-3">การศึกษางานในหน้าที่ครู</td><td class="text-right">6</td></tr>
+                    <tr><td class="py-3">1. บันทึกการปฏิบัติงานในแต่ละวัน ตลอด 3 สัปดาห์</td><td class="text-right">6</td></tr>
+                    <tr><td class="py-3">2. การศึกษางานในหน้าที่ครูประจำชั้น</td><td class="text-right">10</td></tr>
+                    <tr><td class="py-3">3. การศึกษา สังเกต การสอนของครู</td><td class="text-right">11</td></tr>
+                    <tr><td class="py-3">4. การศึกษา สังเกต พฤติกรรมนักเรียนในชั้นเรียน</td><td class="text-right">11</td></tr>
+                    <tr><td class="py-3">5. การศึกษา สังเกต สัมภาษณ์ความสัมพันธ์ระหว่างโรงเรียน/ครู กับชุมชน</td><td class="text-right">11</td></tr>
+                    <tr><td class="py-3">แบบบันทึกการแลกเปลี่ยนเรียนรู้ (PLC) ครั้งที่ 1</td><td class="text-right">12</td></tr>
+                    <tr><td class="py-3">แบบบันทึกการแลกเปลี่ยนเรียนรู้ (PLC) ครั้งที่ 2</td><td class="text-right">14</td></tr>
+                    <tr><td class="py-3">แบบบันทึกการแลกเปลี่ยนเรียนรู้ (PLC) ครั้งที่ 3</td><td class="text-right">16</td></tr>
+                    <tr><td class="py-3">ภาคผนวก / ภาพประกอบกิจกรรม</td>
+                    <span>18</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- หน้า 5: ประวัติส่วนตัว -->
+        <div class="flex flex-col justify-between h-full py-4">
+            <div>
+                <h3 class="text-lg font-bold text-theme-primary mb-4 pb-2 border-b border-slate-200">ประวัติส่วนตัว (นักศึกษา)</h3>
+                <div class="space-y-4 text-sm">
+                    <p><strong>ชื่อ-นามสกุล:</strong> นายอัสนี สงวนปุญญศิริ</p>
+                    <p><strong>การศึกษา:</strong> ระดับปริญญาตรี คณะครุศาสตร์ สาขาวิชาการศึกษาวิชาเอกคอมพิวเตอร์ศึกษา มหาวิทยาลัยราชภัฏภูเก็ต</p>
+                    <p><strong>ตำแหน่ง:</strong> นักศึกษาฝึกปฏิบัติวิชาชีพครูระหว่างเรียน ๑</p>
+                    <p><strong>หน้าที่รับผิดชอบ:</strong> นักศึกษาสังเกตการสอนวิชา Coding & Creatif ของชั้นประถมศึกษา ๑-๖</p>
+                    <p><strong>สถานที่ปฏิบัติการ:</strong> โรงเรียนตาริกพิทยพัฒน์</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ส่วนป๊อปอัปแก้ไขกล่องข้อมูลประวัติสถาบัน/ที่อยู่ (About Box Modal) -->
+    <!-- ... (โค้ดส่วนอื่น ๆ เหมือนเดิม) ... -->
+
     <script>
         const defaultPortfolioData = {
             profile: {
@@ -836,7 +967,7 @@
                     <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white leading-snug">การฝึกปฏิบัติวิชาชีพครู<br>ระหว่างเรียน ๑</h1>
                     <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 font-mono">(Professional Practicum I)</p>
                 </div>
-                <div class="space-y-3 text-xs border-t border-slate-100 dark:border-slate-800 pt-4">
+                <div class="border-t border-slate-100 dark:border-slate-800 pt-4 space-y-3 text-xs">
                     <p class="text-slate-700 dark:text-slate-300"><strong>โรงเรียนที่ปฏิบัติงาน:</strong> โรงเรียนตาริกพิทยพัฒน์ อ.ถลาง จ.ภูเก็ต</p>
                     <p class="text-slate-700 dark:text-slate-300"><strong>ผู้จัดทำ:</strong> นายอัสนี สงวนปุญญศิริ</p>
                     <p class="text-slate-700 dark:text-slate-300"><strong>รหัสนักศึกษา:</strong> ๖๗๑๐๓๘๐๑๒๔</p>
@@ -1390,6 +1521,32 @@
             }
         }
 
+        function downloadOfficialReportPDF() {
+            showToast("กำลังประมวลผลและเตรียมไฟล์รายงาน PDF (21 หน้า) กรุณารอสักครู่...");
+            const element = document.getElementById('official-pdf-print-source');
+            
+            // ถอนคลาสซ่อนชั่วคราวเพื่อแปลงเอกสารให้คมชัด
+            element.classList.remove('hidden');
+
+            const opt = {
+                margin:       [10, 10, 10, 10],
+                filename:     'รายงานการศึกษาในหน้าที่ครู 1 นายอัสนี สงวนปุญญศิริ คศ.6710380124.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // เรียกใช้ html2pdf ในการสร้างและดาวน์โหลดไฟล์
+            html2pdf().set(opt).from(element).save().then(() => {
+                element.classList.add('hidden');
+                showToast("ดาวน์โหลดไฟล์รายงาน PDF สำเร็จเรียบร้อยแล้ว!");
+            }).catch(err => {
+                element.classList.add('hidden');
+                console.error(err);
+                showToast("เกิดข้อผิดพลาดในการสร้างไฟล์ PDF กรุณาลองใหม่อีกครั้ง");
+            });
+        }
+
         function renderAboutCards() {
             const container = document.getElementById('about-cards-container');
             container.innerHTML = '';
@@ -1523,13 +1680,17 @@
 
                 let tagsHtml = proj.tags.map(t => `<span class="px-2 py-1 bg-white dark:bg-slate-800 text-[10px] font-bold text-slate-500 dark:text-slate-400 rounded-md border border-slate-100 dark:border-slate-700">${t}</span>`).join('');
 
-                // หากมีการระบุลิงก์โครงการให้เปิดลิงก์ หากไม่มีให้เปิดเครื่องมืออ่านรายงานจำลองในตัว
                 let projectLinkBtn = '';
                 if (proj.id === "practicum-report-1" || !proj.link) {
                     projectLinkBtn = `
-                        <button onclick="openReportReader()" class="text-xs font-bold text-theme-primary hover:underline flex items-center gap-1 mt-3">
-                            <i data-lucide="book-open" class="w-3.5 h-3.5"></i> เปิดดูและอ่านรายงานดิจิทัล (๑๕ หน้า)
-                        </button>
+                        <div class="flex flex-col gap-2 mt-3">
+                            <button onclick="openReportReader()" class="text-xs font-bold text-theme-primary hover:underline flex items-center gap-1">
+                                <i data-lucide="book-open" class="w-3.5 h-3.5"></i> เปิดดูและอ่านรายงานดิจิทัล (15 หน้า)
+                            </button>
+                            <button onclick="downloadOfficialReportPDF()" class="text-xs font-bold text-emerald-600 hover:underline flex items-center gap-1">
+                                <i data-lucide="download" class="w-3.5 h-3.5"></i> ดาวน์โหลดรายงาน PDF ของจริง (21 หน้า)
+                            </button>
+                        </div>
                     `;
                 } else {
                     projectLinkBtn = `
@@ -1884,8 +2045,8 @@
             document.getElementById('project-input-desc').value = proj.desc;
             document.getElementById('project-input-link').value = proj.link || "";
             document.getElementById('project-input-tags').value = proj.tags.join(', ');
-            document.getElementById('project-input-media-url').value = (proj.mediaType !== 'file' && !proj.media.startsWith('data:application/')) ? proj.media : "";
-            document.getElementById('project-file-status').innerText = proj.mediaName ? `ไฟล์แนบเดิม: ${proj.mediaName}` : "ไม่ได้อัปโหลดไฟล์สื่อใหม่";
+            document.getElementById('project-input-media-url').value = (proj.mediaType !== 'icon') ? proj.media : "";
+            document.getElementById('project-file-status').innerText = proj.mediaName ? `ไฟล์เดิม: ${proj.mediaName}` : "ไม่ได้อัปโหลดไฟล์สื่อใหม่";
 
             tempProjectMedia = proj.media;
             tempProjectMediaType = proj.mediaType || "image";
@@ -1902,7 +2063,7 @@
                     tempProjectMedia = e.target.result;
                     tempProjectMediaType = file.type.startsWith('video/') ? 'video' : (file.type.startsWith('image/') ? 'image' : 'file');
                     tempProjectMediaName = file.name;
-                    document.getElementById('project-file-status').innerText = `แนบสำเร็จ: ${file.name}`;
+                    document.getElementById('project-file-status').innerText = `อัปโหลด: ${file.name}`;
                 }
                 reader.readAsDataURL(file);
             }
@@ -1952,14 +2113,14 @@
             localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
             closeProjectModal();
             renderProjects();
-            showToast("บันทึกข้อมูลโครงการสำเร็จ");
+            showToast("บันทึกโครงการสำเร็จ");
         }
 
         function deleteProject(id) {
             portfolioData.projects = portfolioData.projects.filter(p => p.id !== id);
             localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
             renderProjects();
-            showToast("ลบโครงการเรียบร้อยแล้ว");
+            showToast("ลบโครงการเรียบร้อย");
         }
 
         function editCustomSectionHeader() {
@@ -1967,7 +2128,7 @@
             document.getElementById('custom-input-content').value = portfolioData.customSection.paragraphs.join('\n\n');
             document.getElementById('custom-input-btn-text').value = portfolioData.customSection.btnText || "";
             document.getElementById('custom-input-btn-url').value = portfolioData.customSection.btnUrl || "";
-            document.getElementById('custom-input-media-url').value = (portfolioData.customSection.mediaType !== 'file') ? portfolioData.customSection.media : "";
+            document.getElementById('custom-input-media-url').value = portfolioData.customSection.media;
             document.getElementById('custom-file-status').innerText = portfolioData.customSection.mediaName ? `ไฟล์เดิม: ${portfolioData.customSection.mediaName}` : "ไม่ได้อัปโหลดไฟล์สื่อใหม่";
 
             tempCustomMedia = portfolioData.customSection.media;
@@ -1985,7 +2146,7 @@
                     tempCustomMedia = e.target.result;
                     tempCustomMediaType = file.type.startsWith('video/') ? 'video' : (file.type.startsWith('image/') ? 'image' : 'file');
                     tempCustomMediaName = file.name;
-                    document.getElementById('custom-file-status').innerText = `แนบไฟล์สำเร็จ: ${file.name}`;
+                    document.getElementById('custom-file-status').innerText = `อัปโหลด: ${file.name}`;
                 }
                 reader.readAsDataURL(file);
             }
@@ -2021,7 +2182,7 @@
             localStorage.setItem('atsanee_portfolio_data', JSON.stringify(portfolioData));
             initPortfolio();
             closeCustomSectionModal();
-            showToast("ปรับปรุงย่อหน้าข้อมูลเรียบร้อย");
+            showToast("บันทึกข้อมูลเรียบร้อย");
         }
 
         function toggleDarkMode() {
