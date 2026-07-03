@@ -1,1 +1,1724 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แฟ้มสะสมผลงาน - อัสนี สงวนปุญญศิริ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#7f1d1d',
+                            dark: '#581313',
+                            light: '#dc2626',
+                        }
+                    },
+                    scale: {
+                        '102': '1.02',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts (Sarabun) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+        }
+        .transition-theme {
+            transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+    
+    <style id="theme-variable-overrides">
+        :root {
+            --color-primary: #7f1d1d;
+            --color-primary-light: #dc2626;
+        }
+        .text-primary { color: #7f1d1d !important; }
+        .bg-primary { background-color: #7f1d1d !important; }
+        .hover\:bg-primary-dark:hover { background-color: #581313 !important; }
+        .border-primary { border-color: #7f1d1d !important; }
+        .bg-primary\/5 { background-color: rgba(127, 29, 29, 0.05) !important; }
+        .bg-primary\/10 { background-color: rgba(127, 29, 29, 0.1) !important; }
+        .bg-primary\/20 { background-color: rgba(127, 29, 29, 0.2) !important; }
+        .border-primary\/20 { border-color: rgba(127, 29, 29, 0.2) !important; }
+        .border-primary\/30 { border-color: rgba(127, 29, 29, 0.3) !important; }
+        .text-primary-light { color: #dc2626 !important; }
+        .focus-theme:focus { 
+            outline: 2px solid #dc2626; 
+            outline-offset: 2px;
+        }
+        .theme-shadow {
+            box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.15), 0 8px 10px -6px rgba(220, 38, 38, 0.15);
+        }
+        /* Dark Mode Dynamic Class Overwrites */
+        .dark .text-primary { color: #dc2626 !important; }
+        .dark .bg-primary { background-color: #7f1d1d !important; }
+        .dark .border-primary { border-color: #dc2626 !important; }
+        .dark .bg-primary\/10 { background-color: rgba(220, 38, 38, 0.15) !important; }
+        .dark .bg-primary\/5 { background-color: rgba(220, 38, 38, 0.05) !important; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col transition-theme dark:bg-slate-950 dark:text-slate-100" id="body-theme">
 
+    <!-- NAVIGATION BAR -->
+    <nav class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800 transition-colors shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo / Name -->
+                <div class="flex-shrink-0 flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold transition-all" id="logo-icon" style="background-color: rgb(127, 29, 29);">
+                        อ
+                    </div>
+                    <span class="font-bold text-lg text-slate-900 dark:text-white" id="nav-brand-name">อัสนี สงวนปุญญศิริ</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-1 items-center" id="desktop-menu">
+                    <a href="#home" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary-light transition-colors">หน้าแรก</a>
+                    <a href="#about" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary-light transition-colors">ประวัติส่วนตัว</a>
+                    <a href="#skills" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary-light transition-colors">ความสามารถ</a>
+                    <a href="#education" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary-light transition-colors">การศึกษา</a>
+                    <a href="#portfolio" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary-light transition-colors">ผลงาน/มีเดีย</a>
+                    <a href="#developer" class="nav-link px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary-light transition-colors">ผู้พัฒนา</a>
+                </div>
+
+                <!-- Action Buttons & Theme Controls -->
+                <div class="flex items-center space-x-3">
+                    <!-- Theme Settings Button -->
+                    <button onclick="toggleThemeSettings()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors" title="เลือกธีมสี">
+                        <i data-lucide="palette" class="w-5 h-5"></i>
+                    </button>
+
+                    <!-- Dark Mode Toggle -->
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors" title="โหมดมืด/สว่าง">
+                        <i data-lucide="sun" id="dark-mode-icon-sun" class="w-5 h-5 hidden"></i>
+                        <i data-lucide="moon" id="dark-mode-icon-moon" class="w-5 h-5"></i>
+                    </button>
+
+                    <!-- Admin Control Button -->
+                    <button id="admin-btn" onclick="openLoginModal()" class="flex items-center space-x-1 px-4 py-2 rounded-full text-sm font-medium text-white bg-primary hover:bg-primary-dark transition-all shadow-sm">
+                        <i data-lucide="lock" class="w-4 h-4" id="lock-icon"></i>
+                        <span id="admin-btn-text">ผู้ดูแลระบบ</span>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-md text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6" id="mobile-menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">หน้าแรก</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">ประวัติส่วนตัว</a>
+                <a href="#skills" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">ความสามารถ</a>
+                <a href="#education" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">การศึกษา</a>
+                <a href="#portfolio" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">ผลงาน/มีเดีย</a>
+                <a href="#developer" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">ผู้พัฒนา</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ADMIN EDITING HEADBAR (Hidden by default, shown when logged in) -->
+    <div id="admin-bar" class="bg-amber-500 text-slate-900 py-2.5 px-4 shadow-md sticky top-16 z-30 flex flex-wrap items-center justify-between transition-all hidden">
+        <div class="flex items-center space-x-2 my-1">
+            <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+            <span class="font-bold text-sm">ผู้ใช้งาน: Bank4481 (เปิดระบบแอดมินสำหรับการแก้ไขสดในหน้านี้แล้ว)</span>
+        </div>
+        <div class="flex items-center space-x-2 my-1 flex-wrap gap-2">
+            <!-- Inbox View Button -->
+            <button onclick="openInboxModal()" class="flex items-center space-x-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow transition-colors">
+                <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                <span>กล่องข้อความจากผู้ติดต่อ (<span id="inbox-count">0</span>)</span>
+            </button>
+            
+            <!-- GitHub Sync Button (NEW) -->
+            <button onclick="openGitSyncModal()" class="flex items-center space-x-1.5 bg-green-700 hover:bg-green-800 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow transition-colors">
+                <i data-lucide="git-branch" class="w-3.5 h-3.5"></i>
+                <span>ซิงก์ข้อมูลไป GitHub อัตโนมัติ</span>
+            </button>
+
+            <button onclick="saveAndGenerateHTML()" class="flex items-center space-x-1.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow transition-colors">
+                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                <span>บันทึก &amp; ดาวน์โหลดไฟล์ HTML</span>
+            </button>
+            <button onclick="logoutAdmin()" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold py-1.5 px-3 rounded-lg shadow transition-colors">
+                ออกจากระบบ
+            </button>
+        </div>
+    </div>
+
+    <!-- THEME SETTINGS DRAWER -->
+    <div id="theme-drawer" class="fixed inset-0 z-50 overflow-hidden hidden" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+        <div class="absolute inset-0 overflow-hidden">
+            <!-- Background overlay -->
+            <div onclick="toggleThemeSettings()" class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity"></div>
+            
+            <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+                <div class="pointer-events-auto w-screen max-w-md">
+                    <div class="flex h-full flex-col overflow-y-scroll bg-white dark:bg-slate-900 py-6 shadow-xl border-l border-slate-200 dark:border-slate-800">
+                        <div class="px-4 sm:px-6 flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                            <h2 class="text-lg font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                                <i data-lucide="palette" class="w-5 h-5 text-primary"></i>
+                                <span>ปรับแต่งสีธีม (10 เฉดสีสุภาพ)</span>
+                            </h2>
+                            <button onclick="toggleThemeSettings()" class="rounded-md text-slate-400 hover:text-slate-500">
+                                <i data-lucide="x" class="w-6 h-6"></i>
+                            </button>
+                        </div>
+                        <div class="relative mt-6 flex-1 px-4 sm:px-6">
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">เลือกโทนสีที่เป็นทางการ เหมาะกับการขอทุนการศึกษา สมัครงานหน่วยงานรัฐ หรือแสดงหน้าเสรีวิชาการ</p>
+                            
+                            <!-- Theme Grid -->
+                            <div class="grid grid-cols-1 gap-3.5" id="theme-grid">
+                                <!-- Themes populated dynamically -->
+                            </div>
+
+                            <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
+                                <h3 class="text-sm font-semibold text-slate-900 dark:text-white mb-3">คำแนะนำการเลือกใช้งานสี</h3>
+                                <ul class="text-xs text-slate-500 dark:text-slate-400 space-y-2 list-disc list-inside">
+                                    <li><strong>สีกรมท่า (Navy) หรือ เขียวมรกต:</strong> สูงส่งและน่าเชื่อถือที่สุดสำหรับติดต่อสถาบัน</li>
+                                    <li><strong>สีแดงชาดหรู (Crimson):</strong> สร้างความตื่นเต้น มั่นใจ และน่าจดจำ</li>
+                                    <li><strong>สีคราม/น้ำตาล:</strong> ดูคลาสสิก ปลอดภัย และนุ่มนวลอย่างเป็นระเบียบ</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+        
+        <!-- SECTION 1: HERO / HOME -->
+        <section id="home" class="relative py-20 md:py-32 overflow-hidden bg-gradient-to-br from-red-950/10 via-red-900/5 to-rose-500/5 transition-theme">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Hero Info Text -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium border border-primary/20">
+                            <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                            <span id="hero-tagline-text" data-editable="hero-tag" class="outline-none" contenteditable="false">กำลังศึกษาที่มหาวิทยาลัยราชภัฏภูเก็ต</span>
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                            สวัสดีครับ ผม <br class="sm:hidden">
+                            <span class="text-primary block mt-1 outline-none" id="hero-name-text" data-editable="hero-name" contenteditable="false">นายอัสนี สงวนปุญญศิริ</span>
+                        </h1>
+                        
+                        <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 outline-none leading-relaxed" id="hero-desc-text" data-editable="hero-desc" contenteditable="false">ยินดีต้อนรับสู่แฟ้มสะสมผลงานดิจิทัลของผม รวบรวมข้อมูลส่วนตัว ประวัติการศึกษา และผลงานกิจกรรมเพื่อเป็นข้อมูลสำหรับการนำเสนอและการทำงานร่วมกันในอนาคต</p>
+                        
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                            <a href="#about" class="px-6 py-3 rounded-xl bg-primary hover:bg-primary-dark text-white font-medium shadow-lg hover:shadow-xl transition-all flex items-center space-x-2">
+                                <span>ทำความรู้จักเพิ่มเติม</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                            <a href="#portfolio" class="px-6 py-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary text-slate-700 dark:text-slate-300 font-medium transition-all flex items-center space-x-2 shadow-sm">
+                                <i data-lucide="image" class="w-4 h-4"></i>
+                                <span>ดูผลงาน/มีเดีย</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hero Portrait Photo Frame -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96">
+                            <!-- Visual Backdrops -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-primary to-primary-light rounded-2xl transform rotate-6 scale-95 opacity-25 animate-pulse"></div>
+                            <div class="absolute inset-0 bg-slate-950/5 dark:bg-slate-50/5 rounded-2xl transform -rotate-3 scale-95"></div>
+                            
+                            <!-- Profile Picture Frame -->
+                            <div class="absolute inset-0 bg-white dark:bg-slate-800 p-3 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 flex flex-col justify-between transition-colors">
+                                <div class="w-full h-[85%] rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-900 relative group">
+                                    <img id="hero-pfp-img" src="https://drive.google.com/thumbnail?id=1ZBZ5HGKv55aZeAZHi8EPz-1IgGwlndGD&sz=w1000" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&amp;fit=crop&amp;q=80&amp;w=600';" alt="นายอัสนี สงวนปุญญศิริ" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all cursor-pointer edit-pfp-trigger hidden" onclick="triggerPfpEdit('hero-pfp-img')">
+                                        <div class="text-white text-center p-2">
+                                            <i data-lucide="camera" class="w-8 h-8 mx-auto mb-1"></i>
+                                            <span class="text-xs font-semibold">แก้ไขลิงก์รูปภาพโปรไฟล์</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center pt-2">
+                                    <p class="font-bold text-slate-800 dark:text-slate-200" id="hero-img-caption">นายอัสนี สงวนปุญญศิริ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ABOUT / GENERAL INFO -->
+        <section id="about" class="py-20 bg-white dark:bg-slate-900 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-primary font-semibold text-sm tracking-wider uppercase">Profile</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">ประวัติส่วนตัวทั่วไป</h2>
+                    <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <!-- Text Profile -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white outline-none" id="about-heading" data-editable="about-head" contenteditable="false">เกี่ยวกับผม</h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-base outline-none" id="about-bio" data-editable="about-bio-text" contenteditable="false">สวัสดีครับ ผมชื่อ อัสนี สงวนปุญญศิริ ปัจจุบันเป็นนักศึกษามหาวิทยาลัยราชภัฏภูเก็ต ผมมุ่งมั่นที่จะพัฒนาทักษะตนเองในด้านต่างๆ อยู่เสมอ และพร้อมจะเรียนรู้สิ่งใหม่เพื่อนำความรู้ไปประยุกต์ใช้ในการทำงานและยกระดับสังคมรอบตัวให้ดีขึ้น</p>
+
+                        <!-- Profile Cards Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Address Card -->
+                            <div class="p-5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 flex space-x-4">
+                                <div class="p-3 bg-primary/10 rounded-lg text-primary h-fit">
+                                    <i data-lucide="map-pin" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">ที่อยู่ปัจจุบัน</h4>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm mt-1 leading-relaxed outline-none" id="about-address" data-editable="about-addr" contenteditable="false">ตำบลบางม่วง อำเภอตะกั่วป่า จังหวัดพังงา</p>
+                                </div>
+                            </div>
+
+                            <!-- University Card -->
+                            <div class="p-5 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/50 flex space-x-4">
+                                <div class="p-3 bg-primary/10 rounded-lg text-primary h-fit">
+                                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">สถาบันการศึกษา</h4>
+                                    <p class="text-slate-600 dark:text-slate-400 text-sm mt-1 leading-relaxed outline-none" id="about-uni" data-editable="about-univ" contenteditable="false">มหาวิทยาลัยราชภัฏภูเก็ต</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Details / Quick Facts -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 p-6 rounded-2xl space-y-6">
+                            <h4 class="font-bold text-lg text-slate-900 dark:text-white pb-3 border-b border-slate-200 dark:border-slate-700">ข้อมูลติดต่อและการประสานงาน</h4>
+                            
+                            <ul class="space-y-4">
+                                <li class="flex items-center space-x-3 text-slate-600 dark:text-slate-300">
+                                    <i data-lucide="mail" class="w-5 h-5 text-primary flex-shrink-0"></i>
+                                    <span class="text-sm font-medium">อีเมล:</span>
+                                    <span class="text-sm outline-none" id="about-email" data-editable="about-mail" contenteditable="false">bbak9988@gmail.com</span>
+                                </li>
+                                <li class="flex items-center space-x-3 text-slate-600 dark:text-slate-300">
+                                    <i data-lucide="phone" class="w-5 h-5 text-primary flex-shrink-0"></i>
+                                    <span class="text-sm font-medium">เบอร์โทรศัพท์:</span>
+                                    <span class="text-sm outline-none" id="about-phone" data-editable="about-ph" contenteditable="false">0949919283</span>
+                                </li>
+                                <li class="flex items-center space-x-3 text-slate-600 dark:text-slate-300 overflow-hidden">
+                                    <i data-lucide="link" class="w-5 h-5 text-primary flex-shrink-0"></i>
+                                    <span class="text-sm font-medium">เฟสบุ๊คหลัก:</span>
+                                    <span class="text-sm text-primary underline outline-none truncate block max-w-[200px]" id="about-website" data-editable="about-web" contenteditable="false">https://www.facebook.com/asanee.sanguanpunyasiri</span>
+                                </li>
+                            </ul>
+
+                            <div class="bg-primary/5 rounded-xl p-4 border border-primary/10">
+                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                                    * ข้อมูลทั้งหมดสามารถคลิกแก้ไขได้ทันทีในหน้าจอเพียงแค่เข้าสู่ระบบและกดบันทึก เพื่อบันทึกไฟล์หรืออัปเดตตรงไปยังคลังข้อมูลของคุณ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION: SKILLS & COMPETENCY -->
+        <section id="skills" class="py-20 bg-slate-50 dark:bg-slate-950 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-primary font-semibold text-sm tracking-wider uppercase">Skills &amp; Expertises</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">ทักษะและความสามารถเฉพาะทาง</h2>
+                    <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-all space-y-4">
+                        <div class="p-3 bg-red-100 dark:bg-red-950/40 text-primary w-fit rounded-xl">
+                            <i data-lucide="book-open" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">ทักษะวิชาชีพครูและการสอน</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            ความเชี่ยวชาญการเขียนแผนการจัดการเรียนรู้ การออกแบบสื่อมัลติมีเดีย ดำเนินการสอน ปรับปรุงภูมิทัศน์ห้องเรียนและควบคุมพฤติกรรมผู้เรียนอย่างสร้างสรรค์
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-all space-y-4">
+                        <div class="p-3 bg-blue-100 dark:bg-blue-950/40 text-primary w-fit rounded-xl">
+                            <i data-lucide="file-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">งานเอกสารและงานวิจัยทางการศึกษา</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            มีความสันทัดในด้านการจัดเตรียมเอกสารราชการ รายงานประเมินสถานภาพของโรงเรียน และการทำงานร่วมงานกับผู้ใหญ่เพื่อจัดทำสถิติส่งรายงานประเมิน
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-all space-y-4">
+                        <div class="p-3 bg-amber-100 dark:bg-amber-950/40 text-primary w-fit rounded-xl">
+                            <i data-lucide="laptop" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">เทคโนโลยีและสื่อสร้างสรรค์เพื่อการศึกษา</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            การนำเข้าข้อมูลระบบคอมพิวเตอร์ การตัดต่อสื่อวิดีโอแนะนำโรงเรียน รวมถึงการสร้างสรรค์ แฟ้มสะสมผลงานออฟไลน์ด้วยโค้ดเว็บที่เป็นระเบียบ
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: EDUCATION TIMELINE -->
+        <section id="education" class="py-20 bg-white dark:bg-slate-900 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                    <span class="text-primary font-semibold text-sm tracking-wider uppercase">History</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">ประวัติการศึกษา</h2>
+                    <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="max-w-3xl mx-auto relative border-l-2 border-primary/30 ml-4 md:ml-32 pl-8 space-y-12" id="education-timeline-container">
+                    <!-- Dynamic timeline items populated here -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: PORTFOLIO / MEDIA STORAGE -->
+        <section id="portfolio" class="py-20 bg-slate-50 dark:bg-slate-950 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                    <span class="text-primary font-semibold text-sm tracking-wider uppercase">Collection</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">ผลงานและคลังมีเดีย</h2>
+                    <div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm max-w-xl mx-auto pt-2">
+                        รวมไฟล์เอกสารประกอบสัมมนา ภาพนิ่งกิจกรรม หรือวิดีโอโครงงานฝึกวิชาชีพครู สามารถเลือกคัดกรองหรือกดเพื่อแก้ไขอัปโหลดรายการใหม่ได้ทันที
+                    </p>
+                </div>
+
+                <!-- Portfolio Filters & Action Controls in Admin Mode -->
+                <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+                    <!-- Filter Tab Buttons -->
+                    <div class="flex space-x-2 bg-slate-200/70 dark:bg-slate-800 p-1.5 rounded-xl w-fit" id="portfolio-filters">
+                        <button onclick="filterPortfolio('all')" id="filter-all" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all bg-primary text-white shadow-sm">ทั้งหมด</button>
+                        <button onclick="filterPortfolio('image')" id="filter-image" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">รูปภาพ</button>
+                        <button onclick="filterPortfolio('video')" id="filter-video" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">วิดีโอ</button>
+                        <button onclick="filterPortfolio('file')" id="filter-file" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">เอกสาร/อื่นๆ</button>
+                    </div>
+
+                    <!-- Admin Portfolio Insert Tool -->
+                    <div class="edit-only hidden">
+                        <button onclick="openAddMediaModal()" class="flex items-center space-x-1.5 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm font-bold py-2.5 px-4 rounded-xl shadow-md transition-all">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            <span>เพิ่มผลงาน/อัปโหลดมีเดีย</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Grid of Items -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                    <!-- Dynamic Portfolio Items populated here -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 5: CONTACT FORM -->
+        <section class="py-20 bg-white dark:bg-slate-900 transition-colors">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800/40 dark:to-slate-900/60 p-8 sm:p-12 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+                    <div class="text-center space-y-2">
+                        <h2 class="text-2xl font-bold text-slate-900 dark:text-white">ฝากข้อความติดต่อกลับ</h2>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">หากคุณต้องการสัมภาษณ์ เสนองานฝึกสอน หรือร่วมมือทำกิจกรรมทางการศึกษา ฝากข้อมูลไว้ได้เลยครับ</p>
+                    </div>
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input id="contact-name" type="text" placeholder="ชื่อ-นามสกุล ของคุณ" required class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-800 dark:text-slate-100 outline-none focus:ring-2 focus:ring-primary/50 transition-all">
+                            <input id="contact-email" type="email" placeholder="อีเมลสำหรับติดต่อกลับ" required class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-800 dark:text-slate-100 outline-none focus:ring-2 focus:ring-primary/50 transition-all">
+                        </div>
+                        <textarea id="contact-msg" placeholder="รายละเอียดเรื่องที่คุณสนใจประสานงาน..." required rows="4" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-800 dark:text-slate-100 outline-none focus:ring-2 focus:ring-primary/50 transition-all"></textarea>
+                        <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 rounded-xl shadow-md transition-colors text-sm">ส่งข้อความติดต่อ</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: DEVELOPER & PORTRAIT -->
+        <section id="developer" class="py-20 bg-slate-50 dark:bg-slate-950 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 shadow-xl transition-colors">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        
+                        <!-- Dev Portrait Image -->
+                        <div class="lg:col-span-5 flex justify-center">
+                            <div class="relative w-64 h-64 md:w-80 md:h-80">
+                                <div class="absolute inset-0 bg-primary/20 rounded-full blur-2xl"></div>
+                                <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl group">
+                                    <img id="dev-pfp-img" src="https://drive.google.com/thumbnail?id=1ZBZ5HGKv55aZeAZHi8EPz-1IgGwlndGD&sz=w1000" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;q=80&amp;w=600';" alt="ผู้พัฒนาเว็บไซต์ อัสนี สงวนปุญญศิริ" class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all cursor-pointer edit-pfp-trigger hidden" onclick="triggerPfpEdit('dev-pfp-img')">
+                                        <div class="text-white text-center p-2">
+                                            <i data-lucide="camera" class="w-8 h-8 mx-auto mb-1"></i>
+                                            <span class="text-xs">เปลี่ยนรูปผู้พัฒนา</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Developer Info Text -->
+                        <div class="lg:col-span-7 space-y-6">
+                            <span class="text-primary font-semibold text-sm tracking-wider uppercase">Developer Information</span>
+                            <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">ผู้พัฒนาเว็บไซต์นี้</h2>
+                            
+                            <div class="space-y-4 text-slate-600 dark:text-slate-300">
+                                <p class="text-lg font-bold text-slate-800 dark:text-slate-200">นายอัสนี สงวนปุญญศิริ</p>
+                                <p class="leading-relaxed">
+                                    เว็บไซต์นี้ได้รับการออกแบบ วางรูปแบบสถาปัตยกรรม และเขียนระบบขึ้นด้วยตนเอง โดยมีเจตนารมณ์เพื่อสร้างโครงสร้างหน้าต่างแสดงผลสะสมงาน (E-Portfolio) สารพัดประโยชน์ ซึ่งเป็นระเบียบ สวยงาม ปลอดภัย และสามารถดำเนินการบันทึกข้อมูลแบบออฟไลน์ด้วยตนเองได้อย่างอิสระ
+                                </p>
+                            </div>
+
+                            <div class="pt-4 border-t border-slate-150 dark:border-slate-800 flex flex-wrap gap-4">
+                                <div class="flex items-center space-x-2 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-full">
+                                    <i data-lucide="code" class="w-4 h-4 text-primary"></i>
+                                    <span>HTML5 / Tailwind CSS / Vanilla JS</span>
+                                </div>
+                                <div class="flex items-center space-x-2 text-xs font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1.5 rounded-full">
+                                    <i data-lucide="shield-check" class="w-4 h-4 text-primary"></i>
+                                    <span>ระบบจัดการข้อมูลแบบ On-Memory &amp; Local Export</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 text-center md:text-left">
+            <div>
+                <p class="font-semibold text-slate-900 dark:text-white" id="footer-brand-name">แฟ้มสะสมผลงาน อัสนี สงวนปุญญศิริ</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">© 2026 นายอัสนี สงวนปุญญศิริ. มหาวิทยาลัยราชภัฏภูเก็ต. สงวนลิขสิทธิ์</p>
+            </div>
+            <div class="flex items-center space-x-4 text-slate-400">
+                <span class="text-xs font-mono text-slate-400">ผู้แก้ไขหลัก: Bank4481</span>
+                <span class="text-xs">|</span>
+                <span class="text-xs text-slate-500">มรภ.ภูเก็ต (PKRU)</span>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- MODALS SECTION -->
+    
+    <!-- 1. LOGIN ADMIN MODAL -->
+    <div id="login-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                    <i data-lucide="lock" class="w-5 h-5 text-primary"></i>
+                    <span>เข้าสู่ระบบโหมดแก้ไขข้อมูล</span>
+                </h3>
+                <button onclick="closeLoginModal()" class="text-slate-400 hover:text-slate-500">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">ชื่อผู้ใช้ (Username)</label>
+                    <input type="text" id="login-user" placeholder="กรอกชื่อผู้ใช้..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">รหัสผ่าน (Password)</label>
+                    <input type="password" id="login-pass" placeholder="กรอกรหัสผ่าน..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm">
+                </div>
+            </div>
+
+            <div id="login-err-msg" class="text-xs text-red-500 font-bold bg-red-50 dark:bg-red-950/25 p-2 rounded-lg hidden">
+                * ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้องตามข้อกำหนดที่ได้รับ
+            </div>
+
+            <button onclick="submitAdminLogin()" class="w-full bg-primary hover:bg-primary-dark text-white font-medium py-3 rounded-xl shadow-lg transition-colors text-sm">
+                ยืนยันเพื่อเข้าสู่โหมดแก้ไข
+            </button>
+        </div>
+    </div>
+
+    <!-- 2. INLINE PFP LINK UPDATE MODAL -->
+    <div id="pfp-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">อัปเดต URL ลิงก์รูปภาพ</h3>
+                <button onclick="closePfpModal()" class="text-slate-400 hover:text-slate-500">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="space-y-2">
+                <p class="text-xs text-slate-500 dark:text-slate-400">ใส่ลิงก์รูปภาพปลายทางตรง (Direct Image URL) หรือลิงก์จากกูเกิลไดรฟ์เพื่อเปลี่ยนภาพโปรไฟล์</p>
+                <input type="text" id="pfp-url-input" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50 text-sm" placeholder="วางลิงก์รูปภาพที่นี่...">
+            </div>
+            <div class="flex justify-end space-x-2">
+                <button onclick="closePfpModal()" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200">ยกเลิก</button>
+                <button onclick="savePfpLink()" class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary-dark">บันทึกรูปภาพ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. ADD NEW PORTFOLIO / MEDIA MODAL -->
+    <div id="media-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4 my-8">
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white" id="media-modal-title">เพิ่มข้อมูลผลงาน/มีเดียชิ้นใหม่</h3>
+                <button onclick="closeMediaModal()" class="text-slate-400 hover:text-slate-500">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-4 text-sm">
+                <!-- Type Selection -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">ประเภทสื่อมีเดีย</label>
+                    <select id="media-type" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50">
+                        <option value="image">รูปภาพ / อัลบั้ม</option>
+                        <option value="video">วิดีโอ (YouTube, Drive, mp4)</option>
+                        <option value="file">เอกสาร / ลิงก์ดาวน์โหลดไฟล์ (PDF, เอกสารอื่นๆ)</option>
+                    </select>
+                </div>
+
+                <!-- Title -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">หัวข้อผลงาน (Title)</label>
+                    <input type="text" id="media-title" placeholder="เช่น กิจกรรมจิตอาสามหาวิทยาลัย..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50">
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">คำบรรยาย (Description)</label>
+                    <textarea id="media-desc" rows="3" placeholder="ระบุรายละเอียดผลงาน สถานที่ หรือกิจกรรมโดยสังเขป..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50"></textarea>
+                </div>
+
+                <!-- Link/Source -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1" id="media-link-label">ลิงก์แหล่งที่มาของมีเดีย (Image URL / File PDF / Video Link)</label>
+                    <input type="text" id="media-source" placeholder="เช่น วางลิงก์รูปภาพ หรือลิงก์ Google Drive ไฟล์ PDF..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2.5 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50">
+                    <p class="text-[10px] text-slate-400 mt-1 leading-relaxed">* ลิงก์รูปภาพควรกดเปิดดูได้ทันที หรือหากเป็นลิงก์แบ่งปันจาก Google Drive โปรแกรมจะคำนวณแปลงลิงก์สากลให้โดยอัตโนมัติ</p>
+                </div>
+            </div>
+
+            <div class="flex justify-end space-x-2 pt-4 border-t border-slate-150 dark:border-slate-800">
+                <button onclick="closeMediaModal()" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200">ยกเลิก</button>
+                <button onclick="submitMediaItem()" class="px-4 py-2 bg-primary text-white text-xs font-bold rounded-lg hover:bg-primary-dark">บันทึกมีเดียชิ้นนี้</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. CUSTOM CONFIRM MODAL -->
+    <div id="confirm-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
+            <div class="flex items-center space-x-3 text-red-500">
+                <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white">ยืนยันการลบข้อมูล?</h3>
+            </div>
+            <p class="text-sm text-slate-500 dark:text-slate-400" id="confirm-modal-text">หากลบข้อมูลนี้แล้ว จะไม่สามารถย้อนคืนกลับมาได้ กรุณายืนยันการทำงาน</p>
+            <div class="flex justify-end space-x-2">
+                <button onclick="closeConfirmModal(false)" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200">ยกเลิก</button>
+                <button onclick="closeConfirmModal(true)" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg">ยืนยันลบ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. ADMIN INBOX VIEW MODAL -->
+    <div id="inbox-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4 flex flex-col max-h-[85vh]">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                    <i data-lucide="mail-open" class="text-primary w-5 h-5"></i>
+                    <span>กล่องข้อความที่มีผู้ฝากไว้ล่าสุด</span>
+                </h3>
+                <button onclick="closeInboxModal()" class="text-slate-400 hover:text-slate-500">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="overflow-y-auto space-y-3 flex-grow pr-1" id="inbox-list">
+                <!-- Messages populated here dynamically -->
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-slate-100 dark:border-slate-700">
+                <p class="text-xs text-slate-500 dark:text-slate-400">* ข้อมูลจะถูกบันทึกเมื่อแอดมินกดดาวน์โหลดหรือซิงก์ข้อมูล</p>
+                <button onclick="closeInboxModal()" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200">ปิดหน้าต่าง</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. GITHUB SYNC SETTINGS MODAL (NEW) -->
+    <div id="git-sync-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-100 dark:border-slate-700 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center space-x-2">
+                    <i data-lucide="git-commit" class="w-5 h-5 text-green-600"></i>
+                    <span>ตั้งค่าส่งออกไปยัง GitHub (Direct Sync)</span>
+                </h3>
+                <button onclick="closeGitSyncModal()" class="text-slate-400 hover:text-slate-500">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            
+            <p class="text-xs text-slate-500 leading-relaxed">
+                กรอกรายละเอียด GitHub ของคุณเพื่อเปิดใช้งานการบันทึกข้อมูลและส่งขึ้นเซิร์ฟเวอร์โดยตรง โดยที่**รหัสผ่าน Token จะถูกเก็บไว้อย่างปลอดภัยในหน่วยความจำของเครื่องคุณเท่านั้น** ไม่เสี่ยงต่อการหลุดไปในโค้ดสาธารณะ
+            </p>
+
+            <div class="space-y-3 text-sm">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">GitHub Personal Access Token (PAT)</label>
+                    <input type="password" id="git-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxxxxxx" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50 text-xs">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">ชื่อ Repository (ตัวอย่าง: username/repo-name)</label>
+                    <input type="text" id="git-repo" placeholder="Bank4481/portfolio" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50 text-xs">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">Branch (ส่วนใหญ่เป็น main)</label>
+                        <input type="text" id="git-branch" value="main" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50 text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase mb-1">ชื่อไฟล์ (เช่น index.html)</label>
+                        <input type="text" id="git-path" value="index.html" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-primary/50 text-xs">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end space-x-2 pt-3 border-t border-slate-100 dark:border-slate-700">
+                <button onclick="closeGitSyncModal()" class="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg hover:bg-slate-200">ยกเลิก</button>
+                <button onclick="saveGitSettingsAndSync()" class="px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-xs font-bold rounded-lg flex items-center space-x-1">
+                    <i data-lucide="upload-cloud" class="w-3.5 h-3.5"></i>
+                    <span>บันทึก &amp; อัปโหลดไป GitHub</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- CORE APPLICATION JAVASCRIPT & DATA STORAGE -->
+    <script>
+    
+    // --- 1. LOCAL DATA STATE (This serves as the source of truth) ---
+    // These values are injected into the HTML during design or export
+    let isDarkMode = false;
+    let isAdminLoggedIn = false;
+    let currentEditingPfpId = null;
+    let currentFilter = 'all';
+
+    // 10 Sophisticated Themes mapping to tailwind custom classes injected style block
+    const THEMES = [
+        {"id":"navy","name":"สีกรมท่าภูมิฐาน (Navy)","color":"#0f172a","lightColor":"#2563eb","bgGrad":"from-slate-900/10 via-blue-900/5 to-blue-500/5","shadow":"rgba(37, 99, 235, 0.15)"},
+        {"id":"emerald","name":"สีเขียวมรกตวิชาการ (Emerald)","color":"#064e3b","lightColor":"#059669","bgGrad":"from-emerald-950/10 via-emerald-900/5 to-teal-500/5","shadow":"rgba(5, 150, 105, 0.15)"},
+        {"id":"slate","name":"สีเทาโมเดิร์นคลาสสิก (Slate)","color":"#334155","lightColor":"#475569","bgGrad":"from-slate-900/10 via-slate-800/5 to-slate-500/5","shadow":"rgba(71, 85, 105, 0.15)"},
+        {"id":"crimson","name":"สีแดงชาดหรูหรา (Crimson)","color":"#7f1d1d","lightColor":"#dc2626","bgGrad":"from-red-950/10 via-red-900/5 to-rose-500/5","shadow":"rgba(220, 38, 38, 0.15)"},
+        {"id":"violet","name":"สีม่วงดุสิตพรีเมียม (Violet)","color":"#4c1d95","lightColor":"#7c3aed","bgGrad":"from-violet-950/10 via-violet-900/5 to-fuchsia-500/5","shadow":"rgba(124, 58, 237, 0.15)"},
+        {"id":"teal","name":"สีเขียวไข่นกการเวก (Teal)","color":"#115e59","lightColor":"#0d9488","bgGrad":"from-teal-950/10 via-teal-900/5 to-cyan-500/5","shadow":"rgba(13, 148, 136, 0.15)"},
+        {"id":"rose","name":"สีชมพูกลีบกุหลาบสุภาพ (Rose)","color":"#881337","lightColor":"#db2777","bgGrad":"from-rose-950/10 via-rose-900/5 to-pink-500/5","shadow":"rgba(219, 39, 119, 0.15)"},
+        {"id":"amber","name":"สีทองอำพันราชการ (Amber)","color":"#78350f","lightColor":"#d97706","bgGrad":"from-amber-950/10 via-amber-900/5 to-yellow-500/5","shadow":"rgba(217, 119, 6, 0.15)"},
+        {"id":"indigo","name":"สีครามราตรีลุ่มลึก (Indigo)","color":"#1e1b4b","lightColor":"#4f46e5","bgGrad":"from-indigo-950/10 via-indigo-900/5 to-purple-500/5","shadow":"rgba(79, 70, 229, 0.15)"},
+        {"id":"earth","name":"สีดินเผาเอิร์ธโทน (Earth)","color":"#451a03","lightColor":"#ca8a04","bgGrad":"from-orange-950/10 via-stone-900/5 to-amber-600/5","shadow":"rgba(202, 138, 4, 0.15)"}
+    ];
+    
+    let currentThemeId = 'crimson'; // Default Theme
+
+    // Dynamic State for Education Timeline
+    let educationTimeline = [
+        {"id":"edu-1","year":"พ.ศ. 2567 - ปัจจุบัน","degree":"ปริญญาตรี (กำลังศึกษา)","institution":"มหาวิทยาลัยราชภัฏภูเก็ต","details":"ศึกษาระดับปริญญาตรี เพื่อนำความรู้มาประยุกต์ใช้เพื่อการพัฒนาในท้องถิ่นจังหวัดพังงาและจังหวัดใกล้เคียง"},
+        {"id":"edu-2","year":"พ.ศ. 2564 - 2566","degree":"มัธยมศึกษาตอนปลาย","institution":"โรงเรียนในจังหวัดพังงา","details":"จบการศึกษาสายสามัญวิทยาศาสตร์-คณิตศาสตร์ สนใจงานเทคโนโลยีและการนำเสนอด้านข้อมูล"}
+    ];
+
+    // Dynamic State for Media Items (Images, Videos, PDFs, links)
+    let portfolioItems = [
+        {"id":"port-1783069364855","type":"file","title":"รายงานการฝึกปฏิบัติวิชาชีพครูระหว่างเรียน 1 ของนายอัสนี สงวนปุญญศิริ","desc":"เอกสารรายงานสรุปการสังเกตการณ์ฝึกประสบการณ์และพฤติกรรมการจัดการเรียนรู้ในสถานศึกษาเบื้องต้น","source":"https://drive.google.com/file/d/1ntjwB1Zmsngz-na-sTUOYyP3ezHaiiTH/view?usp=sharing"},
+        {"id":"port-1783066727505","type":"file","title":"วีดีโอแนะนำโรงเรียน","desc":"วิดีโอแนะนำโรงเรียนในความอนุเคราะห์เพื่อนำเสนอข้อมูลทัศนวิสัย ภูมิทัศน์ และบรรยากาศการเรียนรู้อันสร้างสรรค์","source":"https://drive.google.com/file/d/1lVG_m5ZrQBML9TTQLlboBojEHcICZg8R/view?usp=sharing"},
+        {"id":"port-1783065417877","type":"file","title":"รายงานการศึกษาสภาพทั่วไปของโรงเรียนตาริกพิทยพัฒน์","desc":"สรุปการศึกษาสิ่งแวดล้อมทางโครงสร้าง สภาพสังคม และแนวทางส่งเสริมวิชาการของโรงเรียนตาริกพิทยพัฒน์","source":"https://drive.google.com/file/d/19oXeKMOXwmj6tD1sCemr0NTqGomRKELP/view?usp=sharing"},
+        {"id":"port-1783065268255","type":"file","title":"โครงการ “Re-Color เติมสีสันบนเส้นทางแห่งการเรียนรู้”","desc":"เป็นโครงการของนักศึกษาฝึกประสบการณ์วิชาชีพครู ชั้นปีที่ 3 คณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต จำนวน 8 คน จัดทำขึ้นเพื่อปรับปรุงภูมิทัศน์และทาสีอาคารสถานที่ภายในโรงเรียนตาริกพิทยพัฒน์ ให้มีความสวยงาม สะอาด ปลอดภัย และเอื้อต่อการเรียนรู้","source":"https://drive.google.com/file/d/1S0gnTMq4wVmwfU4zldTLYl7axsG1KDOv/view?usp=sharing"},
+        {"id":"port-1","type":"image","title":"นายอัสนี สงวนปุญญศิริ","desc":"รูปภาพภาพเหมือนสำหรับการติดต่อประสานงาน และนำเสนองานตามหน่วยงานต่างๆ ทั่วประเทศ","source":"https://drive.google.com/thumbnail?id=1ZBZ5HGKv55aZeAZHi8EPz-1IgGwlndGD&sz=w1000"}
+    ];
+
+    // INLINE EDITABLE ELEMENTS (Cached to save on document re-generation)
+    let editableElementsData = {
+        "hero-tag":"กำลังศึกษาที่มหาวิทยาลัยราชภัฏภูเก็ต",
+        "hero-name":"นายอัสนี สงวนปุญญศิริ",
+        "hero-desc":"ยินดีต้อนรับสู่แฟ้มสะสมผลงานดิจิทัลของผม รวบรวมข้อมูลส่วนตัว ประวัติการศึกษา และผลงานกิจกรรมเพื่อเป็นข้อมูลสำหรับการนำเสนอและการทำงานร่วมกันในอนาคต",
+        "about-head":"เกี่ยวกับผม",
+        "about-bio-text":"สวัสดีครับ ผมชื่อ อัสนี สงวนปุญญศิริ ปัจจุบันเป็นนักศึกษามหาวิทยาลัยราชภัฏภูเก็ต ผมมุ่งมั่นที่จะพัฒนาทักษะตนเองในด้านต่างๆ อยู่เสมอ และพร้อมจะเรียนรู้สิ่งใหม่เพื่อนำความรู้ไปประยุกต์ใช้ในการทำงานและยกระดับสังคมรอบตัวให้ดีขึ้น",
+        "about-addr":"ตำบลบางม่วง อำเภอตะกั่วป่า จังหวัดพังงา",
+        "about-univ":"มหาวิทยาลัยราชภัฏภูเก็ต",
+        "about-mail":"bbak9988@gmail.com",
+        "about-ph":"0949919283",
+        "about-web":"https://www.facebook.com/asanee.sanguanpunyasiri"
+    };
+
+    // SYSTEM STORAGE FOR OFFLINE MESSAGES (Persists through save downloads)
+    let contactMessages = [
+        {"id":"msg-1783000000000","name":"ระบบตัวอย่าง","email":"system@asanee.com","message":"นี่คือกล่องรับข้อความออฟไลน์จำลอง เมื่อมีผู้ส่งแบบฟอร์มด้านล่าง ข้อความจะถูกเก็บที่นี่ แอดมินสามารถเปิดดู ลบ และบันทึกดาวน์โหลดอัปเดตไฟล์ได้จริงครับ!","date":"03 ก.ค. 2026 16:00"}
+    ];
+            
+
+    // --- 2. THEME & DISPLAY LOGIC ---
+        function applySelectedTheme(themeId) {
+            currentThemeId = themeId;
+            const theme = THEMES.find(t => t.id === themeId);
+            if (!theme) return;
+
+            // Generate robust and highly accurate CSS variable overrides for smooth theme harmony
+            let styleEl = document.getElementById('theme-variable-overrides');
+            if (!styleEl) {
+                styleEl = document.createElement('style');
+                styleEl.id = 'theme-variable-overrides';
+                document.head.appendChild(styleEl);
+            }
+
+            styleEl.innerHTML = `
+                :root {
+                    --color-primary: ${theme.color};
+                    --color-primary-light: ${theme.lightColor};
+                }
+                .text-primary { color: ${theme.color} !important; }
+                .bg-primary { background-color: ${theme.color} !important; }
+                .hover\\:bg-primary-dark:hover { background-color: ${theme.color}ee !important; }
+                .border-primary { border-color: ${theme.color} !important; }
+                .bg-primary\\/5 { background-color: ${theme.color}0a !important; }
+                .bg-primary\\/10 { background-color: ${theme.color}1c !important; }
+                .bg-primary\\/20 { background-color: ${theme.color}33 !important; }
+                .border-primary\\/20 { border-color: ${theme.color}33 !important; }
+                .border-primary\\/30 { border-color: ${theme.color}4d !important; }
+                .text-primary-light { color: ${theme.lightColor} !important; }
+                .focus-theme:focus { 
+                    outline: 2px solid ${theme.lightColor}; 
+                    outline-offset: 2px;
+                }
+                .theme-shadow {
+                    box-shadow: 0 10px 25px -5px ${theme.shadow}, 0 8px 10px -6px ${theme.shadow};
+                }
+                /* Dark Mode Dynamic Class Overwrites */
+                .dark .text-primary { color: ${theme.lightColor} !important; }
+                .dark .bg-primary { background-color: ${theme.color} !important; }
+                .dark .border-primary { border-color: ${theme.lightColor} !important; }
+                .dark .bg-primary\\/10 { background-color: ${theme.lightColor}22 !important; }
+                .dark .bg-primary\\/5 { background-color: ${theme.lightColor}0d !important; }
+            `;
+
+            // Update Active Check Icons and borders in Drawer
+            THEMES.forEach(t => {
+                const checkEl = document.getElementById(`theme-check-${t.id}`);
+                const swatchBox = document.getElementById(`theme-box-${t.id}`);
+                if (checkEl) {
+                    if (t.id === themeId) {
+                        checkEl.classList.remove('hidden');
+                        if (swatchBox) swatchBox.className = "w-full p-4 rounded-xl border-2 border-primary bg-slate-50 dark:bg-slate-800 text-left transition-all scale-102 shadow-md flex items-center justify-between";
+                    } else {
+                        checkEl.classList.add('hidden');
+                        if (swatchBox) swatchBox.className = "w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-left transition-all hover:scale-102 flex items-center justify-between";
+                    }
+                }
+            });
+
+            // Re-render hero backdrop style seamlessly
+            const heroSec = document.getElementById('home');
+            if (heroSec) {
+                heroSec.className = `relative py-20 md:py-32 overflow-hidden bg-gradient-to-br ${theme.bgGrad} transition-theme`;
+            }
+
+            // Update Logo color icon dynamically
+            const logoIcon = document.getElementById('logo-icon');
+            if (logoIcon) {
+                logoIcon.style.backgroundColor = theme.color;
+            }
+        }
+
+        function toggleThemeSettings() {
+            const drawer = document.getElementById('theme-drawer');
+            drawer.classList.toggle('hidden');
+        }
+
+        function toggleDarkMode() {
+            const body = document.documentElement;
+            isDarkMode = !isDarkMode;
+            if (isDarkMode) {
+                body.classList.add('dark');
+                document.getElementById('dark-mode-icon-sun').classList.remove('hidden');
+                document.getElementById('dark-mode-icon-moon').classList.add('hidden');
+            } else {
+                body.classList.remove('dark');
+                document.getElementById('dark-mode-icon-sun').classList.add('hidden');
+                document.getElementById('dark-mode-icon-moon').classList.remove('hidden');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const mobMenu = document.getElementById('mobile-menu');
+            mobMenu.classList.toggle('hidden');
+        }
+
+
+        // --- 3. SYSTEM STATE RENDERING ---
+        function renderThemeGrid() {
+            const container = document.getElementById('theme-grid');
+            container.innerHTML = '';
+            THEMES.forEach(t => {
+                const btn = document.createElement('button');
+                btn.id = `theme-box-${t.id}`;
+                btn.onclick = () => applySelectedTheme(t.id);
+                btn.className = `w-full p-4 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-left transition-all hover:scale-102 flex items-center justify-between`;
+                btn.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <div class="flex -space-x-2">
+                            <span class="w-6 h-6 rounded-full block border border-white dark:border-slate-700 shadow-md" style="background-color: ${t.color}"></span>
+                            <span class="w-6 h-6 rounded-full block border border-white dark:border-slate-700 shadow-md" style="background-color: ${t.lightColor}"></span>
+                        </div>
+                        <div class="text-xs">
+                            <span class="font-bold text-slate-800 dark:text-slate-100 block">${t.name}</span>
+                        </div>
+                    </div>
+                    <i data-lucide="check" class="w-4 h-4 text-green-600 dark:text-green-400 hidden" id="theme-check-${t.id}"></i>
+                `;
+                container.appendChild(btn);
+            });
+            lucide.createIcons();
+        }
+
+        function renderTimeline() {
+            const container = document.getElementById('education-timeline-container');
+            // Retain the add button placeholder
+            const addBtnMarkup = `
+                <div class="absolute -top-12 -left-[14px] edit-only ${isAdminLoggedIn ? '' : 'hidden'}">
+                    <button onclick="addTimelineItem()" class="bg-green-600 hover:bg-green-700 text-white text-xs font-bold py-1 px-3 rounded-full flex items-center space-x-1 shadow transition-all">
+                        <i data-lucide="plus" class="w-3 h-3"></i>
+                        <span>เพิ่มรายการการศึกษา</span>
+                    </button>
+                </div>
+            `;
+            
+            let timelineHTML = addBtnMarkup;
+
+            educationTimeline.forEach((item, index) => {
+                timelineHTML += `
+                    <div class="relative group">
+                        <!-- Dot icon -->
+                        <span class="absolute -left-[41px] top-1.5 flex items-center justify-center w-6 h-6 rounded-full bg-primary text-white text-[10px] font-bold">
+                            ${index + 1}
+                        </span>
+                        
+                        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl shadow-sm space-y-2 hover:shadow-md transition-all">
+                            <!-- Header Action Tools inside item in Admin login state -->
+                            <div class="flex items-center justify-between flex-wrap gap-2">
+                                <span class="text-xs font-bold text-primary bg-primary/10 px-2.5 py-1 rounded-full" 
+                                      contenteditable="${isAdminLoggedIn}" 
+                                      onblur="updateTimelineField('${item.id}', 'year', this.innerText)">
+                                    ${item.year}
+                                </span>
+                                
+                                <div class="edit-only ${isAdminLoggedIn ? 'flex' : 'hidden'} space-x-2">
+                                    <button onclick="confirmDeleteItem('timeline', '${item.id}')" class="text-red-500 hover:text-red-700 p-1" title="ลบประวัตินี้">
+                                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-lg font-bold text-slate-900 dark:text-white" 
+                                contenteditable="${isAdminLoggedIn}" 
+                                onblur="updateTimelineField('${item.id}', 'degree', this.innerText)">
+                                ${item.degree}
+                            </h3>
+                            <h4 class="text-sm font-semibold text-slate-600 dark:text-slate-400" 
+                                contenteditable="${isAdminLoggedIn}" 
+                                onblur="updateTimelineField('${item.id}', 'institution', this.innerText)">
+                                ${item.institution}
+                            </h4>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed" 
+                               contenteditable="${isAdminLoggedIn}" 
+                               onblur="updateTimelineField('${item.id}', 'details', this.innerText)">
+                                ${item.details}
+                            </p>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = timelineHTML;
+            lucide.createIcons();
+        }
+
+        function renderPortfolio() {
+            const grid = document.getElementById('portfolio-grid');
+            grid.innerHTML = '';
+
+            const filtered = currentFilter === 'all' 
+                ? portfolioItems 
+                : portfolioItems.filter(item => item.type === currentFilter);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl">
+                        <i data-lucide="folder-open" class="w-12 h-12 text-slate-300 dark:text-slate-700 mx-auto mb-3"></i>
+                        <p class="text-slate-400 text-sm">ไม่มีข้อมูลสื่อมีเดียประเภทนี้ในขณะนี้</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            filtered.forEach(item => {
+                let mediaElement = '';
+
+                // Generate view elements based on media types safely
+                if (item.type === 'image') {
+                    mediaElement = `
+                        <div class="w-full h-48 bg-slate-100 dark:bg-slate-950 relative overflow-hidden group">
+                            <img src="${item.source}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&q=80&w=600';" alt="${item.title}" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all">
+                                <a href="${item.source}" target="_blank" class="p-2.5 rounded-full bg-white text-slate-800 hover:scale-105 transition-all">
+                                    <i data-lucide="external-link" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                } else if (item.type === 'video') {
+                    // Check if it's embed or raw
+                    const isEmbed = item.source.includes('embed') || item.source.includes('youtube.com') || item.source.includes('youtu.be');
+                    if (isEmbed) {
+                        mediaElement = `
+                            <div class="w-full h-48 bg-slate-100 dark:bg-slate-950 relative overflow-hidden">
+                                <iframe class="w-full h-full" src="${item.source}" title="${item.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                        `;
+                    } else {
+                        mediaElement = `
+                            <div class="w-full h-48 bg-slate-100 dark:bg-slate-950 flex items-center justify-center p-4">
+                                <video controls class="w-full h-full rounded">
+                                    <source src="${item.source}" type="video/mp4">
+                                    เบราว์เซอร์ของคุณไม่สนับสนุนวิดีโอประเภทนี้
+                                </video>
+                            </div>
+                        `;
+                    }
+                } else if (item.type === 'file') {
+                    mediaElement = `
+                        <div class="w-full h-48 bg-primary/5 dark:bg-primary/10 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                            <div class="p-4 bg-primary/10 rounded-full text-primary">
+                                <i data-lucide="file-text" class="w-8 h-8"></i>
+                            </div>
+                            <span class="text-xs font-semibold text-primary block truncate max-w-full">${item.source.split('/').pop().substring(0, 30) || 'เอกสารแนบ'}</span>
+                            <a href="${item.source}" target="_blank" class="text-xs bg-primary text-white py-1.5 px-3 rounded-lg font-bold hover:bg-primary-dark transition-all shadow-sm">ดาวน์โหลด/เปิดดูไฟล์</a>
+                        </div>
+                    `;
+                }
+
+                const card = document.createElement('div');
+                card.className = `bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between`;
+                card.innerHTML = `
+                    <div>
+                        ${mediaElement}
+                        <div class="p-5 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase">${item.type}</span>
+                                
+                                <div class="edit-only ${isAdminLoggedIn ? 'flex' : 'hidden'} space-x-1">
+                                    <button onclick="confirmDeleteItem('portfolio', '${item.id}')" class="text-red-500 hover:text-red-700 p-1" title="ลบชิ้นงานนี้">
+                                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-slate-900 dark:text-white line-clamp-1 outline-none" 
+                                contenteditable="${isAdminLoggedIn}" 
+                                onblur="updatePortfolioField('${item.id}', 'title', this.innerText)">
+                                ${item.title}
+                            </h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed outline-none" 
+                               contenteditable="${isAdminLoggedIn}" 
+                               onblur="updatePortfolioField('${item.id}', 'desc', this.innerText)">
+                                ${item.desc}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900 flex items-center space-x-2 text-[11px] text-slate-400">
+                        <i data-lucide="link-2" class="w-3.5 h-3.5 flex-shrink-0"></i>
+                        <span class="truncate outline-none w-full block" 
+                              contenteditable="${isAdminLoggedIn}" 
+                              onblur="updatePortfolioField('${item.id}', 'source', this.innerText)">
+                            ${item.source}
+                        </span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function filterPortfolio(type) {
+            currentFilter = type;
+            // Update filter styles
+            const btnAll = document.getElementById('filter-all');
+            const btnImg = document.getElementById('filter-image');
+            const btnVid = document.getElementById('filter-video');
+            const btnFile = document.getElementById('filter-file');
+
+            const activeClass = 'bg-primary text-white shadow-sm';
+            const inactiveClass = 'text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700';
+
+            [btnAll, btnImg, btnVid, btnFile].forEach(b => {
+                b.className = `px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all ${inactiveClass}`;
+            });
+
+            if (type === 'all') btnAll.className = `px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all ${activeClass}`;
+            if (type === 'image') btnImg.className = `px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all ${activeClass}`;
+            if (type === 'video') btnVid.className = `px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all ${activeClass}`;
+            if (type === 'file') btnFile.className = `px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all ${activeClass}`;
+
+            renderPortfolio();
+        }
+
+
+        // --- 4. ADMIN CONTROL & EDITING SYSTEMS ---
+        function openLoginModal() {
+            if (isAdminLoggedIn) {
+                logoutAdmin();
+            } else {
+                document.getElementById('login-modal').classList.remove('hidden');
+                document.getElementById('login-err-msg').classList.add('hidden');
+            }
+        }
+
+        function closeLoginModal() {
+            document.getElementById('login-modal').classList.add('hidden');
+        }
+
+        function submitAdminLogin() {
+            const user = document.getElementById('login-user').value;
+            const pass = document.getElementById('login-pass').value;
+
+            // Checked against strict requested user details
+            if (user === 'Bank4481' && pass === 'Zx0949919283') {
+                isAdminLoggedIn = true;
+                closeLoginModal();
+                applyAdminModeState();
+                updateInboxCount();
+                showToast("ยินดีต้อนรับ!", "เข้าสู่ระบบโหมดผู้ดูแลระบบสำเร็จแล้ว");
+            } else {
+                document.getElementById('login-err-msg').classList.remove('hidden');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            applyAdminModeState();
+            showToast("ออกจากระบบ", "คุณออกจากระบบโหมดผู้ดูแลระบบแล้ว");
+        }
+
+        function applyAdminModeState() {
+            const adminBar = document.getElementById('admin-bar');
+            const adminBtn = document.getElementById('admin-btn');
+            const adminBtnText = document.getElementById('admin-btn-text');
+            const lockIcon = document.getElementById('lock-icon');
+
+            // Apply style & visibility states for edit targets
+            const editOnlyEls = document.querySelectorAll('.edit-only');
+            const editPfpTriggers = document.querySelectorAll('.edit-pfp-trigger');
+            const editableTextItems = document.querySelectorAll('[data-editable]');
+
+            if (isAdminLoggedIn) {
+                // Change navbar button status
+                adminBtn.className = "flex items-center space-x-1 px-4 py-2 rounded-full text-sm font-medium text-white bg-green-600 hover:bg-green-700 transition-all shadow-sm";
+                adminBtnText.innerText = "ผู้ดูแลระบบ (เปิดอยู่)";
+                lockIcon.setAttribute('data-lucide', 'unlock');
+                
+                // Show bars
+                adminBar.classList.remove('hidden');
+
+                // Toggle administrative elements
+                editOnlyEls.forEach(el => el.classList.remove('hidden'));
+                editPfpTriggers.forEach(el => el.classList.remove('hidden'));
+                
+                // Make headings and contenteditable fields dynamic
+                editableTextItems.forEach(el => {
+                    el.setAttribute('contenteditable', 'true');
+                    el.classList.add('bg-amber-100', 'dark:bg-amber-950/40', 'p-1', 'rounded', 'border', 'border-amber-300', 'dark:border-amber-700/50', 'focus:ring-2', 'focus:ring-primary/50');
+                });
+            } else {
+                // Change navbar button status back to standard
+                adminBtn.className = "flex items-center space-x-1 px-4 py-2 rounded-full text-sm font-medium text-white bg-primary hover:bg-primary-dark transition-all shadow-sm";
+                adminBtnText.innerText = "ผู้ดูแลระบบ";
+                lockIcon.setAttribute('data-lucide', 'lock');
+
+                // Hide bars
+                adminBar.classList.add('hidden');
+
+                // Toggle administrative elements
+                editOnlyEls.forEach(el => el.classList.add('hidden'));
+                editPfpTriggers.forEach(el => el.classList.add('hidden'));
+
+                // Turn off contenteditable fields
+                editableTextItems.forEach(el => {
+                    el.removeAttribute('contenteditable');
+                    el.className = el.className.replace(/bg-amber-100|dark:bg-amber-950\/40|p-1|rounded|border|border-amber-300|dark:border-amber-700\/50|focus:ring-2|focus:ring-primary\/50/g, '').trim();
+                });
+            }
+
+            lucide.createIcons();
+            
+            // Re-render items so that they pick up the editable capability
+            renderTimeline();
+            renderPortfolio();
+        }
+
+        // --- INLINE EDIT HANDLERS FOR TIMELINE AND PORTFOLIO ---
+        function updateTimelineField(id, field, value) {
+            const item = educationTimeline.find(item => item.id === id);
+            if (item) {
+                item[field] = value.trim();
+            }
+        }
+
+        function updatePortfolioField(id, field, value) {
+            const item = portfolioItems.find(item => item.id === id);
+            if (item) {
+                item[field] = value.trim();
+            }
+        }
+
+        // --- CUSTOM MODAL FOR DELETION ---
+        let currentDeleteTarget = null;
+        let currentDeleteType = null;
+
+        function confirmDeleteItem(type, id) {
+            currentDeleteType = type;
+            currentDeleteTarget = id;
+            document.getElementById('confirm-modal').classList.remove('hidden');
+        }
+
+        function closeConfirmModal(shouldDelete) {
+            document.getElementById('confirm-modal').classList.add('hidden');
+            if (shouldDelete && currentDeleteTarget) {
+                if (currentDeleteType === 'timeline') {
+                    educationTimeline = educationTimeline.filter(item => item.id !== currentDeleteTarget);
+                    renderTimeline();
+                    showToast("เสร็จสิ้น", "ลบประวัติการศึกษาเรียบร้อยแล้ว");
+                } else if (currentDeleteType === 'portfolio') {
+                    portfolioItems = portfolioItems.filter(item => item.id !== currentDeleteTarget);
+                    renderPortfolio();
+                    showToast("เสร็จสิ้น", "ลบผลงานกิจกรรมเรียบร้อยแล้ว");
+                }
+            }
+            currentDeleteTarget = null;
+            currentDeleteType = null;
+        }
+
+        function addTimelineItem() {
+            const newItem = {
+                id: 'edu-' + Date.now(),
+                year: 'พ.ศ. xxxx - xxxx',
+                degree: 'ชื่อวุฒิการศึกษา/ปริญญา',
+                institution: 'ชื่อสถาบันการศึกษา',
+                details: 'กรอกคำอธิบายและข้อมูลสำคัญ'
+            };
+            educationTimeline.unshift(newItem);
+            renderTimeline();
+            showToast("สำเร็จ", "เพิ่มช่องกรอกประวัติการศึกษาใหม่เรียบร้อย");
+        }
+
+        // --- PFP IMAGE CHANGE UTILS ---
+        function triggerPfpEdit(imgElementId) {
+            currentEditingPfpId = imgElementId;
+            const currentSrc = document.getElementById(imgElementId).src;
+            document.getElementById('pfp-url-input').value = currentSrc;
+            document.getElementById('pfp-modal').classList.remove('hidden');
+        }
+
+        function closePfpModal() {
+            document.getElementById('pfp-modal').classList.add('hidden');
+            currentEditingPfpId = null;
+        }
+
+        function savePfpLink() {
+            const newUrl = document.getElementById('pfp-url-input').value.trim();
+            if (newUrl && currentEditingPfpId) {
+                let processedUrl = newUrl;
+                // Google Drive View URL conversion to Direct Image Link conversion
+                if (newUrl.includes('drive.google.com/file/d/')) {
+                    const match = newUrl.match(/\/file\/d\/([^\/]+)/);
+                    if (match && match[1]) {
+                        processedUrl = `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
+                    }
+                } else if (newUrl.includes('drive.google.com/open?id=')) {
+                    const match = newUrl.match(/id=([^&]+)/);
+                    if (match && match[1]) {
+                        processedUrl = `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
+                    }
+                }
+                
+                document.getElementById(currentEditingPfpId).src = processedUrl;
+                showToast("อัปเดตรูปสำเร็จ", "อัปโหลดที่อยู่ลิงก์รูปโปรไฟล์ใหม่เรียบร้อยแล้ว");
+            }
+            closePfpModal();
+        }
+
+        // --- PORTFOLIO MEDIA INSERT UTILS ---
+        function openAddMediaModal() {
+            document.getElementById('media-modal').classList.remove('hidden');
+            document.getElementById('media-title').value = '';
+            document.getElementById('media-desc').value = '';
+            document.getElementById('media-source').value = '';
+        }
+
+        function closeMediaModal() {
+            document.getElementById('media-modal').classList.add('hidden');
+        }
+
+        function submitMediaItem() {
+            const type = document.getElementById('media-type').value;
+            const title = document.getElementById('media-title').value.trim() || 'ผลงานกิจกรรมไม่มีชื่อหัวข้อ';
+            const desc = document.getElementById('media-desc').value.trim() || 'คำบรรยายสั้น';
+            let source = document.getElementById('media-source').value.trim();
+
+            if (!source) {
+                showToast("เกิดข้อผิดพลาด", "กรุณาใส่ลิงก์รูปภาพ ไฟล์ หรือวิดีโอเพื่อความสมบูรณ์", "error");
+                return;
+            }
+
+            // Google Drive Auto-Conversion matching requested profile structure
+            if (source.includes('drive.google.com/file/d/')) {
+                const match = source.match(/\/file\/d\/([^\/]+)/);
+                if (match && match[1]) {
+                    if (type === 'image') {
+                        source = `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
+                    }
+                }
+            }
+
+            const newItem = {
+                id: 'port-' + Date.now(),
+                type,
+                title,
+                desc,
+                source
+            };
+
+            portfolioItems.unshift(newItem);
+            renderPortfolio();
+            closeMediaModal();
+            showToast("สำเร็จ", "เพิ่มมีเดียและสร้างชิ้นงานผลงานเรียบร้อยแล้ว");
+        }
+
+
+        // --- 5. INBOX MESSAGE UTILS ---
+        function openInboxModal() {
+            const modal = document.getElementById('inbox-modal');
+            modal.classList.remove('hidden');
+            renderInboxList();
+        }
+
+        function closeInboxModal() {
+            const modal = document.getElementById('inbox-modal');
+            modal.classList.add('hidden');
+        }
+
+        function renderInboxList() {
+            const container = document.getElementById('inbox-list');
+            container.innerHTML = '';
+
+            if (contactMessages.length === 0) {
+                container.innerHTML = `
+                    <div class="py-12 text-center text-slate-400">
+                        <i data-lucide="mail" class="w-12 h-12 mx-auto mb-2 text-slate-300 dark:text-slate-600"></i>
+                        <p class="text-sm">ไม่มีข้อความติดต่อในขณะนี้</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            contactMessages.forEach(msg => {
+                const item = document.createElement('div');
+                item.className = "p-4 bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-xl space-y-2 relative";
+                item.innerHTML = `
+                    <button onclick="deleteInboxMessage('${msg.id}')" class="absolute top-4 right-4 text-red-500 hover:text-red-700 p-1" title="ลบข้อความนี้">
+                        <i data-lucide="trash" class="w-4 h-4"></i>
+                    </button>
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                        <span class="font-bold text-slate-900 dark:text-white text-sm">${msg.name}</span>
+                        <span class="text-xs text-slate-400">${msg.date}</span>
+                    </div>
+                    <p class="text-xs text-primary font-medium">${msg.email}</p>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed bg-white dark:bg-slate-950 p-3 rounded-lg border border-slate-100 dark:border-slate-800 mt-2 whitespace-pre-line">${msg.message}</p>
+                `;
+                container.appendChild(item);
+            });
+            lucide.createIcons();
+        }
+
+        function deleteInboxMessage(id) {
+            contactMessages = contactMessages.filter(msg => msg.id !== id);
+            renderInboxList();
+            updateInboxCount();
+            showToast("เรียบร้อย", "ลบข้อความเสร็จสิ้น");
+        }
+
+        function updateInboxCount() {
+            const countEl = document.getElementById('inbox-count');
+            if (countEl) countEl.innerText = contactMessages.length;
+        }
+
+
+        // --- 6. GITHUB DIRECT SYNC SYSTEM (NEW SYSTEM) ---
+        function openGitSyncModal() {
+            document.getElementById('git-sync-modal').classList.remove('hidden');
+            // Pre-fill fields from LocalStorage if they exist
+            document.getElementById('git-token').value = localStorage.getItem('git_pat') || '';
+            document.getElementById('git-repo').value = localStorage.getItem('git_repo') || '';
+            document.getElementById('git-branch').value = localStorage.getItem('git_branch') || 'main';
+            document.getElementById('git-path').value = localStorage.getItem('git_path') || 'index.html';
+        }
+
+        function closeGitSyncModal() {
+            document.getElementById('git-sync-modal').classList.add('hidden');
+        }
+
+        // Trigger compilation and push directly to GitHub API
+        async function saveGitSettingsAndSync() {
+            const token = document.getElementById('git-token').value.trim();
+            const repo = document.getElementById('git-repo').value.trim();
+            const branch = document.getElementById('git-branch').value.trim();
+            const path = document.getElementById('git-path').value.trim();
+
+            if (!token || !repo || !branch || !path) {
+                showToast("ข้อมูลไม่ครบถ้วน", "กรุณากรอกข้อมูลการเชื่อมต่อ GitHub ให้ครบทุกช่อง", "error");
+                return;
+            }
+
+            // Save configuration in user's browser localStorage safely
+            localStorage.setItem('git_pat', token);
+            localStorage.setItem('git_repo', repo);
+            localStorage.setItem('git_branch', branch);
+            localStorage.setItem('git_path', path);
+
+            closeGitSyncModal();
+            showToast("กำลังเริ่มอัปเดต", "กำลังตรวจสอบคลังและเชื่อมโยงข้อมูลตรงไปยัง GitHub...", "success");
+
+            // Build output HTML content package
+            const updatedHtml = compileUpdatedHTMLString();
+
+            try {
+                // Step 1: Fetch the SHA of the target file to overwrite it properly
+                const getFileUrl = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
+                let fileSha = null;
+
+                const getRes = await fetch(getFileUrl, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Accept': 'application/vnd.github.v3+json'
+                    }
+                });
+
+                if (getRes.ok) {
+                    const fileData = await getRes.json();
+                    fileSha = fileData.sha;
+                } else if (getRes.status !== 404) {
+                    throw new Error("ไม่สามารถค้นหาประวัติไฟล์เดิมได้สำเร็จ ตรวจสอบ Token หรือ Repo");
+                }
+
+                // Step 2: Push commit updated HTML in Base64 (supporting UTF-8 characters)
+                // Use a standard robust Unicode-compatible base64 encoding scheme
+                const base64Content = btoa(unescape(encodeURIComponent(updatedHtml)));
+
+                const putFileUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
+                const commitBody = {
+                    message: "Update portfolio content from live admin interface",
+                    content: base64Content,
+                    branch: branch
+                };
+                if (fileSha) {
+                    commitBody.sha = fileSha;
+                }
+
+                const putRes = await fetch(putFileUrl, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `token ${token}`,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/vnd.github.v3+json'
+                    },
+                    body: JSON.stringify(commitBody)
+                });
+
+                if (putRes.ok) {
+                    showToast("อัปโหลดสำเร็จ!", "โค้ดได้รับการอัปเดตตรงไปยัง GitHub แล้ว! รอหน้าเว็บออนไลน์ประมวลผลประมาณ 1 นาที", "success");
+                } else {
+                    const errorDetails = await putRes.json();
+                    throw new Error(errorDetails.message || "เกิดข้อผิดพลาดในการทำ Commit");
+                }
+
+            } catch (err) {
+                console.error(err);
+                showToast("ซิงก์ไม่สำเร็จ", err.message, "error");
+            }
+        }
+
+        // Shared utility to generate clean static build of the page state
+        function compileUpdatedHTMLString() {
+            // First cache all custom inline editable contents
+            const editableElements = document.querySelectorAll('[data-editable]');
+            editableElements.forEach(el => {
+                const key = el.getAttribute('data-editable');
+                editableElementsData[key] = el.innerText;
+            });
+
+            // ปิดโหมดผู้ดูแลระบบชั่วคราว เพื่อให้ได้โค้ดเพียว ๆ
+            const wasAdmin = isAdminLoggedIn;
+            if (wasAdmin) {
+                isAdminLoggedIn = false;
+                applyAdminModeState();
+            }
+
+            // Deep clone the source code of current active document 
+            let rawDoc = document.documentElement.outerHTML;
+
+            // Build state object strings to inject directly into the file's JavaScript memory
+            const stateInjector = `
+    // --- 1. LOCAL DATA STATE (This serves as the source of truth) ---
+    // These values are injected into the HTML during design or export
+    let isDarkMode = ${isDarkMode};
+    let isAdminLoggedIn = false;
+    let currentEditingPfpId = null;
+    let currentFilter = '${currentFilter}';
+
+    // 10 Sophisticated Themes mapping to tailwind custom classes injected style block
+    const THEMES = ${JSON.stringify(THEMES)};
+    
+    let currentThemeId = '${currentThemeId}'; // Default Theme
+
+    // Dynamic State for Education Timeline
+    let educationTimeline = ${JSON.stringify(educationTimeline)};
+
+    // Dynamic State for Media Items (Images, Videos, PDFs, links)
+    let portfolioItems = ${JSON.stringify(portfolioItems)};
+
+    // INLINE EDITABLE ELEMENTS (Cached to save on document re-generation)
+    let editableElementsData = ${JSON.stringify(editableElementsData)};
+
+    // SYSTEM STORAGE FOR OFFLINE MESSAGES (Persists through save downloads)
+    let contactMessages = ${JSON.stringify(contactMessages)};
+            `;
+
+            // Replace script block state with the updated serialized state
+            const statePattern = /\/\/ --- 1\. LOCAL DATA STATE[\s\S]*?\/\/ --- 2\. THEME & DISPLAY LOGIC ---/;
+            rawDoc = rawDoc.replace(statePattern, stateInjector + '\n\n    // --- 2. THEME & DISPLAY LOGIC ---');
+
+            // Find current image links in the DOM and replace them
+            const heroPfpImg = document.getElementById('hero-pfp-img').src;
+            const devPfpImg = document.getElementById('dev-pfp-img').src;
+
+            // Rewrite static default src to keep updated images
+            rawDoc = rawDoc.replace(/id="hero-pfp-img"\s+src="[^"]*"/, `id="hero-pfp-img" src="${heroPfpImg}"`);
+            rawDoc = rawDoc.replace(/id="dev-pfp-img"\s+src="[^"]*"/, `id="dev-pfp-img" src="${devPfpImg}"`);
+
+            // Compile total document HTML structure
+            const finalHtml = `<!DOCTYPE html>\n` + rawDoc;
+
+            // คืนสถานะล็อกอินบนคอมปัจจุบัน
+            if (wasAdmin) {
+                isAdminLoggedIn = true;
+                applyAdminModeState();
+            }
+
+            return finalHtml;
+        }
+
+
+        // --- 7. DATA SAVE & EXPORT SYSTEM (LOCAL FILE DOWNLOAD) ---
+        function saveAndGenerateHTML() {
+            const finalHtml = compileUpdatedHTMLString();
+
+            // Create virtual element for download
+            const blob = new Blob([finalHtml], { type: 'text/html' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'portfolio-asanee-updated.html';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            showToast("อัปเดตข้อมูลและระบบเสร็จสิ้น", "ดาวน์โหลดไฟล์ 'portfolio-asanee-updated.html' ลงในเครื่องเรียบร้อยแล้ว!");
+        }
+
+        // --- CUSTOM TOAST MESSAGE SYSTEM ---
+        function showToast(title, message, type = "success") {
+            const containerId = "toast-container";
+            let container = document.getElementById(containerId);
+            if (!container) {
+                container = document.createElement('div');
+                container.id = containerId;
+                container.className = "fixed bottom-6 right-6 z-50 flex flex-col space-y-3 max-w-sm w-full";
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            toast.className = "bg-slate-900 text-white dark:bg-slate-800 dark:border dark:border-slate-700 px-5 py-4 rounded-xl shadow-2xl flex items-start space-x-3 transition-all transform translate-y-2 opacity-0 duration-300";
+            
+            const iconColor = type === "error" ? "text-red-500" : "text-green-500";
+            const iconName = type === "error" ? "alert-circle" : "check-circle";
+
+            toast.innerHTML = `
+                <i data-lucide="${iconName}" class="w-6 h-6 ${iconColor} flex-shrink-0 mt-0.5"></i>
+                <div class="flex-grow">
+                    <p class="font-bold text-sm">${title}</p>
+                    <p class="text-xs text-slate-400 mt-0.5">${message}</p>
+                </div>
+            `;
+
+            container.appendChild(toast);
+            lucide.createIcons();
+
+            // Trigger animation
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            // Remove automatically
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-1');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 4500);
+        }
+
+        // --- CONTACT SUBMITTED HANDLER (SAVED DIRECTLY IN STATE) ---
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const message = document.getElementById('contact-msg').value.trim();
+
+            const dateStr = new Date().toLocaleString('th-TH', { 
+                day: '2-digit', 
+                month: 'short', 
+                year: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+
+            const newMsg = {
+                id: 'msg-' + Date.now(),
+                name,
+                email,
+                message,
+                date: dateStr
+            };
+
+            contactMessages.unshift(newMsg);
+            updateInboxCount();
+            
+            e.target.reset();
+            showToast(
+                "ส่งสำเร็จ!", 
+                "ระบบบันทึกข้อความของคุณแล้ว แอดมินจะดาวน์โหลดอัปเดตเพื่ออ่านข้อความในการเปิดเซฟไฟล์ครั้งต่อไป ขอบคุณครับ!"
+            );
+        }
+
+        // --- SCROLLSPY MENU ACTIVATION ---
+        function runScrollspy() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('#desktop-menu a.nav-link');
+            
+            window.addEventListener('scroll', () => {
+                let currentSecId = '';
+                const scrollPos = window.scrollY + 200; // Offset
+
+                sections.forEach(sec => {
+                    const top = sec.offsetTop;
+                    const height = sec.offsetHeight;
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        currentSecId = sec.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-primary', 'dark:text-primary-light', 'font-bold');
+                    if (link.getAttribute('href') === `#${currentSecId}`) {
+                        link.classList.add('text-primary', 'dark:text-primary-light', 'font-bold');
+                    }
+                });
+            });
+        }
+
+
+        // --- 8. INITIALIZATION ---
+        window.onload = function() {
+            // Apply loaded inline editable elements data if existing from previous exports
+            if (Object.keys(editableElementsData).length > 0) {
+                Object.keys(editableElementsData).forEach(key => {
+                    const targetEl = document.querySelector(`[data-editable="${key}"]`);
+                    if (targetEl) {
+                        targetEl.innerText = editableElementsData[key];
+                    }
+                });
+            }
+
+            // Fire standard setups
+            applySelectedTheme(currentThemeId);
+            renderThemeGrid();
+            renderTimeline();
+            renderPortfolio();
+            updateInboxCount();
+            runScrollspy();
+            lucide.createIcons();
+        };
+    </script>
+
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col space-y-3 max-w-sm w-full"></div>
+</body>
+</html>
