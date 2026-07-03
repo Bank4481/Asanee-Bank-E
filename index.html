@@ -300,7 +300,7 @@
                         
                         <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
                             สวัสดีครับ ผม <br class="sm:hidden">
-                            <span class="text-primary -amber-300 bg-amber-100 dark:bg-amber-950/40 p-1 rounded border border-amber-300 dark:border-amber-700/50" id="hero-name-text" data-editable="hero-name" contenteditable="true"><br><br>นายอัสนี สงวนปุญญศิริ</span>
+                            <span class="text-primary -amber-300 bg-amber-100 dark:bg-amber-950/40 p-1 rounded border border-amber-300 dark:border-amber-700/50" id="hero-name-text" data-editable="hero-name" contenteditable="true">นายอัสนี <br>สงวนปุญญศิริ</span>
                         </h1>
                         
                         <p class="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto lg:mx-0 -amber-300 bg-amber-100 dark:bg-amber-950/40 p-1 rounded border border-amber-300 dark:border-amber-700/50" id="hero-desc-text" data-editable="hero-desc" contenteditable="true">ยินดีต้อนรับสู่แฟ้มสะสมผลงานดิจิทัลของผม รวบรวมข้อมูลส่วนตัว ประวัติการศึกษา และผลงานกิจกรรมเพื่อเป็นข้อมูลสำหรับการนำเสนอและการทำงานร่วมกันในอนาคต</p>
@@ -526,10 +526,10 @@
                 <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
                     <!-- Filter Tab Buttons -->
                     <div class="flex space-x-2 bg-slate-100 dark:bg-slate-800 p-1.5 rounded-xl w-fit" id="portfolio-filters">
-                        <button onclick="filterPortfolio('all')" id="filter-all" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg bg-primary text-white shadow-sm transition-all">ทั้งหมด</button>
-                        <button onclick="filterPortfolio('image')" id="filter-image" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">รูปภาพ</button>
-                        <button onclick="filterPortfolio('video')" id="filter-video" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">วิดีโอ</button>
-                        <button onclick="filterPortfolio('file')" id="filter-file" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">เอกสาร/อื่นๆ</button>
+                        <button onclick="filterPortfolio('all')" id="filter-all" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all bg-primary text-white shadow-sm">ทั้งหมด</button>
+                        <button onclick="filterPortfolio('image')" id="filter-image" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">รูปภาพ</button>
+                        <button onclick="filterPortfolio('video')" id="filter-video" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">วิดีโอ</button>
+                        <button onclick="filterPortfolio('file')" id="filter-file" class="px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-all text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700">เอกสาร/อื่นๆ</button>
                     </div>
 
                     <!-- Admin Portfolio Insert Tool -->
@@ -543,6 +543,42 @@
 
                 <!-- Grid of Items -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid"><div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+                    <div>
+                        
+                        <div class="w-full h-48 bg-primary/5 dark:bg-primary/10 flex flex-col items-center justify-center p-6 text-center space-y-3">
+                            <div class="p-4 bg-primary/10 rounded-full text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" aria-hidden="true" class="lucide lucide-file-text w-8 h-8"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path><path d="M14 2v5a1 1 0 0 0 1 1h5"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                            </div>
+                            <span class="text-xs font-semibold text-primary block truncate max-w-full">view?usp=sharing</span>
+                            <a href="https://drive.google.com/file/d/1lVG_m5ZrQBML9TTQLlboBojEHcICZg8R/view?usp=sharing" target="_blank" class="text-xs bg-primary text-white py-1.5 px-3 rounded-lg font-bold hover:bg-primary-dark transition-all">ดาวน์โหลด/เปิดดูไฟล์</a>
+                        </div>
+                    
+                        <div class="p-5 space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase">file</span>
+                                
+                                <div class="edit-only flex space-x-1">
+                                    <button onclick="deletePortfolioItem('port-1783066727505')" class="text-red-500 hover:text-red-700 p-1" title="ลบชิ้นงานนี้">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" aria-hidden="true" class="lucide lucide-trash-2 w-4 h-4"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <h3 class="font-bold text-slate-900 dark:text-white line-clamp-1" contenteditable="true" onblur="updatePortfolioField('port-1783066727505', 'title', this.innerText)">
+                                วีดีโอแนะนำโรงเรียน
+                            </h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed" contenteditable="true" onblur="updatePortfolioField('port-1783066727505', 'desc', this.innerText)">
+                                
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900 flex items-center space-x-2 text-[11px] text-slate-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="link-2" aria-hidden="true" class="lucide lucide-link-2 w-3.5 h-3.5"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg>
+                        <span class="truncate" contenteditable="true" onblur="updatePortfolioField('port-1783066727505', 'source', this.innerText)">
+                            https://drive.google.com/file/d/1lVG_m5ZrQBML9TTQLlboBojEHcICZg8R/view?usp=sharing
+                        </span>
+                    </div>
+                </div><div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
                     <div>
                         
                         <div class="w-full h-48 bg-primary/5 dark:bg-primary/10 flex flex-col items-center justify-center p-6 text-center space-y-3">
@@ -648,38 +684,6 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="link-2" aria-hidden="true" class="lucide lucide-link-2 w-3.5 h-3.5"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg>
                         <span class="truncate" contenteditable="true" onblur="updatePortfolioField('port-1783065194661', 'source', this.innerText)">
                             https://drive.google.com/file/d/16XnzuvLrKJzj4hH4iP-S-CPiNlcXBrmM/view?usp=sharing
-                        </span>
-                    </div>
-                </div><div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-                    <div>
-                        
-                            <div class="w-full h-48 bg-slate-100 dark:bg-slate-950 relative overflow-hidden">
-                                <iframe class="w-full h-full" src="https://youtu.be/NU8YdJiR2cw" title="วีดีโอแนะนำโรงเรียน" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
-                            </div>
-                        
-                        <div class="p-5 space-y-2">
-                            <div class="flex items-center justify-between">
-                                <span class="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded uppercase">video</span>
-                                
-                                <div class="edit-only flex space-x-1">
-                                    <button onclick="deletePortfolioItem('port-1783065078692')" class="text-red-500 hover:text-red-700 p-1" title="ลบชิ้นงานนี้">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="trash-2" aria-hidden="true" class="lucide lucide-trash-2 w-4 h-4"><path d="M10 11v6"></path><path d="M14 11v6"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M3 6h18"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <h3 class="font-bold text-slate-900 dark:text-white line-clamp-1" contenteditable="true" onblur="updatePortfolioField('port-1783065078692', 'title', this.innerText)">
-                                วีดีโอแนะนำโรงเรียน
-                            </h3>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed" contenteditable="true" onblur="updatePortfolioField('port-1783065078692', 'desc', this.innerText)">
-                                
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="p-4 border-t border-slate-100 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900 flex items-center space-x-2 text-[11px] text-slate-400">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="link-2" aria-hidden="true" class="lucide lucide-link-2 w-3.5 h-3.5"><path d="M9 17H7A5 5 0 0 1 7 7h2"></path><path d="M15 7h2a5 5 0 1 1 0 10h-2"></path><line x1="8" x2="16" y1="12" y2="12"></line></svg>
-                        <span class="truncate" contenteditable="true" onblur="updatePortfolioField('port-1783065078692', 'source', this.innerText)">
-                            https://youtu.be/NU8YdJiR2cw
                         </span>
                     </div>
                 </div><div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
@@ -919,10 +923,10 @@
     let educationTimeline = [{"id":"edu-1","year":"พ.ศ. 2567 - ปัจจุบัน","degree":"ปริญญาตรี (กำลังศึกษา)","institution":"มหาวิทยาลัยราชภัฏภูเก็ต","details":"ศึกษาระดับปริญญาตรี เพื่อนำความรู้มาประยุกต์ใช้เพื่อการพัฒนาในท้องถิ่นจังหวัดพังงาและจังหวัดใกล้เคียง"},{"id":"edu-2","year":"พ.ศ. 2564 - 2566","degree":"มัธยมศึกษาตอนปลาย","institution":"โรงเรียนในจังหวัดพังงา","details":"จบการศึกษาสายสามัญวิทยาศาสตร์-คณิตศาสตร์ สนใจงานเทคโนโลยีและการนำเสนอด้านข้อมูล"}];
 
     // Dynamic State for Media Items (Images, Videos, PDFs, links)
-    let portfolioItems = [{"id":"port-1783065417877","type":"file","title":"รายงานการศึกษาสภาพทั่วไปของโรงเรียนตาริกพิทยพัฒน์","desc":"","source":"https://drive.google.com/file/d/19oXeKMOXwmj6tD1sCemr0NTqGomRKELP/view?usp=sharing"},{"id":"port-1783065268255","type":"file","title":"โครงการ “Re-Color เติมสีสันบนเส้นทางแห่งการเรียนรู้”","desc":"เป็นโครงการของนักศึกษาฝึกประสบการณ์วิชาชีพครู ชั้นปีที่ 3 คณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต จำนวน 8 คน จัดทำขึ้นเพื่อปรับปรุงภูมิทัศน์และทาสีอาคารสถานที่ภายในโรงเรียนตาริกพิทยพัฒน์ ให้มีความสวยงาม สะอาด ปลอดภัย และเอื้อต่อการเรียนรู้","source":"https://drive.google.com/file/d/1S0gnTMq4wVmwfU4zldTLYl7axsG1KDOv/view?usp=sharing"},{"id":"port-1783065194661","type":"file","title":"รายงานการฝึกปฏิบัติวิชาชีพครูระหว่างเรียน ๑ ของนายอัสนี สงวนปุญญศิริ","desc":"","source":"https://drive.google.com/file/d/16XnzuvLrKJzj4hH4iP-S-CPiNlcXBrmM/view?usp=sharing"},{"id":"port-1783065078692","type":"video","title":"วีดีโอแนะนำโรงเรียน","desc":"","source":"https://youtu.be/NU8YdJiR2cw"},{"id":"port-1","type":"image","title":"นายอัสนี สงวนปุญญศิริ","desc":"รูปภาพภาพเหมือนสำหรับการติดต่อประสานงาน และนำเสนองานตามหน่วยงานต่างๆ ทั่วประเทศ","source":"https://drive.google.com/thumbnail?id=1ZBZ5HGKv55aZeAZHi8EPz-1IgGwlndGD&sz=w1000"}];
+    let portfolioItems = [{"id":"port-1783066727505","type":"file","title":"วีดีโอแนะนำโรงเรียน","desc":"","source":"https://drive.google.com/file/d/1lVG_m5ZrQBML9TTQLlboBojEHcICZg8R/view?usp=sharing"},{"id":"port-1783065417877","type":"file","title":"รายงานการศึกษาสภาพทั่วไปของโรงเรียนตาริกพิทยพัฒน์","desc":"","source":"https://drive.google.com/file/d/19oXeKMOXwmj6tD1sCemr0NTqGomRKELP/view?usp=sharing"},{"id":"port-1783065268255","type":"file","title":"โครงการ “Re-Color เติมสีสันบนเส้นทางแห่งการเรียนรู้”","desc":"เป็นโครงการของนักศึกษาฝึกประสบการณ์วิชาชีพครู ชั้นปีที่ 3 คณะครุศาสตร์ มหาวิทยาลัยราชภัฏภูเก็ต จำนวน 8 คน จัดทำขึ้นเพื่อปรับปรุงภูมิทัศน์และทาสีอาคารสถานที่ภายในโรงเรียนตาริกพิทยพัฒน์ ให้มีความสวยงาม สะอาด ปลอดภัย และเอื้อต่อการเรียนรู้","source":"https://drive.google.com/file/d/1S0gnTMq4wVmwfU4zldTLYl7axsG1KDOv/view?usp=sharing"},{"id":"port-1783065194661","type":"file","title":"รายงานการฝึกปฏิบัติวิชาชีพครูระหว่างเรียน ๑ ของนายอัสนี สงวนปุญญศิริ","desc":"","source":"https://drive.google.com/file/d/16XnzuvLrKJzj4hH4iP-S-CPiNlcXBrmM/view?usp=sharing"},{"id":"port-1","type":"image","title":"นายอัสนี สงวนปุญญศิริ","desc":"รูปภาพภาพเหมือนสำหรับการติดต่อประสานงาน และนำเสนองานตามหน่วยงานต่างๆ ทั่วประเทศ","source":"https://drive.google.com/thumbnail?id=1ZBZ5HGKv55aZeAZHi8EPz-1IgGwlndGD&sz=w1000"}];
 
     // INLINE EDITABLE ELEMENTS (Cached to save on document re-generation)
-    let editableElementsData = {"hero-tag":"กำลังศึกษาที่มหาวิทยาลัยราชภัฏภูเก็ต","hero-name":"\n\nนายอัสนี สงวนปุญญศิริ","hero-desc":"ยินดีต้อนรับสู่แฟ้มสะสมผลงานดิจิทัลของผม รวบรวมข้อมูลส่วนตัว ประวัติการศึกษา และผลงานกิจกรรมเพื่อเป็นข้อมูลสำหรับการนำเสนอและการทำงานร่วมกันในอนาคต","about-head":"เกี่ยวกับผม","about-bio-text":"สวัสดีครับ ผมชื่อ อัสนี สงวนปุญญศิริ ปัจจุบันเป็นนักศึกษามหาวิทยาลัยราชภัฏภูเก็ต ผมมุ่งมั่นที่จะพัฒนาทักษะตนเองในด้านต่างๆ อยู่เสมอ และพร้อมจะเรียนรู้สิ่งใหม่เพื่อนำความรู้ไปประยุกต์ใช้ในการทำงานและยกระดับสังคมรอบตัวให้ดีขึ้น","about-addr":"ตำบลบางม่วง อำเภอตะกั่วป่า จังหวัดพังงา","about-univ":"มหาวิทยาลัยราชภัฏภูเก็ต","about-mail":"bbak9988@gmail.com","about-ph":"0949919283","about-web":"https://www.facebook.com/asanee.sanguanpunyasiri"};
+    let editableElementsData = {"hero-tag":"กำลังศึกษาที่มหาวิทยาลัยราชภัฏภูเก็ต","hero-name":"นายอัสนี\nสงวนปุญญศิริ","hero-desc":"ยินดีต้อนรับสู่แฟ้มสะสมผลงานดิจิทัลของผม รวบรวมข้อมูลส่วนตัว ประวัติการศึกษา และผลงานกิจกรรมเพื่อเป็นข้อมูลสำหรับการนำเสนอและการทำงานร่วมกันในอนาคต","about-head":"เกี่ยวกับผม","about-bio-text":"สวัสดีครับ ผมชื่อ อัสนี สงวนปุญญศิริ ปัจจุบันเป็นนักศึกษามหาวิทยาลัยราชภัฏภูเก็ต ผมมุ่งมั่นที่จะพัฒนาทักษะตนเองในด้านต่างๆ อยู่เสมอ และพร้อมจะเรียนรู้สิ่งใหม่เพื่อนำความรู้ไปประยุกต์ใช้ในการทำงานและยกระดับสังคมรอบตัวให้ดีขึ้น","about-addr":"ตำบลบางม่วง อำเภอตะกั่วป่า จังหวัดพังงา","about-univ":"มหาวิทยาลัยราชภัฏภูเก็ต","about-mail":"bbak9988@gmail.com","about-ph":"0949919283","about-web":"https://www.facebook.com/asanee.sanguanpunyasiri"};
             
 
     // --- 2. THEME & DISPLAY LOGIC ---
